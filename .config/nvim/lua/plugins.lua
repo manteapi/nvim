@@ -27,7 +27,14 @@ end
 
 return require('packer').startup(function()
     use {'wbthomason/packer.nvim', opt = true}
+
     -- fzf
 	use {'junegunn/fzf', dir = '~/.fzf', run = './install --all' }
 	use {'junegunn/fzf.vim'}
+
+    -- theme
+    use("vim-airline/vim-airline")
+    use("vim-airline/vim-airline-themes")
+
+    use('preservim/nerdcommenter')
 end)
