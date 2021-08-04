@@ -26,5 +26,8 @@ if not packer_exists then
 end
 
 return require('packer').startup(function()
-    -- use {'wbthomason/packer.nvim', opt = true}
+    use {'wbthomason/packer.nvim', opt = true}
+    -- fzf
+	use {'junegunn/fzf', dir = '~/.fzf', run = './install --all' }
+	use {'junegunn/fzf.vim'}
 end)
