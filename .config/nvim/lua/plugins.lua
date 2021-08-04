@@ -33,8 +33,13 @@ return require('packer').startup(function()
 	use {'junegunn/fzf.vim'}
 
     -- theme
-    use("vim-airline/vim-airline")
-    use("vim-airline/vim-airline-themes")
+    use('vim-airline/vim-airline')
+    use('vim-airline/vim-airline-themes')
 
     use('preservim/nerdcommenter')
+
+    -- completion
+    use {'neoclide/coc.nvim', branch = 'release'}
+    use {'neoclide/coc-json'}
+    use {'neoclide/coc-python'}
 end)
