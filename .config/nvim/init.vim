@@ -74,3 +74,6 @@ highlight GitGutterChangeDelete cterm=bold ctermfg=red " a changed line followed
 " blamer plugin configuration
 let g:blamer_enabled = 1
 let g:blamer_delay = 500
+
+" FZF default command
+let $FZF_DEFAULT_COMMAND = 'fd --hidden .'
