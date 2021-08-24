@@ -63,8 +63,8 @@ endif
 let g:airline_symbols.space = "\ua0"
 
 " vim-gitgutter plugin configuration
-set updatetime=100          " Speed up update time
 let g:gitgutter_override_sign_column_highlight = 0
+set signcolumn=yes
 highlight SignColumn ctermbg=black
 highlight GitGutterAdd    cterm=bold ctermfg=green   " an added line
 highlight GitGutterChange cterm=bold ctermfg=blue   " a changed line
