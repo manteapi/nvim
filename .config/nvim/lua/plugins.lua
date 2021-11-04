@@ -28,6 +28,9 @@ end
 return require('packer').startup(function()
     use {'wbthomason/packer.nvim', opt = true}
 
+    -- qml
+    use {'peterhoeg/vim-qml'}
+
     -- tmux
     use {'christoomey/vim-tmux-navigator'}
 
