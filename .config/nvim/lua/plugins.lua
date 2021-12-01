@@ -50,6 +50,10 @@ return require('packer').startup(function()
     use('tpope/vim-fugitive')
     use('APZelos/blamer.nvim')
 
+
+    -- rust
+    use ('rust-lang/rust.vim')
+
     -- completion
     use {'neoclide/coc.nvim', branch = 'release'}
     use {'neoclide/coc-json'}
