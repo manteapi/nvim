@@ -14,8 +14,11 @@
     ],
     "coc.preferences.formatOnSaveFiletypes": [
         "python",
-        "json"
+        "json",
+        "rust"
     ],
     "json.enable": true,
-    "rust.rust-client.enable": true
+    "rust-client.updateOnStartup": true,
+    "rust-client.logToFile": true,
+    "rust.build_on_save": true
 }
