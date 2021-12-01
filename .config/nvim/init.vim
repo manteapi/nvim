@@ -54,6 +54,9 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" coc extensions requests
+let g:coc_global_extensions = ['coc-json', 'coc-rls', 'coc-python', 'coc-pyright']
+
 " Airline plugin configuration
 let g:airline_powerline_fonts = 1
 let g:airline_theme='papercolor'

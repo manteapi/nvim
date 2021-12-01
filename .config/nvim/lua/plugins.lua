@@ -56,7 +56,4 @@ return require('packer').startup(function()
 
     -- completion
     use {'neoclide/coc.nvim', branch = 'release'}
-    use {'neoclide/coc-json'}
-    use {'neoclide/coc-rls'}
-    use {'git@github.com:fannheyward/coc-pyright.git'}
 end)

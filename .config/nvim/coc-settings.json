@@ -7,7 +7,7 @@
         "--max-line-length=120"
     ],
     "python.formatting.provider": "black",
-    "python.formatting.blackPath": "~/.pyenv/sofa3.6_env/bin/black",
+    "python.formatting.blackPath": "~/.local/bin/black",
     "python.formatting.blackArgs": [
         "--line-length",
         "120"
@@ -15,5 +15,7 @@
     "coc.preferences.formatOnSaveFiletypes": [
         "python",
         "json"
-    ]
+    ],
+    "json.enable": true,
+    "rust.rust-client.enable": true
 }
