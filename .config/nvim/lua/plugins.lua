@@ -51,6 +51,9 @@ return require('packer').startup(function()
     use('APZelos/blamer.nvim')
 
 
+    -- justfiles
+    use('NoahTheDuke/vim-just')
+
     -- rust
     use ('rust-lang/rust.vim')
 
