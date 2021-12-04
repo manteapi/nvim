@@ -57,6 +57,12 @@ nmap <silent> gr <Plug>(coc-references)
 " coc extensions requests
 let g:coc_global_extensions = ['coc-json', 'coc-rls', 'coc-python', 'coc-pyright']
 
+" Pmenu
+hi Pmenu ctermfg=250 ctermbg=236 guifg=#BBBBBB guibg=#2D2D30
+hi PmenuSel ctermfg=250 ctermbg=24 guifg=#BBBBBB guibg=#073655
+hi PmenuSbar ctermbg=237 guibg=#3D3D40
+hi PmenuThumb ctermbg=250 guibg=#BBBBBB
+
 " Airline plugin configuration
 let g:airline_powerline_fonts = 1
 let g:airline_theme='papercolor'
