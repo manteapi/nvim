@@ -56,7 +56,7 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <silent> <c-a> <Plug>(coc-codeaction)
 
 " coc extensions requests
-let g:coc_global_extensions = ['coc-json', 'coc-rls', 'coc-python', 'coc-pyright']
+let g:coc_global_extensions = ['coc-json', 'coc-rls', 'coc-rust-analyzer', 'coc-python', 'coc-pyright']
 
 " Pmenu
 hi Pmenu ctermfg=250 ctermbg=236 guifg=#BBBBBB guibg=#2D2D30
