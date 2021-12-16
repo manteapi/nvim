@@ -68,13 +68,45 @@ let g:blamer_enabled = 1
 let g:blamer_delay = 500
 
 " FZF default command
-let $FZF_DEFAULT_COMMAND = 'fd --hidden .'
+" i decided to give Telescope a try
+" let $FZF_DEFAULT_COMMAND = 'fd --hidden .'
+
+" Telescope
+lua << EOF
+require('telescope').setup {
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    }
+  }
+}
+require('telescope').load_extension('fzf')
+EOF
+
+" Using Lua functions
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 " TreeSitter
 
 " Highlighting
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
+    ensure_installed = {
+        "json",
+        "lua",
+        "markdown",
+        "python",
+        "rust",
+        "vim",
+  },
+  sync_install = false,
   highlight = {
     enable = true
   },
@@ -93,8 +125,8 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
 
 " Configure LSP through rust-tools.nvim plugin.
 " rust-tools will configure and enable certain LSP features for us.
@@ -140,15 +172,16 @@ require'lspconfig'.pyright.setup{}
 EOF
 
 " Code navigation shortcuts
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> K             <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gi            <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k>         <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gD           <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr            <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0            <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW            <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> gd            <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gD            <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> <space>rn     <cmd>lua vim.lsp.buf.rename()<CR>
 
 " Code actions
 nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>

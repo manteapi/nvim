@@ -28,6 +28,8 @@ end
 return require('packer').startup(function()
     use {'wbthomason/packer.nvim', opt = true}
 
+    use {'kyazdani42/nvim-web-devicons'}
+
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
@@ -51,9 +53,17 @@ return require('packer').startup(function()
     -- tmux
     use {'christoomey/vim-tmux-navigator'}
 
-    -- fzf
-    use {'junegunn/fzf', dir = '~/.fzf', run = './install --all' }
-    use {'junegunn/fzf.vim'}
+    -- fuzzy finder
+    -- -------------
+
+    -- FZF
+    -- i decided to give a try to telescope
+    -- use {'junegunn/fzf', dir = '~/.fzf', run = './install --all'}
+    -- use {'junegunn/fzf.vim'}
+
+    -- Telescope
+    use {'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} }}
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- theme
     use('vim-airline/vim-airline')
