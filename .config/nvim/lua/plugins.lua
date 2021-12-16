@@ -28,6 +28,23 @@ end
 return require('packer').startup(function()
     use {'wbthomason/packer.nvim', opt = true}
 
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
+
+    use {
+        'neovim/nvim-lspconfig'
+    }
+
+    -- completion
+    use {'hrsh7th/nvim-cmp'}
+    -- LSP completion source for nvim-cmp
+    use {'hrsh7th/cmp-nvim-lsp'}
+    -- Other usefull completion sources
+    use {'hrsh7th/cmp-path'}
+    use {'hrsh7th/cmp-buffer'}
+
     -- qml
     use {'peterhoeg/vim-qml'}
 
@@ -55,8 +72,10 @@ return require('packer').startup(function()
     use('NoahTheDuke/vim-just')
 
     -- rust
-    use ('rust-lang/rust.vim')
+    -- use ('rust-lang/rust.vim')
+    use ('simrat39/rust-tools.nvim')
 
-    -- completion
-    use {'neoclide/coc.nvim', branch = 'release'}
+    -- conquer of completion - a.k.a coc
+    -- i decided to use lsp instead for now
+    -- use {'neoclide/coc.nvim', branch = 'release'}
 end)
