@@ -15,16 +15,7 @@ local options = {
     clipboard="unnamedplus",   -- using system clipboard
     cursorline = true,              -- highlight current cursorline
     ttyfast = true,                 -- Speed up scrolling in Vim
-    -- Set completeopt to have a better completion experience
-    -- :help completeopt
-    -- menuone: popup even when there's only one match
-    -- noinsert: Do not insert text until a selection is made
-    -- noselect: Do not select, force user to select one from the menu
-    completeopt= {"menuone","noinsert","noselect"},
 }
-
--- Avoid showing extra messages when using completion
-vim.opt.shortmess:append "c"
 
 for k, v in pairs(options) do
   vim.opt[k] = v
