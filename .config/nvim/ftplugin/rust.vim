@@ -1,1 +1,0 @@
-let g:compiler = "Cargo"
