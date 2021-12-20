@@ -76,9 +76,8 @@ return require('packer').startup(function()
     -- -------------
 
     -- FZF
-    -- i decided to give a try to telescope
-    -- use {'junegunn/fzf', dir = '~/.fzf', run = './install --all'}
-    -- use {'junegunn/fzf.vim'}
+    use {'junegunn/fzf', dir = '~/.fzf', run = './install --all'}
+    use {'junegunn/fzf.vim'}
 
     -- Telescope
     use {'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} }}
