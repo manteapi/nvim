@@ -13,6 +13,5 @@ vim.api.nvim_set_keymap("n", "<leader>fa", "<cmd>:Ag<cr>", opts)
 --   let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
 --   call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 -- endfunction
--- 
 -- command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 -- ]])
