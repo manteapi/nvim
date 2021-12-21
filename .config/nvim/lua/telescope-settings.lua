@@ -11,6 +11,7 @@ require('telescope').setup {
             "--hidden"
         },
         file_ignore_patterns = {
+            "%.png",
             "data/*",
             ".mypy_cache/*",
             ".venv/*",
