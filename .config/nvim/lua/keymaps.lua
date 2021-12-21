@@ -1,0 +1,2 @@
+-- vim.api.nvim_set_keymap('v', '//',  "y/\V<C-R>=escape(@",'/\')<CR><CR>", {noremap=true}})
+-- vim.cmd([[vnoremap /t y/\V<C-R>=escape(@",'/\')<CR><CR>]])

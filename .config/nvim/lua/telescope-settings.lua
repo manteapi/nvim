@@ -1,5 +1,8 @@
 require('telescope').setup {
     defaults = {
+        path_display = {
+            shorten = 1
+        },
         vimgrep_arguments = {
             "rg",
             "--color=never",
@@ -11,8 +14,13 @@ require('telescope').setup {
             "--hidden"
         },
         file_ignore_patterns = {
+            "%.stl",
+            "%.jpg",
+            "%.raw",
             "%.png",
-            "data/*",
+            "%.obj",
+            "%.iges",
+            "%.o",
             ".mypy_cache/*",
             ".venv/*",
             "build*",
