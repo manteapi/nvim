@@ -48,6 +48,9 @@ return require('packer').startup(function(use)
 
     use {'folke/lua-dev.nvim'}
 
+    -- NOTE: pip install nvim is required to make it work
+    use {'psf/black'}
+
     -- comment
     use {
         'numToStr/Comment.nvim',
