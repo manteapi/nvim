@@ -1,2 +1,2 @@
-vim.cmd([[let g:blamer_enabled = 1]])
-vim.cmd([[let g:blamer_delay = 500]])
+vim.g.blamer_enabled=true
+vim.g.blamer_delay=500
