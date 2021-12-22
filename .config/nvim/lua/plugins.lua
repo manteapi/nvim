@@ -25,7 +25,7 @@ if not packer_exists then
     return
 end
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim', opt = true}
 
     use {
@@ -71,6 +71,9 @@ return require('packer').startup(function()
 
     -- tmux
     use {'christoomey/vim-tmux-navigator'}
+
+    -- nvim dev
+    use {'tjdevries/nlua.nvim'}
 
     -- fuzzy finder
     -- -------------

@@ -1,4 +1,9 @@
 require('telescope').setup {
+    pickers = {
+        find_files = {
+            hidden = true
+        },
+    },
     defaults = {
         path_display = {
             shorten = 1
