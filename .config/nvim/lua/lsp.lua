@@ -10,16 +10,11 @@ lsp_installer.on_server_ready(function(server)
     }
 
     if server.name == "sumneko_lua" then
-        opts = {
-            capabilities = capabilities,
-            settings = {
-                Lua = {
-                    diagnostics = {
-                        globals = { 'vim' }
-                    }
-                }
-            }
-        }
+        opts = require("lua-dev").setup({
+            lspconfig = {
+                cmd = {vim.fn.expand('$HOME') .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"},
+            },
+        })
     end
 
     if server.name == "rust_analyzer" then

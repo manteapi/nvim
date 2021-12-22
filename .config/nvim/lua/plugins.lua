@@ -46,6 +46,8 @@ return require('packer').startup(function(use)
         'williamboman/nvim-lsp-installer',
     }
 
+    use {'folke/lua-dev.nvim'}
+
     -- comment
     use {
         'numToStr/Comment.nvim',
