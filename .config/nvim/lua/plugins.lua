@@ -51,14 +51,6 @@ return require('packer').startup(function(use)
     -- NOTE: pip install nvim is required to make it work
     use {'psf/black'}
 
-    -- comment
-    use {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
-    }
-
     -- completion
     use {'hrsh7th/nvim-cmp'}
     -- LSP completion source for nvim-cmp
