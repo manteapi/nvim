@@ -20,6 +20,8 @@ require('telescope').setup {
         },
         file_ignore_patterns = {
             "%.stl",
+            "%.gz",
+            "%.zip",
             "%.jpg",
             "%.raw",
             "%.png",
