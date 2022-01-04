@@ -1,3 +1,4 @@
+require "keymaps"
 require "options"
 require "plugins"
 require "plugins/airline-config"
