@@ -92,9 +92,9 @@ return require('packer').startup(function(use)
     use('preservim/nerdcommenter')
 
     -- git
-    use('airblade/vim-gitgutter')
     use('tpope/vim-fugitive')
-    use('APZelos/blamer.nvim')
+
+    use {'lewis6991/gitsigns.nvim', requires = { { 'nvim-lua/plenary.nvim' } }}
 
 
     -- justfiles
