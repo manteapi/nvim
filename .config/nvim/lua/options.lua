@@ -15,6 +15,8 @@ local options = {
     clipboard="unnamedplus",   -- using system clipboard
     cursorline = true,              -- highlight current cursorline
     ttyfast = true,                 -- Speed up scrolling in Vim
+    grepprg='rg --vimgrep --no-heading --smart-case',
+    grepformat="%f:%l:%c:%m"
 }
 
 for k, v in pairs(options) do
