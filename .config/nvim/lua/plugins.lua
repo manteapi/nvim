@@ -28,6 +28,7 @@ end
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim', opt = true}
 
+    -- tree explorer
     use {
         'kyazdani42/nvim-tree.lua',
         requires = {
@@ -36,18 +37,23 @@ return require('packer').startup(function(use)
         config = function() require'nvim-tree'.setup {} end
     }
 
+    -- treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
     use {'nvim-treesitter/nvim-treesitter-textobjects'}
 
+    -- lsp & languages
     use {
         'neovim/nvim-lspconfig',
         'williamboman/nvim-lsp-installer',
     }
 
     use {'folke/lua-dev.nvim'}
+
+    -- color schemes
+    use {'folke/tokyonight.nvim'}
 
     -- NOTE: pip install nvim is required to make it work
     use {'psf/black'}
@@ -76,20 +82,19 @@ return require('packer').startup(function(use)
     -- fuzzy finder
     -- -------------
 
-    -- FZF
+    -- fzf
     use {'junegunn/fzf', dir = '~/.fzf', run = './install --all'}
     use {'junegunn/fzf.vim'}
 
-    -- Telescope
+    -- telescope
     use {'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} }}
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
-    -- theme
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    }
+    -- lines
+    use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
+    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 
+    -- comments
     use('preservim/nerdcommenter')
 
     -- git
