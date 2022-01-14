@@ -28,6 +28,9 @@ end
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim', opt = true}
 
+    -- dashboard
+    use 'glepnir/dashboard-nvim'
+
     -- tree explorer
     use {
         'kyazdani42/nvim-tree.lua',

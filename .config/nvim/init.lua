@@ -1,6 +1,7 @@
 require "keymaps"
 require "options"
 require "plugins"
+require "plugins/dashboard-config"
 require "plugins/lualine-config"
 require "plugins/tokyonight-config"
 require "plugins/bufferline-config"
