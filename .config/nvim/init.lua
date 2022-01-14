@@ -1,7 +1,7 @@
 require "keymaps"
 require "options"
 require "plugins"
-require "plugins/airline-config"
+require "plugins/lualine-config"
 require "plugins/cmp-config"
 require "plugins/fzf-config"
 require "plugins/gitsigns-config"
