@@ -28,6 +28,9 @@ end
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim', opt = true}
 
+    -- helpers
+    use {"folke/which-key.nvim"}
+
     -- dashboard
     use 'glepnir/dashboard-nvim'
 
