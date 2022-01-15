@@ -28,11 +28,17 @@ end
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim', opt = true}
 
+    -- whitespaces
+    use 'ntpeters/vim-better-whitespace'
+
     -- helpers
     use {"folke/which-key.nvim"}
 
     -- dashboard
     use 'glepnir/dashboard-nvim'
+
+    -- motion
+    use 'ggandor/lightspeed.nvim'
 
     -- tree explorer
     use {
@@ -78,7 +84,7 @@ return require('packer').startup(function(use)
 
     -- snippets
     use {'saadparwaiz1/cmp_luasnip'} -- Snippets source for nvim-cmp
-    use {'L3MON4D3/LuaSnip'} -- Snippets plugin 
+    use {'L3MON4D3/LuaSnip'} -- Snippets plugin
 
     -- qml
     use {'peterhoeg/vim-qml'}
