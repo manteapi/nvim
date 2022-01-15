@@ -58,8 +58,12 @@ return require('packer').startup(function(use)
 
     use {'folke/lua-dev.nvim'}
 
+    -- :warning: vista requires ctags
+    use {'liuchengxu/vista.vim'}
+
     -- color schemes
     use {'folke/tokyonight.nvim'}
+    use {'RRethy/vim-illuminate'}
 
     -- NOTE: pip install nvim is required to make it work
     use {'psf/black'}
