@@ -28,6 +28,8 @@ end
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim', opt = true}
 
+    use 'windwp/nvim-autopairs'
+
     -- whitespaces
     use 'ntpeters/vim-better-whitespace'
 
@@ -63,6 +65,11 @@ return require('packer').startup(function(use)
     }
 
     use {'folke/lua-dev.nvim'}
+
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons"
+    }
 
     -- :warning: vista requires ctags
     use {'liuchengxu/vista.vim'}
