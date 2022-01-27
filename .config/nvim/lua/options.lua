@@ -1,4 +1,5 @@
 local options = {
+    timeoutlen = 150, -- time in milliseconds to wait for a mapped sequence to complete.
     showmatch = true,               -- show matching
     ignorecase = true,              -- case insensitive
     mouse="va",                 -- a="enable mouse click" + v="middle-click paste"
