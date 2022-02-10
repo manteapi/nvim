@@ -20,9 +20,13 @@ require('telescope').setup {
         },
         file_ignore_patterns = {
             "%.stl",
+            "%.webm",
+            "%.mhd",
             "%.gz",
             "%.zip",
             "%.jpg",
+            "%.json.hash",
+            "%.bmp",
             "%.raw",
             "%.png",
             "%.obj",
@@ -30,9 +34,11 @@ require('telescope').setup {
             "%.o",
             ".mypy_cache/*",
             ".venv/*",
+            "%-data*",
+            "%-model*",
             "build*",
             ".cache/.*",
-            ".git/.*"
+            ".git/.*",
         }
     },
 	extensions = {
