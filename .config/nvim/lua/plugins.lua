@@ -7,16 +7,16 @@ if not packer_exists then
     end
 
     local directory = string.format(
-    '%s/site/pack/packer/opt/',
-    vim.fn.stdpath('data')
+        '%s/site/pack/packer/opt/',
+        vim.fn.stdpath('data')
     )
 
     vim.fn.mkdir(directory, 'p')
 
     local git_clone_cmd = vim.fn.system(string.format(
-    'git clone %s %s',
-    'https://github.com/wbthomason/packer.nvim',
-    directory .. '/packer.nvim'
+        'git clone %s %s',
+        'https://github.com/wbthomason/packer.nvim',
+        directory .. '/packer.nvim'
     ))
 
     print(git_clone_cmd)
@@ -46,7 +46,7 @@ return require('packer').startup(function(use)
     use {
         'kyazdani42/nvim-tree.lua',
         requires = {
-          'kyazdani42/nvim-web-devicons', -- optional, for file icon
+            'kyazdani42/nvim-web-devicons', -- optional, for file icon
         },
         config = function() require'nvim-tree'.setup {} end
     }
