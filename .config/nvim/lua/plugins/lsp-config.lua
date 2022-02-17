@@ -71,13 +71,13 @@ vim.api.nvim_set_keymap("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt
 -- diagnostic ux
 -- Set updatetime for CursorHold
 -- 300ms of no cursor movement to trigger CursorHold
-vim.opt["updatetime"]=300
+-- vim.opt["updatetime"]=300
 -- Show diagnostic popup on cursor hold
-vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float()]])
+-- vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float()]])
 
 -- Goto previous/next diagnostic warning/error
 vim.api.nvim_set_keymap("n", "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 vim.api.nvim_set_keymap("n", "g]", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 
 -- Format on write
-vim.cmd([[autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)]])
+-- vim.cmd([[autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)]])
