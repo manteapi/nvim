@@ -131,7 +131,9 @@ return require('packer').startup(function(use)
 
     -- rust
     -- use ('rust-lang/rust.vim')
-    use ('simrat39/rust-tools.nvim')
+    use {'simrat39/rust-tools.nvim',
+        commit = '7b4d155dd47e211ee661cbb4c7969b245f768edb'
+    }
 
     -- conquer of completion - a.k.a coc
     -- i decided to use lsp instead for now
