@@ -131,6 +131,17 @@ return require('packer').startup(function(use)
         commit = '7b4d155dd47e211ee661cbb4c7969b245f768edb'
     }
 
+    use {
+        "folke/zen-mode.nvim",
+        config = function()
+            require("zen-mode").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
+
     -- conquer of completion - a.k.a coc
     -- i decided to use lsp instead for now
     -- use {'neoclide/coc.nvim', branch = 'release'}
