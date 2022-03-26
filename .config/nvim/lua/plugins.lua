@@ -76,7 +76,6 @@ return require('packer').startup(function(use)
 
     -- color schemes
     use {'folke/tokyonight.nvim'}
-    use {'RRethy/vim-illuminate'}
 
     -- NOTE: pip install nvim is required to make it work
     use {'psf/black'}
