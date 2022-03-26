@@ -39,9 +39,6 @@ return require('packer').startup(function(use)
     -- dashboard
     use 'glepnir/dashboard-nvim'
 
-    -- motion
-    use 'ggandor/lightspeed.nvim'
-
     -- tree explorer
     use {
         'kyazdani42/nvim-tree.lua',
