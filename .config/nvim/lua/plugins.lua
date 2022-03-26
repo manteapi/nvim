@@ -30,6 +30,8 @@ return require('packer').startup(function(use)
 
     use 'windwp/nvim-autopairs'
 
+    use "lukas-reineke/indent-blankline.nvim"
+
     -- whitespaces
     use 'ntpeters/vim-better-whitespace'
 
