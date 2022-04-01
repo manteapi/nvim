@@ -22,6 +22,7 @@ require('telescope').setup {
             "%.stl",
             "%.webm",
             "%.mhd",
+            "%.idx",
             "%.gz",
             "%.zip",
             "%.jpg",
