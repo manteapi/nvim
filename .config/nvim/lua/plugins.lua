@@ -35,8 +35,6 @@ return require('packer').startup(function(use)
     -- whitespaces
     use 'ntpeters/vim-better-whitespace'
 
-    -- helpers
-    use {"folke/which-key.nvim"}
 
     -- dashboard
     use 'glepnir/dashboard-nvim'
