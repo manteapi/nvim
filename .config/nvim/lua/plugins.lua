@@ -31,6 +31,16 @@ return require('packer').startup(function(use)
     use 'windwp/nvim-autopairs'
 
     use "lukas-reineke/indent-blankline.nvim"
+    use {
+        "lukas-reineke/indent-blankline.nvim",
+        ft = {'lua', 'python', 'c', 'cpp', 'rust', 'qml', 'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'racket'},
+        config = function()
+            require("indent_blankline").setup {
+                show_current_context = true,
+                show_current_context_start = true,
+            }
+        end
+    }
 
     -- whitespaces
     use 'ntpeters/vim-better-whitespace'
