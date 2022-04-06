@@ -16,9 +16,12 @@ local options = {
     cursorline = true,              -- highlight current cursorline
     ttyfast = true,                 -- Speed up scrolling in Vim
     grepprg='rg --vimgrep --no-heading --smart-case',
-    grepformat="%f:%l:%c:%m"
+    grepformat="%f:%l:%c:%m",
 }
 
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
+vim.g.matchparen_timeout=12         -- time in ms to find matching parenthesis
+vim.g.matchparen_insert_timeout=12  -- time ins ms to find matching parenthesis in insert mode
