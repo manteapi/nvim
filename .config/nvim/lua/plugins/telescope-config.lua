@@ -56,7 +56,9 @@ require('telescope').load_extension('fzf')
 
 local opts = { noremap = true }
 vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
--- Performance issue with live_grep
--- vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>fr", "<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>fp", "<cmd>lua require('telescope.builtin').git_files()<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>fs", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opts)
 vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
 vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
