@@ -38,6 +38,7 @@ return require('packer').startup(function(use)
             }
         end
     }
+    use 'godlygeek/tabular'
 
     -- whitespaces
     use 'ntpeters/vim-better-whitespace'
