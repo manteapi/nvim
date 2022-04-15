@@ -128,6 +128,13 @@ return require('packer').startup(function(use)
     use('preservim/nerdcommenter')
 
     -- git
+    use { 'TimUntersberger/neogit',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+            require("neogit").setup{}
+        end
+    }
+
     use('tpope/vim-fugitive')
 
     use {'lewis6991/gitsigns.nvim', requires = { { 'nvim-lua/plenary.nvim' } }}
