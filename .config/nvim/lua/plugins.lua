@@ -28,6 +28,8 @@ end
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim', opt = true}
 
+    use {'andymass/vim-matchup'}
+
     use {
         "lukas-reineke/indent-blankline.nvim",
         ft = {'lua', 'python', 'c', 'cpp', 'rust', 'qml', 'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'racket'},
