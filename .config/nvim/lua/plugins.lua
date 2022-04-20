@@ -33,6 +33,13 @@ return require('packer').startup(function(use)
     use {'andymass/vim-matchup'}
 
     use {
+        'karb94/neoscroll.nvim',
+        config = function()
+            require('neoscroll').setup()
+        end
+    }
+
+    use {
         "lukas-reineke/indent-blankline.nvim",
         ft = {'lua', 'python', 'c', 'cpp', 'rust', 'qml', 'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'racket'},
         config = function()
