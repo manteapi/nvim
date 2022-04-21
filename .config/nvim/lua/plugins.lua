@@ -34,6 +34,13 @@ return require('packer').startup(function(use)
 
     use {'RRethy/vim-illuminate'}
     use {
+        "folke/todo-comments.nvim",
+        requires = "nvim-lua/plenary.nvim",
+        config = function()
+            require("todo-comments").setup()
+        end
+    }
+
         'karb94/neoscroll.nvim',
         config = function()
             require('neoscroll').setup()
