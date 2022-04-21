@@ -32,6 +32,7 @@ return require('packer').startup(function(use)
 
     use {'andymass/vim-matchup'}
 
+    use {'RRethy/vim-illuminate'}
     use {
         'karb94/neoscroll.nvim',
         config = function()
