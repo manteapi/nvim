@@ -33,6 +33,7 @@ return require('packer').startup(function(use)
     use {'andymass/vim-matchup'}
 
     use {'RRethy/vim-illuminate'}
+
     use {
         "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
@@ -41,6 +42,14 @@ return require('packer').startup(function(use)
         end
     }
 
+    use {
+        'windwp/nvim-autopairs',
+        config= function()
+            require('nvim-autopairs').setup()
+        end
+    }
+
+    use {
         'karb94/neoscroll.nvim',
         config = function()
             require('neoscroll').setup()
