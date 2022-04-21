@@ -51,6 +51,12 @@ return require('packer').startup(function(use)
     }
     use 'godlygeek/tabular'
 
+    use {
+        'norcalli/nvim-colorizer.lua',
+        config = function()
+            require'colorizer'.setup()
+        end
+    }
     -- whitespaces
     use 'ntpeters/vim-better-whitespace'
 
