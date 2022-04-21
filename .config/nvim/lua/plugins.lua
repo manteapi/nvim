@@ -57,6 +57,7 @@ return require('packer').startup(function(use)
             require'colorizer'.setup()
         end
     }
+
     -- whitespaces
     use 'ntpeters/vim-better-whitespace'
 
@@ -96,9 +97,6 @@ return require('packer').startup(function(use)
 
     -- color schemes
     use {'folke/tokyonight.nvim'}
-
-    -- NOTE: pip install nvim is required to make it work
-    use {'psf/black'}
 
     -- completion
     use {'hrsh7th/nvim-cmp'}
