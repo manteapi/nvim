@@ -143,6 +143,11 @@ return require('packer').startup(function(use)
     -- comments
     use('preservim/nerdcommenter')
 
+    use {
+        'nvim-lua/plenary.nvim',
+        requires = {'windwp/nvim-spectre'}
+    }
+
     -- git
     use { 'TimUntersberger/neogit',
         requires = 'nvim-lua/plenary.nvim',
