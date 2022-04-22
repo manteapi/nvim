@@ -117,15 +117,10 @@ return require('packer').startup(function(use)
 
     -- completion
     use {'hrsh7th/nvim-cmp'}
-    -- LSP completion source for nvim-cmp
     use {'hrsh7th/cmp-nvim-lsp'}
     -- Other usefull completion sources
     use {'hrsh7th/cmp-path'}
     use {'hrsh7th/cmp-buffer'}
-
-    -- snippets
-    use {'saadparwaiz1/cmp_luasnip'} -- Snippets source for nvim-cmp
-    use {'L3MON4D3/LuaSnip'} -- Snippets plugin
 
     -- qml
     use {'peterhoeg/vim-qml'}

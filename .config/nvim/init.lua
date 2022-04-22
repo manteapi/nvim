@@ -1,7 +1,6 @@
 require "keymaps"
 require "options"
 require "plugins"
---require "plugins/luasnip-config"
 require "plugins/bufferline-config"
 require "plugins/cmp-config"
 require "plugins/dashboard-config"
