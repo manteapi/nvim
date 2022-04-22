@@ -118,7 +118,7 @@ return require('packer').startup(function(use)
     -- completion
     use {'hrsh7th/nvim-cmp'}
     use {'hrsh7th/cmp-nvim-lsp'}
-    -- Other usefull completion sources
+    use {'hrsh7th/cmp-cmdline'}
     use {'hrsh7th/cmp-path'}
     use {'hrsh7th/cmp-buffer'}
 
