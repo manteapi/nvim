@@ -68,6 +68,7 @@ return require('packer').startup(function(use)
     }
     use 'godlygeek/tabular'
 
+
     use {
         'norcalli/nvim-colorizer.lua',
         config = function()
@@ -102,6 +103,8 @@ return require('packer').startup(function(use)
         'williamboman/nvim-lsp-installer',
     }
 
+    use {'onsails/lspkind.nvim'}
+
     use {'folke/lua-dev.nvim'}
 
     use {
@@ -117,10 +120,15 @@ return require('packer').startup(function(use)
 
     -- completion
     use {'hrsh7th/nvim-cmp'}
-    use {'hrsh7th/cmp-nvim-lsp'}
-    use {'hrsh7th/cmp-cmdline'}
-    use {'hrsh7th/cmp-path'}
     use {'hrsh7th/cmp-buffer'}
+    use {'hrsh7th/cmp-path'}
+    use {'hrsh7th/cmp-cmdline'}
+    use {'hrsh7th/cmp-nvim-lua'}
+    use {'hrsh7th/cmp-nvim-lsp'}
+    use {'saadparwaiz1/cmp_luasnip'}
+
+    -- snippets
+    use {'L3MON4D3/LuaSnip'}
 
     -- qml
     use {'peterhoeg/vim-qml'}
