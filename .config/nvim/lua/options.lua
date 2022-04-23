@@ -17,6 +17,7 @@ local options = {
     ttyfast = true,              -- Speed up scrolling in Vim
     grepprg='rg --vimgrep --no-heading --smart-case',
     grepformat="%f:%l:%c:%m",
+    relativenumber = true,
 }
 
 for k, v in pairs(options) do
