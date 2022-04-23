@@ -18,6 +18,7 @@ local options = {
     grepprg='rg --vimgrep --no-heading --smart-case',
     grepformat="%f:%l:%c:%m",
     relativenumber = true,
+    signcolumn = "yes"
 }
 
 for k, v in pairs(options) do
