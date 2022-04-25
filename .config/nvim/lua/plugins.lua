@@ -28,11 +28,15 @@ end
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim', opt = true}
 
+    use {'rcarriga/nvim-notify'}
+
     use {'dstein64/vim-startuptime'}
 
     use {'andymass/vim-matchup'}
 
     use {'RRethy/vim-illuminate'}
+
+    use {'nvim-lua/plenary.nvim'}
 
     use {
         "folke/todo-comments.nvim",
@@ -164,8 +168,8 @@ return require('packer').startup(function(use)
     use('preservim/nerdcommenter')
 
     use {
-        'nvim-lua/plenary.nvim',
-        requires = {'windwp/nvim-spectre'}
+        'windwp/nvim-spectre',
+        requires = 'nvim-lua/plenary.nvim'
     }
 
     -- git
