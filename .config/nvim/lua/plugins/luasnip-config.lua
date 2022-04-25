@@ -12,7 +12,6 @@ luasnip.config.set_config {
 }
 
 vim.keymap.set({"i", "s"}, "<c-k>", function()
-    print("caca")
     if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
     end
@@ -29,3 +28,18 @@ vim.keymap.set("i", "<c-l>", function()
         luasnip.change_choice(1)
     end
 end, {silent=true})
+
+local s = luasnip.s
+local i = luasnip.insert_node
+local t = luasnip.text_node
+
+local fmt = require("luasnip.extras.fmt").fmt
+local rep = require("luasnip.extras").rep
+
+luasnip.add_snippets("all",
+    {
+        luasnip.snippet({trig="expand"}, {t("-- this is what is expanded !")}),
+        luasnip.parser.parse_snippet("expand2", "-- this is what is expanded !"),
+        s("expand3", fmt("local {} = require('{}')", {i(1, "default"), rep(1)}))
+    }
+)
