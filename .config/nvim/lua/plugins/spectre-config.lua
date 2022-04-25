@@ -1,4 +1,10 @@
-require('spectre').setup({})
+require('spectre').setup({
+    highlight = {
+        ui = "String",
+        search = "TodoBgFIX",
+        replace = "TodoBgNOTE"
+    },
+})
 
 local opts = {noremap=true, silent=true}
 
