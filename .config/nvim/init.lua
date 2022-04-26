@@ -1,6 +1,7 @@
 require "plugins"
 require "keymaps"
 require "options"
+require "plugins/autopair-config"
 require "plugins/bufferline-config"
 require "plugins/cmp-config"
 require "plugins/dashboard-config"
