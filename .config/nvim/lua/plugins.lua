@@ -45,13 +45,6 @@ return require('packer').startup(function(use)
     }
 
     use {
-        'windwp/nvim-autopairs',
-        config= function()
-            require('nvim-autopairs').setup()
-        end
-    }
-
-    use {
         'karb94/neoscroll.nvim',
         config = function()
             require('neoscroll').setup()
