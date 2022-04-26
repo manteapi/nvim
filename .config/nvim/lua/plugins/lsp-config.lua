@@ -13,7 +13,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     -- code actions
     vim.api.nvim_buf_set_keymap(bufnr, "n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 end
 
@@ -36,6 +36,21 @@ lsp_installer.on_server_ready(function(server)
         })
     end
 
+    -- Use for diagnostics
+    if server.name == "pyright" then
+        opts = {
+            cmd = {"pyright-langserver", "--stdio"},
+            settings = {
+                pyright = {
+                    disableLanguageServices = true
+                }
+            },
+            capabilities = capabilities,
+            on_attach = on_attach
+        }
+    end
+
+    -- Used for formatting
     if server.name == "pylsp" then
         opts = {
             cmd = {"pylsp"},
@@ -48,7 +63,23 @@ lsp_installer.on_server_ready(function(server)
                             enabled = true,
                             maxLineLength = 120
                         },
+                        jedi_completion = { enabled = false},
+                        rope_completion = {enabled = false}
                     }
+                }
+            },
+            capabilities = capabilities,
+            on_attach = on_attach
+        }
+    end
+
+    -- Used for completion
+    if server.name == "jedi_language_server" then
+        opts = {
+            cmd = {"jedi-language-server"},
+            init_options = {
+                diagnostics = {
+                    enable = false
                 }
             },
             capabilities = capabilities,
