@@ -36,13 +36,20 @@ lsp_installer.on_server_ready(function(server)
         })
     end
 
-    -- Use for diagnostics
+    --Use for diagnostics
     if server.name == "pyright" then
         opts = {
             cmd = {"pyright-langserver", "--stdio"},
             settings = {
                 pyright = {
                     disableLanguageServices = true
+                },
+                python = {
+                    analysis = {
+                        autoImportCompletions = true
+                    },
+                    pythonPath = "~/.venv/bin/python3",
+                    venvPath = "~/.venv"
                 }
             },
             capabilities = capabilities,
