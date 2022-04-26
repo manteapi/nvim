@@ -14,9 +14,8 @@ vim.cmd([[vnoremap <silent> # :<C-U>
   \gVzv:call setreg('"', old_reg, old_regtype)<CR>]])
 
 vim.keymap.set("n", "<leader><leader>r", function()
-    vim.notify = require("notify")
     local reload = require "plenary.reload"
     reload.reload_module('%')
     vim.cmd([[luafile %]])
-    vim.notify({"Lua file reloaded !"}, "info")
+    vim.notify("Lua file reloaded")
 end)

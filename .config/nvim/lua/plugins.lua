@@ -28,8 +28,6 @@ end
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim', opt = true}
 
-    use {'rcarriga/nvim-notify'}
-
     use {'dstein64/vim-startuptime'}
 
     use {'andymass/vim-matchup'}
