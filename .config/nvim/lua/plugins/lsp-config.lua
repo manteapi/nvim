@@ -48,8 +48,6 @@ lsp_installer.on_server_ready(function(server)
                     analysis = {
                         autoImportCompletions = true
                     },
-                    pythonPath = "~/.venv/bin/python3",
-                    venvPath = "~/.venv"
                 }
             },
             capabilities = capabilities,
