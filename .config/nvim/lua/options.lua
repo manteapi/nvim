@@ -3,8 +3,7 @@ local options = {
     showmatch = true,            -- show matching
     ignorecase = true,           -- case insensitive
     mouse="va",                  -- a="enable mouse click" + v="middle-click paste"
-    hlsearch = true,             -- highlight search
-    incsearch = true,            -- incremental search
+    hlsearch = false,             -- highlight search
     tabstop=4,                   -- number of columns occupied by a tab
     softtabstop=4,               -- see multiple spaces as tabstops so <BS> does the right thing
     expandtab = true,            -- converts tabs to white space
@@ -15,15 +14,28 @@ local options = {
     clipboard="unnamedplus",     -- using system clipboard
     cursorline = true,           -- highlight current cursorline
     ttyfast = true,              -- Speed up scrolling in Vim
+    breakindent = true,          -- Enable breakindent
     grepprg='rg --vimgrep --no-heading --smart-case',
     grepformat="%f:%l:%c:%m",
-    relativenumber = true,
-    signcolumn = "yes"
+    relativenumber = true,       -- Show relative line number
+    signcolumn = "yes"           -- Always show signcolumn
 }
 
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
+vim.o.ignorecase = false
+vim.o.smartcase = true
+
+--vim.o.updatetime = 250 --Decrease update time
+
+vim.wo.signcolumn = 'yes' -- Always show signcolumn
+
 vim.g.matchparen_timeout=12         -- time in ms to find matching parenthesis
 vim.g.matchparen_insert_timeout=12  -- time ins ms to find matching parenthesis in insert mode
+
+--Remap space as leader key
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true})
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '

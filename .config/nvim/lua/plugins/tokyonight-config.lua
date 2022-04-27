@@ -1,4 +1,6 @@
-local colors = require("tokyonight.colors").setup()
+vim.o.termguicolors = true
+
+local colors = require("tokyonight.colors").setup({})
 
 vim.g.tokyonight_hide_inactive_statusline = "true"
 vim.g.tokyonight_italic_functions = true

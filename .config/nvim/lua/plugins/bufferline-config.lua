@@ -1,4 +1,5 @@
-vim.opt.termguicolors = true
+vim.o.termguicolors = true
+
 require("bufferline").setup{}
 
 local opts = {noremap=true, silent=true}

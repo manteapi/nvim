@@ -55,10 +55,11 @@ require('telescope').setup {
 require('telescope').load_extension('fzf')
 
 local opts = { noremap = true }
-vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
-vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
-vim.api.nvim_set_keymap("n", "<leader>fr", "<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>", opts)
-vim.api.nvim_set_keymap("n", "<leader>fp", "<cmd>lua require('telescope.builtin').git_files()<cr>", opts)
-vim.api.nvim_set_keymap("n", "<leader>fs", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opts)
-vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
-vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
+vim.keymap.set("n", "<leader>sf", require('telescope.builtin').find_files, opts)
+vim.keymap.set("n", "<leader>ss", require('telescope.builtin').current_buffer_fuzzy_find, opts)
+vim.keymap.set("n", "<leader>sS", require('telescope.builtin').live_grep, opts)
+vim.keymap.set("n", "<leader>srS", require('telescope').extensions.live_grep_raw.live_grep_raw, opts)
+vim.keymap.set("n", "<leader>sg", require('telescope.builtin').git_files, opts)
+vim.keymap.set("n", "<leader>sgs", require('telescope.builtin').grep_string, opts)
+vim.keymap.set("n", "<leader>sb", require('telescope.builtin').buffers, opts)
+vim.keymap.set("n", "<leader>sh", require('telescope.builtin').help_tags, opts)
