@@ -158,7 +158,7 @@ return require('packer').startup(function(use)
     use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 
     -- comments
-    use('preservim/nerdcommenter')
+    use {'numToStr/Comment.nvim'}
 
     use {
         'windwp/nvim-spectre',
