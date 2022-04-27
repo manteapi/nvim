@@ -1,8 +1,8 @@
 require('spectre').setup({
     highlight = {
         ui = "String",
-        search = "TodoBgFIX",
-        replace = "TodoBgNOTE"
+        search = "DiffChange",
+        replace = "DiffDelete"
     },
 })
 
