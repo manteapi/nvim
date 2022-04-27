@@ -1,4 +1,7 @@
--- Add additional capabilities supported by nvim-cmp
+-- Goto previous/next diagnostic warning/error
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {})
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {})
+
 local on_attach = function(client, bufnr)
     local opts = { buffer = bufnr }
     -- code navigation
@@ -130,14 +133,3 @@ lsp_installer.on_server_ready(function(server)
         server:setup(opts)
     end
 end)
-
--- diagnostic ux
--- Set updatetime for CursorHold
--- 300ms of no cursor movement to trigger CursorHold
--- vim.opt["updatetime"]=300
--- Show diagnostic popup on cursor hold
--- vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float()]])
-
--- Goto previous/next diagnostic warning/error
---vim.api.nvim_set_keymap("n", "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
---vim.api.nvim_set_keymap("n", "g]", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
