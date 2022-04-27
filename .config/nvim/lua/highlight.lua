@@ -6,6 +6,20 @@ vim.api.nvim_set_hl(0, 'NeogitDiffDeleteHighlight', {background=colors.red1, for
 vim.api.nvim_set_hl(0, 'DiffChange', {background=colors.green2, foreground=colors.black})
 vim.api.nvim_set_hl(0, 'DiffDelete', {background=colors.red1, foreground=colors.black})
 
+vim.api.nvim_set_hl(0, 'AchieveMsg', {
+    background=colors.green2,
+    foreground=colors.black,
+    italic=true,
+    bold=true
+})
+
+vim.api.nvim_set_hl(0, 'ErrorMsg', {
+    background=colors.red1,
+    foreground=colors.black,
+    italic=true,
+    bold=true
+})
+
 vim.api.nvim_set_hl(0, 'CursorLine', {
     underline = true
 })
