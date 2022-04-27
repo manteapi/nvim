@@ -26,6 +26,8 @@ if not packer_exists then
 end
 
 return require('packer').startup(function(use)
+    use {'machakann/vim-sandwich'}
+
     use {'wbthomason/packer.nvim', opt = true}
 
     use {'dstein64/vim-startuptime'}
