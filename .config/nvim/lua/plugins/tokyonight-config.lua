@@ -9,6 +9,6 @@ vim.g.tokyonight_lualine_bold = true
 vim.g.tokyonight_colors = {border = colors.dark3}
 vim.g.tokyonight_style = "night"
 
-vim.opt.laststatus=3
-
 vim.cmd[[colorscheme tokyonight]]
+
+vim.opt.laststatus=3
