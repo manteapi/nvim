@@ -1,6 +1,7 @@
 require "options"
-require "plugins"
 require "keymaps"
+
+require "plugins"
 require "plugins/autopair-config"
 require "plugins/bufferline-config"
 require "plugins/cmp-config"
@@ -20,4 +21,7 @@ require "plugins/treesitter-config"
 require "plugins/treesitter-textobjects-config"
 require "plugins/trouble-config"
 require "plugins/vim-better-whitespace-config"
+
 require "plugins/tokyonight-config"
+
+require "highlight"
