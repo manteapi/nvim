@@ -24,6 +24,10 @@ vim.api.nvim_set_hl(0, 'CursorLine', {
     underline = true
 })
 
+vim.api.nvim_set_hl(0, 'Visual', {
+    background = colors.bg_highlight
+})
+
 vim.api.nvim_set_hl(0, 'illuminatedCurWord', {})
 
 vim.api.nvim_set_hl(0, 'illuminatedWord', {
