@@ -26,6 +26,9 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
+-- Treat "_" as a keyword separator
+vim.opt.iskeyword:remove("_")
+
 vim.o.ignorecase = false
 vim.o.smartcase = true
 
