@@ -27,6 +27,6 @@ vim.keymap.set("n", "<leader><leader>r", function()
         vim.cmd([[:luafile %]])
         vim.notify(" " .. current_file .. " reloaded !", "achieve")
     else
-        vim.notify("" .. current_file .. " could not be loaded !")
+        vim.notify("" .. current_file .. " could not be loaded !", "error")
     end
 end)
