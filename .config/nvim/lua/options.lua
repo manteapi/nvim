@@ -18,7 +18,8 @@ local options = {
     grepprg='rg --vimgrep --no-heading --smart-case',
     grepformat="%f:%l:%c:%m",
     relativenumber = true,       -- Show relative line number
-    signcolumn = "yes"           -- Always show signcolumn
+    signcolumn = "yes",          -- Always show signcolumn
+    autoread = true              -- Detect when a file has been changed and load it again
 }
 
 for k, v in pairs(options) do
