@@ -32,7 +32,7 @@ vim.opt.iskeyword:remove("_")
 vim.o.ignorecase = false
 vim.o.smartcase = true
 
---vim.o.updatetime = 250 --Decrease update time
+vim.o.updatetime = 250 --Decrease update time
 
 vim.wo.signcolumn = 'yes' -- Always show signcolumn
 
