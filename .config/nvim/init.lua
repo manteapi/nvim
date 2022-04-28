@@ -3,7 +3,6 @@ require "keymaps"
 
 require "plugins"
 require "plugins/autopair-config"
-require "plugins/bufferline-config"
 require "plugins/comment-config"
 require "plugins/cmp-config"
 require "plugins/dashboard-config"
@@ -24,5 +23,6 @@ require "plugins/trouble-config"
 require "plugins/vim-better-whitespace-config"
 
 require "plugins/tokyonight-config"
+require "plugins/bufferline-config"
 
 require "highlight"
