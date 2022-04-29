@@ -13,7 +13,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, opts)
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 
-    vim.keymap.set('n', '<leader>ssr', require('telescope.builtin').lsp_references, opts)
+    vim.keymap.set('n', '<leader>sr', require('telescope.builtin').lsp_references, opts)
     vim.keymap.set('n', '<leader>sds', require('telescope.builtin').lsp_document_symbols, opts)
     vim.keymap.set('n', '<leader>sws', require('telescope.builtin').lsp_workspace_symbols, opts)
 
