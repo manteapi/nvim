@@ -26,22 +26,23 @@ if not packer_exists then
 end
 
 return require('packer').startup(function(use)
-    use {'machakann/vim-sandwich'}
 
     use {'wbthomason/packer.nvim', opt = true}
 
     use {'dstein64/vim-startuptime'}
 
-    use{'windwp/nvim-autopairs'}
+    use {'machakann/vim-sandwich'} -- operators for sandwiched texts
 
-    use {'andymass/vim-matchup'}
+    use{'windwp/nvim-autopairs'}   -- automatic pairs
 
-    use {'RRethy/vim-illuminate'}
+    use {'andymass/vim-matchup'}   -- highlight pairs
 
-    use {'nvim-lua/plenary.nvim'}
+    use {'RRethy/vim-illuminate'}  -- highlight current word
+
+    use {'nvim-lua/plenary.nvim'}  -- nvim lua helpers
 
     use {
-        "folke/todo-comments.nvim",
+        "folke/todo-comments.nvim", -- flashy highlights for todo comments
         requires = "nvim-lua/plenary.nvim",
         config = function()
             require("todo-comments").setup()
@@ -49,14 +50,14 @@ return require('packer').startup(function(use)
     }
 
     use {
-        'karb94/neoscroll.nvim',
+        'karb94/neoscroll.nvim', -- smooth scrolling
         config = function()
             require('neoscroll').setup()
         end
     }
 
     use {
-        "lukas-reineke/indent-blankline.nvim",
+        "lukas-reineke/indent-blankline.nvim", -- vertical guideliens for code blocks
         ft = {'lua', 'python', 'c', 'cpp', 'rust', 'qml', 'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'racket'},
         config = function()
             require("indent_blankline").setup {
@@ -65,57 +66,53 @@ return require('packer').startup(function(use)
             }
         end
     }
-    use 'godlygeek/tabular'
+
+    use {'godlygeek/tabular'} -- line up texts
 
 
     use {
-        'norcalli/nvim-colorizer.lua',
+        'norcalli/nvim-colorizer.lua', -- show color in terminal #B22222
         config = function()
             require'colorizer'.setup()
         end
     }
 
-    -- whitespaces
-    use 'ntpeters/vim-better-whitespace'
+    use {'ntpeters/vim-better-whitespace'} -- strip trailing whitespaces
 
-    -- dashboard
-    use 'glepnir/dashboard-nvim'
+    use {'glepnir/dashboard-nvim'} -- greeting screen
 
-    -- tree explorer
     use {
-        'kyazdani42/nvim-tree.lua',
+        'kyazdani42/nvim-tree.lua', -- tree filesystem explorer
         requires = {
-            'kyazdani42/nvim-web-devicons', -- optional, for file icon
+            'kyazdani42/nvim-web-devicons'
         }
     }
 
-    -- treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
     use {'nvim-treesitter/nvim-treesitter-textobjects'}
 
-    -- lsp & languages
     use {
-        'neovim/nvim-lspconfig',
-        'williamboman/nvim-lsp-installer',
+        'neovim/nvim-lspconfig', -- good defaults for lsp
+        'williamboman/nvim-lsp-installer', -- lsp managers
     }
 
-    use {'onsails/lspkind.nvim'}
+    use {'onsails/lspkind.nvim'} -- lsp pictograms
 
+    -- nvim dev
     use {'folke/lua-dev.nvim'}
+    use {'tjdevries/nlua.nvim'}
 
     use {
-        "folke/trouble.nvim",
+        "folke/trouble.nvim", -- diagnostics visualizer
         requires = "kyazdani42/nvim-web-devicons"
     }
 
-    -- :warning: vista requires ctags
-    use {'liuchengxu/vista.vim'}
+    use {'liuchengxu/vista.vim'} -- symbols visualizer WARNING: vista requires ctags
 
-    -- color schemes
-    use {'folke/tokyonight.nvim'}
+    use {'folke/tokyonight.nvim'} -- color scheme
 
     -- completion
     use {'hrsh7th/nvim-cmp'}
@@ -135,8 +132,6 @@ return require('packer').startup(function(use)
     -- tmux
     use {'christoomey/vim-tmux-navigator'}
 
-    -- nvim dev
-    use {'tjdevries/nlua.nvim'}
 
     -- fuzzy finder
     -- -------------
@@ -155,49 +150,45 @@ return require('packer').startup(function(use)
     }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
-    -- lines
-    use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons'} }
-    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+    use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons'} } -- nice UI/UX for status line
 
-    -- comments
-    use {'numToStr/Comment.nvim'}
+    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'} -- nice UI/UX for buffer line
+
+    use {'numToStr/Comment.nvim'} -- comments
 
     use {
-        'windwp/nvim-spectre',
+        'windwp/nvim-spectre', -- easy search and replace across filesystems
         requires = 'nvim-lua/plenary.nvim'
     }
 
     -- git
-    use { 'TimUntersberger/neogit',
+    use { 'TimUntersberger/neogit', -- magit for neovim
         requires = 'nvim-lua/plenary.nvim',
         config = function()
             require("neogit").setup{}
         end
     }
 
-    use {'lewis6991/gitsigns.nvim', requires = { { 'nvim-lua/plenary.nvim' } }}
+    use {'lewis6991/gitsigns.nvim', requires = { { 'nvim-lua/plenary.nvim' } }} -- git gutter
 
-    use 'rhysd/git-messenger.vim'
+    use 'rhysd/git-messenger.vim' -- current line git message displayer
 
     use {
-        'ruifm/gitlinker.nvim',
+        'ruifm/gitlinker.nvim', -- git code browser
         requires = 'nvim-lua/plenary.nvim',
         config = function()
             require("gitlinker").setup{}
         end
     }
 
-    -- justfiles
-    use('NoahTheDuke/vim-just')
+    use('NoahTheDuke/vim-just') -- syntax highlight for justfiles
 
-    -- rust
-    -- use ('rust-lang/rust.vim')
-    use {'simrat39/rust-tools.nvim',
+    use {'simrat39/rust-tools.nvim', -- enhanced tools for rust development
         commit = '7b4d155dd47e211ee661cbb4c7969b245f768edb'
     }
 
     use {
-        "folke/zen-mode.nvim",
+        "folke/zen-mode.nvim", -- focus mode
         config = function()
             require("zen-mode").setup {}
         end
