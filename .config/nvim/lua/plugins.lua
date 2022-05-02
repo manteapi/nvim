@@ -1,4 +1,4 @@
--- check if packer is installed (~/local/share/nvim/site/pack)
+-- WARNING: check if packer is installed (~/local/share/nvim/site/pack)
 local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
 
 if not packer_exists then
