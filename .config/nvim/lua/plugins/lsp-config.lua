@@ -23,6 +23,11 @@ local on_attach = function(_, bufnr)
     -- NOTE: Do something here when lsp is attached
 end
 
+local flags = {
+    -- This will be the default in neovim 0.7+
+    debounce_text_changes = 150,
+}
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
@@ -35,7 +40,8 @@ local luadev = require("lua-dev").setup({
         cmd = {vim.fn.expand('$HOME', "", "") .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"},
     },
     capabilities = capabilities,
-    on_attach = on_attach
+    on_attach = on_attach,
+    flags = flags
 })
 lspconfig.sumneko_lua.setup(luadev)
 
@@ -52,13 +58,15 @@ local pyright_opts = {
         }
     },
     capabilities = capabilities,
-    on_attach = on_attach
+    on_attach = on_attach,
+    flags = flags
 }
 lspconfig.pyright.setup(pyright_opts)
 
 local clangd_opts = {
     capabilities = capabilities,
-    on_attach = on_attach
+    on_attach = on_attach,
+    flags = flags
 }
 lspconfig.clangd.setup(clangd_opts)
 
@@ -79,7 +87,8 @@ local pylsp_opts = {
         }
     },
     capabilities = capabilities,
-    on_attach = on_attach
+    on_attach = on_attach,
+    flags = flags
 }
 lspconfig.pylsp.setup(pylsp_opts)
 
@@ -91,7 +100,8 @@ local jedi_opts = {
         }
     },
     capabilities = capabilities,
-    on_attach = on_attach
+    on_attach = on_attach,
+    flags = flags
 }
 lspconfig.jedi_language_server.setup(jedi_opts)
 
@@ -115,5 +125,6 @@ require('rust-tools').setup({
     server = {
         capabilities = capabilities,
         on_attach = on_attach,
+        flags = flags
     }
 })
