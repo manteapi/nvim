@@ -3,13 +3,13 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {})
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {})
 
 local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, opts)
-vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
-vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, opts)
-vim.keymap.set("n", "<leader>gt", vim.lsp.buf.type_definition, opts)
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
 
 vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, opts)
-vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, opts)
 
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').lsp_references, opts)
 vim.keymap.set('n', '<leader>sds', require('telescope.builtin').lsp_document_symbols, opts)
