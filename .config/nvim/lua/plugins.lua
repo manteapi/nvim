@@ -96,7 +96,24 @@ return require('packer').startup(function(use)
 
     use {
         'neovim/nvim-lspconfig', -- good defaults for lsp
+    }
+
+    use {
         'williamboman/nvim-lsp-installer', -- lsp managers
+        config = function()
+            require("nvim-lsp-installer").setup(
+                {
+                    ensure_installed = {
+                        "pylsp",
+                        "pyright",
+                        "jedi_language_server",
+                        "clangd",
+                        "rust_analyzer",
+                        "sumneko_lua"
+                    }
+                }
+            )
+        end
     }
 
     use {'onsails/lspkind.nvim'} -- lsp pictograms
