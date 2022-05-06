@@ -186,11 +186,4 @@ return require('packer').startup(function(use)
     use {'simrat39/rust-tools.nvim', -- enhanced tools for rust development
         commit = '7b4d155dd47e211ee661cbb4c7969b245f768edb'
     }
-
-    use {
-        "folke/zen-mode.nvim", -- focus mode
-        config = function()
-            require("zen-mode").setup {}
-        end
-    }
 end)
