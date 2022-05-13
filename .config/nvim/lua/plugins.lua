@@ -41,6 +41,15 @@ return require('packer').startup(function(use)
 
     use {'nvim-lua/plenary.nvim'}  -- nvim lua helpers
 
+    use {'preservim/vim-markdown'}
+
+    use {
+        "iamcco/markdown-preview.nvim",
+        as = "markdown-preview",
+        run = "cd app && yarn install", -- Need `yarn` for installation.
+        ft = "markdown"
+    }
+
     use {
         "folke/todo-comments.nvim", -- flashy highlights for todo comments
         requires = "nvim-lua/plenary.nvim",
