@@ -128,3 +128,10 @@ require('rust-tools').setup({
         flags = flags
     }
 })
+
+local cmake_opts = {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = flags
+}
+lspconfig.cmake.setup(cmake_opts)
