@@ -45,6 +45,13 @@ local luadev = require("lua-dev").setup({
 })
 lspconfig.sumneko_lua.setup(luadev)
 
+local clangd_opts = {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = flags
+}
+lspconfig.clangd.setup(clangd_opts)
+
 local pyright_opts = {
     cmd = {"pyright-langserver", "--stdio"},
     settings = {
@@ -62,13 +69,6 @@ local pyright_opts = {
     flags = flags
 }
 lspconfig.pyright.setup(pyright_opts)
-
-local clangd_opts = {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    flags = flags
-}
-lspconfig.clangd.setup(clangd_opts)
 
 local pylsp_opts = {
     cmd = {"pylsp"},
