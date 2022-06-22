@@ -82,6 +82,15 @@ for _, server in ipairs(servers) do
                     configurationSources = {"flake8"},
                     plugins = {
                         pycodestyle = {enabled = false},
+                        mccabe = {enabled = false},
+                        pyflakes = {enabled = false},
+                        black = {
+                            -- INFO: Initially i wanted to try yapf but did not find a way to configure it
+                            -- INFO: `pip install python-lsp-back` is required
+                            enabled = true,
+                            cache_config = false,
+                            line_length = 120,
+                        },
                         flake8 = {
                             enabled = true,
                             maxLineLength = 120
