@@ -196,6 +196,7 @@ return require('packer').startup(function(use)
     }
 
     use {'tpope/vim-fugitive'}
+    use { "tpope/vim-abolish", as = "abolish" }
 
     use {'lewis6991/gitsigns.nvim', requires = { { 'nvim-lua/plenary.nvim' } }} -- git gutter
 
