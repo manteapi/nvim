@@ -6,9 +6,7 @@ require('telescope').setup {
         },
     },
     defaults = {
-        path_display = {
-            shorten = 1
-        },
+        path_display={"smart"},
         vimgrep_arguments = {
             "rg",
             "--color=never",
