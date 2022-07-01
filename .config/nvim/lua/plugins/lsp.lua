@@ -86,7 +86,7 @@ for _, server in ipairs(servers) do
                         pyflakes = {enabled = false},
                         black = {
                             -- INFO: Initially i wanted to try yapf but did not find a way to configure it
-                            -- INFO: `pip install python-lsp-back` is required
+                            -- INFO: `pip install python-lsp-black` is required
                             enabled = true,
                             cache_config = false,
                             line_length = 120,
@@ -142,5 +142,12 @@ for _, server in ipairs(servers) do
                 flags = flags
             }
         })
+    else
+        server_opts = {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            flags = flags
+        }
+        lspconfig[server].setup(server_opts)
     end
 end
