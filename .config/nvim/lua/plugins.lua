@@ -180,6 +180,8 @@ return require('packer').startup(function(use)
 
     use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'} -- nice UI/UX for buffer line
 
+    use {'kazhala/close-buffers.nvim'} -- shortcuts to close buffer w.r.t different conditions
+
     use {'numToStr/Comment.nvim'} -- comments
 
     use {

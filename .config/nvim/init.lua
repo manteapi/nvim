@@ -3,6 +3,7 @@ require "keymaps"
 
 require "plugins"
 require "plugins/autopair"
+require "plugins/close-buffers"
 require "plugins/comment"
 require "plugins/cmp"
 require "plugins/dashboard"
