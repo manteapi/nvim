@@ -51,6 +51,17 @@ return require('packer').startup(function(use)
     }
 
     use {
+        "nvim-neotest/neotest",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-neotest/neotest-vim-test",
+            "vim-test/vim-test"
+        }
+    }
+
+    use {
         "folke/todo-comments.nvim", -- flashy highlights for todo comments
         requires = "nvim-lua/plenary.nvim",
         config = function()
@@ -128,7 +139,15 @@ return require('packer').startup(function(use)
     use {'onsails/lspkind.nvim'} -- lsp pictograms
 
     -- nvim dev
-    use {'folke/lua-dev.nvim'}
+    use {
+        'folke/lua-dev.nvim',
+        config = function()
+            require("lua-dev").setup({
+                library = { plugins = { "neotest" }, types = true },
+            })
+        end
+    }
+
     use {'tjdevries/nlua.nvim'}
 
     use {
