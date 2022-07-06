@@ -84,13 +84,8 @@ for _, server in ipairs(servers) do
                         pycodestyle = {enabled = false},
                         mccabe = {enabled = false},
                         pyflakes = {enabled = false},
-                        black = {
-                            -- INFO: Initially i wanted to try yapf but did not find a way to configure it
-                            -- INFO: `pip install python-lsp-black` is required
-                            enabled = true,
-                            cache_config = false,
-                            line_length = 120,
-                        },
+                        yapf = { enabled = true},
+                        autopep8 = {enabled = false},
                         flake8 = {
                             enabled = true,
                             maxLineLength = 120
