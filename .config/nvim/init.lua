@@ -22,6 +22,7 @@ require "plugins/telescope"
 require "plugins/treesitter"
 require "plugins/treesitter-textobjects"
 require "plugins/trouble"
+require "plugins/vista"
 require "plugins/better-whitespace"
 
 require "plugins/tokyonight"
