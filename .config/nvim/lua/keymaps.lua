@@ -5,7 +5,7 @@ vim.notify = function(msg, level)
     elseif level == "error" then
         highlight_group = "ErrorMsg"
     end
-    local cmd = ":echohl " .. highlight_group .. " | echon \"" .. msg .. "\""
+    local cmd = ":echohl " .. highlight_group .. " | echon \"" .. msg .. "\" | echohl None"
     vim.cmd(cmd)
 
     local timer = vim.loop.new_timer()
@@ -17,7 +17,7 @@ vim.notify = function(msg, level)
 end
 
 vim.keymap.set("n", "<leader><leader>r", function()
-   local current_file = vim.fn.expand('%:h', "", "")
+   local current_file = vim.fn.expand('%:p', "", "")
     if vim.bo.filetype == 'vim' then
         vim.cmd([[:silent! write]])
         vim.cmd([[:source %]])
