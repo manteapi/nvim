@@ -244,9 +244,9 @@ local packer_startup = {
 
 packer_boot.bootstrap(packer_startup)
 
--- local packer = vim.api.nvim_create_augroup("Packer", { clear = true })
---  vim.api.nvim_create_autocmd("BufWritePost", {
---      group = packer,
---      pattern = "plugins.lua",
---      command = "source <afile> | PackerSync"
--- })
+local packer = vim.api.nvim_create_augroup("Packer", { clear = true })
+ vim.api.nvim_create_autocmd("BufWritePost", {
+     group = packer,
+     pattern = "plugins.lua",
+     command = "source <afile> | PackerSync"
+})
