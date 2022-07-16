@@ -1,1 +1,1 @@
-# yet neovim configuration
+# yet another neovim configuration
