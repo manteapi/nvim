@@ -1,239 +1,252 @@
--- WARNING: check if packer is installed (~/local/share/nvim/site/pack)
-local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
+local packer_boot = require('utils.packer_boot')
 
-if not packer_exists then
-    if vim.fn.input("Hent packer.nvim? (y for yada)") ~= "y" then
-        return
-    end
+local packer_startup = {
+    function(use)
+        use {'wbthomason/packer.nvim'}
 
-    local directory = string.format(
-        '%s/site/pack/packer/opt/',
-        vim.fn.stdpath('data')
-    )
+        use {'nvim-lua/plenary.nvim'}  -- nvim lua helpers
 
-    vim.fn.mkdir(directory, 'p')
+        use {'dstein64/vim-startuptime'}
 
-    local git_clone_cmd = vim.fn.system(string.format(
-        'git clone %s %s',
-        'https://github.com/wbthomason/packer.nvim',
-        directory .. '/packer.nvim'
-    ))
+        use {'machakann/vim-sandwich'} -- operators for sandwiched texts
 
-    print(git_clone_cmd)
-    print("Henter packer.nvim...")
-
-    return
-end
-
-return require('packer').startup(function(use)
-
-    use {'wbthomason/packer.nvim', opt = true}
-
-    use {'dstein64/vim-startuptime'}
-
-    use {'machakann/vim-sandwich'} -- operators for sandwiched texts
-
-    use{'windwp/nvim-autopairs'}   -- automatic pairs
-
-    use {'andymass/vim-matchup'}   -- highlight pairs
-
-    use {'RRethy/vim-illuminate'}  -- highlight current word
-
-    use {'nvim-lua/plenary.nvim'}  -- nvim lua helpers
-
-    use {'preservim/vim-markdown'}
-
-    use {
-        "iamcco/markdown-preview.nvim",
-        as = "markdown-preview",
-        run = "cd app && yarn install", -- Need `yarn` for installation.
-        ft = "markdown"
-    }
-
-    use {
-        "nvim-neotest/neotest",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-            "antoinemadec/FixCursorHold.nvim",
-            "nvim-neotest/neotest-vim-test",
-            "vim-test/vim-test"
+        use{ -- automatic pairs
+            'windwp/nvim-autopairs',
+            config = [[require("config/autopairs")]],
         }
-    }
 
-    use {
-        "folke/todo-comments.nvim", -- flashy highlights for todo comments
-        requires = "nvim-lua/plenary.nvim",
-        config = function()
-            require("todo-comments").setup()
-        end
-    }
-
-    use {
-        'karb94/neoscroll.nvim', -- smooth scrolling
-        config = function()
-            require('neoscroll').setup()
-        end
-    }
-
-    use {
-        "lukas-reineke/indent-blankline.nvim", -- vertical guideliens for code blocks
-        ft = {'lua', 'python', 'c', 'cpp', 'rust', 'qml', 'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'racket'},
-        config = function()
-            require("indent_blankline").setup {
-                show_current_context = true,
-                show_current_context_start = true,
-            }
-        end
-    }
-
-    use {'godlygeek/tabular'} -- line up texts
-
-
-    use {
-        'norcalli/nvim-colorizer.lua', -- show color in terminal #B22222
-        config = function()
-            require'colorizer'.setup()
-        end
-    }
-
-    use {'ntpeters/vim-better-whitespace'} -- strip trailing whitespaces
-
-    use {'glepnir/dashboard-nvim'} -- greeting screen
-
-    use {
-        'kyazdani42/nvim-tree.lua', -- tree filesystem explorer
-        requires = {
-            'kyazdani42/nvim-web-devicons'
+        use { -- highlight pairs
+            'andymass/vim-matchup',
+            config = [[require("config/matchup")]],
         }
-    }
 
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
-    }
-    use {'nvim-treesitter/nvim-treesitter-textobjects'}
+        use { -- highlight current word
+            'RRethy/vim-illuminate',
+            config = [[require("config/illuminate")]],
+        }
 
-    use {
-        'neovim/nvim-lspconfig', -- good defaults for lsp
-    }
+        use {'preservim/vim-markdown'}
 
-    use {
-        'williamboman/nvim-lsp-installer', -- lsp managers
-        config = function()
-            require("nvim-lsp-installer").setup(
-                {
-                    ensure_installed = {
-                        "pylsp",
-                        "pyright",
-                        "jedi_language_server",
-                        "clangd",
-                        "rust_analyzer",
-                        "sumneko_lua"
-                    }
+        -- use {
+        -- 	"iamcco/markdown-preview.nvim",
+        -- 	run = "cd app && yarn install", -- Need `yarn` for installation.
+        -- 	ft = "markdown"
+        -- }
+
+        use {
+            "nvim-neotest/neotest",
+            requires = {
+                "nvim-lua/plenary.nvim",
+                "nvim-treesitter/nvim-treesitter",
+                "antoinemadec/FixCursorHold.nvim",
+                "nvim-neotest/neotest-vim-test",
+                "vim-test/vim-test"
+            },
+            config = [[require("config/neotest")]],
+        }
+
+        use {
+            "folke/todo-comments.nvim", -- flashy highlights for todo comments
+            requires = "nvim-lua/plenary.nvim",
+            config = function()
+                require("todo-comments").setup()
+            end
+        }
+
+        use {
+            'karb94/neoscroll.nvim', -- smooth scrolling
+            config = [[require("config/neoscroll")]],
+        }
+
+        use {
+            "lukas-reineke/indent-blankline.nvim", -- vertical guideliens for code blocks
+            ft = {'lua', 'python', 'c', 'cpp', 'rust', 'qml', 'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'racket'},
+            config = function()
+                require("indent_blankline").setup {
+                    show_current_context = true,
+                    show_current_context_start = true,
                 }
-            )
-        end
-    }
-
-    use {'onsails/lspkind.nvim'} -- lsp pictograms
-
-    -- nvim dev
-    use {
-        'folke/lua-dev.nvim',
-        config = function()
-            require("lua-dev").setup({
-                library = { plugins = { "neotest" }, types = true },
-            })
-        end
-    }
-
-    use {'tjdevries/nlua.nvim'}
-
-    use {
-        "folke/trouble.nvim", -- diagnostics visualizer
-        requires = "kyazdani42/nvim-web-devicons"
-    }
-
-    use {'liuchengxu/vista.vim'} -- symbols visualizer WARNING: vista requires ctags
-
-    use {'folke/tokyonight.nvim'} -- color scheme
-
-    -- completion
-    use {'hrsh7th/nvim-cmp'}
-    use {'hrsh7th/cmp-buffer'}
-    use {'hrsh7th/cmp-path'}
-    use {'hrsh7th/cmp-cmdline'}
-    use {'hrsh7th/cmp-nvim-lua'}
-    use {'hrsh7th/cmp-nvim-lsp'}
-    use {'saadparwaiz1/cmp_luasnip'}
-
-    -- snippets
-    use {'L3MON4D3/LuaSnip'}
-
-    -- qml
-    use {'peterhoeg/vim-qml'}
-
-    -- tmux
-    use {'christoomey/vim-tmux-navigator'}
-
-
-    -- fuzzy finder
-    -- -------------
-
-    -- fzf
-    use {'junegunn/fzf', dir = '~/.fzf', run = './install --all'}
-    use {'junegunn/fzf.vim'}
-
-    -- telescope
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = {
-            {'nvim-lua/plenary.nvim'},
-            { 'nvim-telescope/telescope-live-grep-args.nvim' },
+            end
         }
-    }
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
-    use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons'} } -- nice UI/UX for status line
+        use {'godlygeek/tabular'} -- line up texts
 
-    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'} -- nice UI/UX for buffer line
 
-    use {'kazhala/close-buffers.nvim'} -- shortcuts to close buffer w.r.t different conditions
+        use {
+            'norcalli/nvim-colorizer.lua', -- show color in terminal #B22222
+            config = [[require("config/colorizer")]],
+        }
 
-    use {'numToStr/Comment.nvim'} -- comments
+        use { -- strip trailing whitespaces
+            'ntpeters/vim-better-whitespace',
+            config = [[require("config/better-whitespace")]],
+        }
 
-    use {
-        'windwp/nvim-spectre', -- easy search and replace across filesystems
-        requires = 'nvim-lua/plenary.nvim'
-    }
+        use {     -- greeting screen
+            'glepnir/dashboard-nvim',
+            config = [[require("config/dashboard")]],
+        }
 
-    -- git
-    use { 'TimUntersberger/neogit', -- magit for neovim
-        requires = 'nvim-lua/plenary.nvim',
-        config = function()
-            require("neogit").setup{}
-        end
-    }
 
-    use {'tpope/vim-fugitive'}
-    use { "tpope/vim-abolish", as = "abolish" }
+        use {
+            'kyazdani42/nvim-tree.lua', -- tree filesystem explorer
+            requires = {
+                'kyazdani42/nvim-web-devicons'
+            },
+            config = [[require("config/nvimtree")]],
+        }
 
-    use {'lewis6991/gitsigns.nvim', requires = { { 'nvim-lua/plenary.nvim' } }} -- git gutter
+        use {
+            'nvim-treesitter/nvim-treesitter',
+            config = [[require("config/treesitter")]],
+        }
 
-    use 'rhysd/git-messenger.vim' -- current line git message displayer
+        -- use {
+        -- 'nvim-treesitter/nvim-treesitter-textobjects',
+        --     config = [[require("config/treesitter-textobjects")]],
+        -- }
 
-    use {
-        'ruifm/gitlinker.nvim', -- git code browser
-        requires = 'nvim-lua/plenary.nvim',
-        config = function()
-            require("gitlinker").setup{}
-        end
-    }
+        use {
+            'neovim/nvim-lspconfig', -- good defaults for lsp
+        }
 
-    use('NoahTheDuke/vim-just') -- syntax highlight for justfiles
 
-    use {'simrat39/rust-tools.nvim', -- enhanced tools for rust development
-        commit = '7b4d155dd47e211ee661cbb4c7969b245f768edb'
-    }
-end)
+        use {
+            'williamboman/nvim-lsp-installer', -- lsp managers
+            config = [[require("config/lsp")]],
+        }
+        -- nvim dev
+        use {
+            'folke/lua-dev.nvim',
+            config = function()
+                require("lua-dev").setup({
+                    library = { plugins = { "neotest" }, types = true },
+                })
+            end
+        }
+
+        use {'tjdevries/nlua.nvim'}
+
+        use {
+            "folke/trouble.nvim", -- diagnostics visualizer
+            requires = "kyazdani42/nvim-web-devicons",
+            config = [[require("config/trouble")]],
+        }
+
+        use {
+            'liuchengxu/vista.vim',
+            config = [[require("config/vista")]],
+        } -- symbols visualizer WARNING: vista requires ctags
+
+        use {
+            'folke/tokyonight.nvim',
+            config = [[require("config/tokyonight")]],
+        } -- color scheme
+
+        -- completion
+        use {
+            'hrsh7th/nvim-cmp',
+            config = [[require("config/cmp")]],
+        }
+        use {'hrsh7th/cmp-buffer'}
+        use {'hrsh7th/cmp-path'}
+        use {'hrsh7th/cmp-cmdline'}
+        use {'hrsh7th/cmp-nvim-lua'}
+        use {'hrsh7th/cmp-nvim-lsp'}
+        use {'saadparwaiz1/cmp_luasnip'}
+        use {
+            'onsails/lspkind.nvim',
+            config = [[require("config/lspkind")]],
+        } -- lsp pictograms
+
+        -- snippets
+        use {
+            'L3MON4D3/LuaSnip',
+            config = [[require("config/luasnip")]],
+        }
+
+        -- tmux
+        use {'christoomey/vim-tmux-navigator'}
+
+
+        -- fuzzy finder
+        -- -------------
+
+        -- fzf
+        use {'junegunn/fzf', dir = '~/.fzf', run = './install --all'}
+
+        -- telescope
+        use {
+            'nvim-telescope/telescope.nvim',
+            requires = {
+                {'nvim-lua/plenary.nvim'},
+                { 'nvim-telescope/telescope-live-grep-args.nvim' },
+            }
+        }
+        use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
+        use {
+            'nvim-lualine/lualine.nvim',
+            requires = { 'kyazdani42/nvim-web-devicons'},
+            config = [[require("config/lualine")]],
+        } -- nice UI/UX for status line
+
+        use {
+            'akinsho/bufferline.nvim',
+            requires = 'kyazdani42/nvim-web-devicons',
+            config = [[require("config/bufferline")]],
+        } -- nice UI/UX for buffer line
+        --
+        use {'kazhala/close-buffers.nvim',
+            config = [[require("config/close-buffers")]],
+        } -- shortcuts to close buffer w.r.t different conditions
+
+        use {'numToStr/Comment.nvim',
+            config = [[require("config/comment")]],
+        } -- comments
+
+        use {
+            'windwp/nvim-spectre', -- easy search and replace across filesystems
+            requires = 'nvim-lua/plenary.nvim',
+            config = [[require("config/spectre")]],
+        }
+
+        -- git
+        use { 'TimUntersberger/neogit', -- magit for neovim
+            requires = 'nvim-lua/plenary.nvim',
+            config = [[require("config/neogit")]],
+        }
+
+        use {'tpope/vim-fugitive'}
+        use { "tpope/vim-abolish"}
+
+        use {'lewis6991/gitsigns.nvim', requires = { { 'nvim-lua/plenary.nvim' } }} -- git gutter
+
+        use {'rhysd/git-messenger.vim'} -- current line git message displayer
+
+        use {
+            'ruifm/gitlinker.nvim', -- git code browser
+            requires = 'nvim-lua/plenary.nvim',
+            config = function()
+                require("gitlinker").setup{}
+            end
+        }
+
+        use('NoahTheDuke/vim-just') -- syntax highlight for justfiles
+
+        use {'simrat39/rust-tools.nvim', -- enhanced tools for rust development
+            commit = '7b4d155dd47e211ee661cbb4c7969b245f768edb'
+        }
+
+    end,
+    config = { autoremove = true }
+}
+
+packer_boot.bootstrap(packer_startup)
+
+-- local packer = vim.api.nvim_create_augroup("Packer", { clear = true })
+--  vim.api.nvim_create_autocmd("BufWritePost", {
+--      group = packer,
+--      pattern = "plugins.lua",
+--      command = "source <afile> | PackerSync"
+-- })
