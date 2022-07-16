@@ -37,18 +37,6 @@ cmp.setup {
             require("luasnip").lsp_expand(args.body)
         end
     },
-    formatting = {
-        format = lspkind.cmp_format({
-            with_text = true,
-            menu = {
-                buffer = "[buf]",
-                nvim_lsp = "[LSP]",
-                nvim_lua = "[api]",
-                path = "[path]",
-                luasnip = "[snip]"
-            }
-        })
-    },
     experimental = {
         native_menu = false,
         ghost_text = true,
