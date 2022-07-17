@@ -54,7 +54,11 @@ require('telescope').setup {
 require('telescope').load_extension('fzf')
 
 local opts = { noremap = true }
-vim.keymap.set("n", "<leader>sn", "<cmd>TodoTelescope<cr>", opts)
+vim.keymap.set("n", "<leader>sn", function()
+    local current_file = vim.fn.expand('%:p:h', "", "")
+    local command = "TodoTelescope cwd="..current_file
+    vim.api.nvim_command(command)
+end, opts)
 vim.keymap.set("n", "<leader>sf", require('telescope.builtin').find_files, opts)
 vim.keymap.set("n", "<leader>ss", require('telescope.builtin').current_buffer_fuzzy_find, opts)
 vim.keymap.set("n", "<leader>sS", require('telescope.builtin').grep_string, opts)
