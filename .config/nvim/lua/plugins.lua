@@ -250,3 +250,20 @@ local packer = vim.api.nvim_create_augroup("Packer", { clear = true })
      pattern = "plugins.lua",
      command = "source <afile> | PackerSync"
 })
+
+local raw_notify = require('utils.raw_notify').notify
+
+vim.keymap.set("n", "<leader><leader>r", function()
+   local current_file = vim.fn.expand('%:p', "", "")
+    if vim.bo.filetype == 'vim' then
+        vim.cmd([[:silent! write]])
+        vim.cmd([[:source %]])
+        raw_notify(" " .. current_file .. " reloaded !", "achieve")
+    elseif vim.bo.filetype == 'lua' then
+        vim.cmd([[:silent! write]])
+        vim.cmd([[:luafile %]])
+        raw_notify(" " .. current_file .. " reloaded !", "achieve")
+    else
+        raw_notify("" .. current_file .. " could not be loaded !", "error")
+    end
+end)

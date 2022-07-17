@@ -23,7 +23,7 @@ local function init(success, sync, startup)
         return
     end
 
-    -- M.info('[packer]: Loading package list')
+    M.info('[packer]: Loading package list...')
     vim.cmd('packadd packer.nvim')
 
     -- Uncomment/change this depending on where you want your 'list' of packages
@@ -34,9 +34,8 @@ local function init(success, sync, startup)
     -- require('pack.list')
     --
     require('packer').startup(startup)
-    -- M.info("SYNSYNCSYCN")
-    -- M.info(sync)
     if sync then
+        M.info('[packer]: Synchronizing...')
 	    require('packer').sync()
     end
 end
@@ -48,7 +47,6 @@ function M.bootstrap(startup)
         start_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim',
         url = 'https://github.com/wbthomason/packer.nvim'
     }
-    -- M.info(vim.fn.stdpath('data'))
 
     if vim.fn.executable('git') ~= 1 then
         M.err('[packer] Bootstrap failed, git not installed')
@@ -56,7 +54,7 @@ function M.bootstrap(startup)
     end
 
     if vim.fn.empty(vim.fn.glob(packer.opt_path)) and vim.fn.empty(vim.fn.glob(packer.start_path)) > 0 then
-        -- M.info('[packer]: Installing...')
+        M.info('[packer]: Installing...')
 
         local handle
         handle = vim.loop.spawn(
