@@ -98,13 +98,14 @@ local packer_startup = {
 
         use {
             'nvim-treesitter/nvim-treesitter',
+            run = ':TSUpdate',
             config = [[require("config/treesitter")]],
         }
 
-        -- use {
-        -- 'nvim-treesitter/nvim-treesitter-textobjects',
-        --     config = [[require("config/treesitter-textobjects")]],
-        -- }
+        use {
+            'nvim-treesitter/nvim-treesitter-textobjects',
+            config = [[require("config/treesitter-textobjects")]],
+        }
 
         use {
             'neovim/nvim-lspconfig', -- good defaults for lsp
