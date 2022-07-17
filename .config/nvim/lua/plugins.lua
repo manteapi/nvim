@@ -82,6 +82,7 @@ local packer_startup = {
             config = [[require("config/better-whitespace")]],
         }
 
+        --FIXME : Dashboard config is not applied, dunno why, maybe breaking changes
         use {     -- greeting screen
             'glepnir/dashboard-nvim',
             config = [[require("config/dashboard")]],
