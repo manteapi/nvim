@@ -175,6 +175,7 @@ local packer_startup = {
 
         -- fzf
         use {'junegunn/fzf', dir = '~/.fzf', run = './install --all'}
+        use {'junegunn/fzf.vim'}
 
         -- telescope
         use {

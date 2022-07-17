@@ -17,13 +17,23 @@ function M.err(msg)
 	echohl(msg, 'ErrorMsg')
 end
 
+vim.api.nvim_create_autocmd("User",
+    {
+        pattern = "PackerComplete",
+        callback = function()
+            vim.schedule(function()
+                M.info('[packer]: Synchronizing done')
+            end)
+        end,
+    }
+)
+
 local function init(success, sync, startup)
     if not success then
         M.err('[packer]: Failed setup')
         return
     end
 
-    M.info('[packer]: Loading package list...')
     vim.cmd('packadd packer.nvim')
 
     -- Uncomment/change this depending on where you want your 'list' of packages
