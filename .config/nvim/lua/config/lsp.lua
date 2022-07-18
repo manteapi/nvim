@@ -47,7 +47,7 @@ for _, server in ipairs(servers) do
         flags = flags
     }
     if server == 'sumneko_lua' then
-        server_opts = require("lua-dev").setup({
+        local luadev_opts = require("lua-dev").setup({
             lspconfig = {
                 cmd = {vim.fn.expand('$HOME', "", "") .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"},
             },
@@ -55,7 +55,7 @@ for _, server in ipairs(servers) do
             on_attach = on_attach,
             flags = flags
         })
-        lspconfig[server].setup(server_opts)
+        lspconfig[server].setup(luadev_opts)
     elseif server == "pyright" then
         server_opts = {
             cmd = {"pyright-langserver", "--stdio"},
