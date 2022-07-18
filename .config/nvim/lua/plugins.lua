@@ -116,6 +116,11 @@ local packer_startup = {
             'williamboman/nvim-lsp-installer', -- lsp managers
             config = [[require("config/lsp")]],
         }
+
+        use {'j-hui/fidget.nvim',
+            config = require"fidget".setup{}
+        }
+
         -- nvim dev
         use {
             'folke/lua-dev.nvim',
