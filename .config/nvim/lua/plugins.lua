@@ -231,6 +231,11 @@ local packer_startup = {
         } -- comments
 
         use {
+            'wincent/scalpel',
+            config = [[require("config/scalpel")]],
+        }
+
+        use {
             'windwp/nvim-spectre', -- easy search and replace across filesystems
             requires = 'nvim-lua/plenary.nvim',
             config = [[require("config/spectre")]],
