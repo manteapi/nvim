@@ -198,10 +198,17 @@ local packer_startup = {
             requires = {
                 {'nvim-lua/plenary.nvim'},
                 { 'nvim-telescope/telescope-live-grep-args.nvim' },
+                {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
             },
             config = [[require("config/telescope")]],
         }
-        use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
+        -- WARNING: Requires sqlite3
+        use {
+            "nvim-telescope/telescope-frecency.nvim",
+            requires = {"kkharji/sqlite.lua"}
+        }
+
 
         use {
             'nvim-lualine/lualine.nvim',

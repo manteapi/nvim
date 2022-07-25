@@ -6,7 +6,9 @@ require('telescope').setup {
         },
     },
     defaults = {
-        path_display={"smart"},
+        path_display={
+            shorten = 4
+        },
         vimgrep_arguments = {
             "rg",
             "--color=never",
@@ -52,6 +54,7 @@ require('telescope').setup {
 	}
 }
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('frecency')
 
 local opts = { noremap = true }
 vim.keymap.set("n", "<leader>sn", function()
