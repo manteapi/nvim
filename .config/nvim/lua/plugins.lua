@@ -59,6 +59,10 @@ local packer_startup = {
         }
 
         use {
+             'peterhoeg/vim-qml'
+        }
+
+        use {
             "lukas-reineke/indent-blankline.nvim", -- vertical guideliens for code blocks
             ft = {'lua', 'python', 'c', 'cpp', 'rust', 'qml', 'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'racket'},
             config = function()
@@ -105,6 +109,10 @@ local packer_startup = {
         use {
             'nvim-treesitter/nvim-treesitter-textobjects',
             config = [[require("config/treesitter-textobjects")]],
+        }
+
+        use {
+            'nvim-treesitter/playground',
         }
 
         use {
