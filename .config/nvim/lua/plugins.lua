@@ -255,7 +255,10 @@ local packer_startup = {
         use {'tpope/vim-fugitive'}
         use { "tpope/vim-abolish"}
 
-        use {'lewis6991/gitsigns.nvim', requires = { { 'nvim-lua/plenary.nvim' } }} -- git gutter
+        use {'lewis6991/gitsigns.nvim',
+            requires = { { 'nvim-lua/plenary.nvim' } },
+            config = [[require("config/gitsigns")]],
+        } -- git gutter
 
         use {'rhysd/git-messenger.vim'} -- current line git message displayer
 
