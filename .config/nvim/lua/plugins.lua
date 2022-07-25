@@ -118,7 +118,9 @@ local packer_startup = {
         }
 
         use {'j-hui/fidget.nvim',
-            config = require"fidget".setup{}
+            config = function()
+                require("fidget").setup({})
+            end
         }
 
         -- nvim dev
