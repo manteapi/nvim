@@ -6,7 +6,12 @@ require('gitsigns').setup{
         topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
         changedelete = {hl = 'GitSignsChange', text = '-', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
     },
-    current_line_blame = true
+    current_line_blame = true,
+    on_attach = function(bufnr)
+        local gs = package.loaded.gitsigns
+        local opts = {noremap=true, silent=true, buffer=bufnr}
+        vim.keymap.set("n", "<leader>tb",gs.toggle_current_line_blame, opts)
+    end
 }
 
 vim.cmd([[highlight SignColumn ctermbg=black]])
