@@ -131,6 +131,11 @@ local packer_startup = {
             end
         }
 
+        use({
+            "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+            config = [[require("config/lsp_lines")]],
+        })
+
         -- nvim dev
         use {
             'folke/lua-dev.nvim',
