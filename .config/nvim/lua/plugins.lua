@@ -86,6 +86,19 @@ local packer_startup = {
             config = [[require("config/better-whitespace")]],
         }
 
+        use {
+            'phaazon/hop.nvim',
+            branch = 'v2', -- optional but strongly recommended
+            config = [[require("config/hop")]],
+        }
+
+        use {
+            "max397574/better-escape.nvim",
+            config = function()
+                require("better_escape").setup()
+            end,
+        }
+
         use {     -- greeting screen
             'glepnir/dashboard-nvim',
             config = [[require("config/dashboard")]],
@@ -113,6 +126,11 @@ local packer_startup = {
 
         use {
             'nvim-treesitter/playground',
+        }
+
+        use {
+            'nvim-treesitter/nvim-treesitter-context',
+            config = [[require("config/treesitter-context")]],
         }
 
         use {
@@ -274,6 +292,12 @@ local packer_startup = {
 
         use {'simrat39/rust-tools.nvim', -- enhanced tools for rust development
             commit = '7b4d155dd47e211ee661cbb4c7969b245f768edb'
+        }
+
+        use {
+            "nvim-neorg/neorg",
+            config = [[require("config/neorg")]],
+            requires = "nvim-lua/plenary.nvim"
         }
 
     end,

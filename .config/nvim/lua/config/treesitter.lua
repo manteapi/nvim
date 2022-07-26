@@ -1,5 +1,5 @@
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"lua", "rust", "python", "json", "javascript", "qmljs"},
+  ensure_installed = {"norg", "lua", "rust", "python", "json", "javascript", "qmljs"},
   sync_install = false,
   highlight = {
     enable = true
