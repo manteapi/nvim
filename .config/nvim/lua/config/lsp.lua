@@ -40,16 +40,6 @@ local flags = {}
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local util = {}
-
-local path = require('plenary.path')
-
-function util.find_git_ancestor(filename, iteration)
-    print(lspconfig.util.find_git_ancestor(filename))
-    return lspconfig.util.find_git_ancestor(filename)
-end
-
-
 for _, server in ipairs(servers) do
     local server_opts = {
         capabilities = capabilities,
@@ -87,7 +77,15 @@ for _, server in ipairs(servers) do
     elseif server == "pylsp" then
         server_opts = {
             root_dir = function(filename, _)
-                return util.find_git_ancestor(filename, 3)
+                local root_files = {
+                    'neovim.toml',
+                }
+                local fallback_root_files = {
+                    '.git'
+                }
+                local primary = lspconfig.util.root_pattern(unpack(root_files))(filename)
+                local fallback = lspconfig.util.root_pattern(unpack(fallback_root_files))(filename)
+                return primary or fallback
             end,
             cmd = {"pylsp"},
             settings = {
