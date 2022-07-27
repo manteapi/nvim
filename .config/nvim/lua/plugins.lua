@@ -221,6 +221,7 @@ local packer_startup = {
         use {'junegunn/fzf.vim'}
 
         -- telescope
+        use {'cljoly/telescope-repo.nvim'}
         use {
             'nvim-telescope/telescope.nvim',
             requires = {
