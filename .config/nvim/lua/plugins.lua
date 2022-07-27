@@ -27,6 +27,11 @@ local packer_startup = {
 
         use {'preservim/vim-markdown'}
 
+        use {"akinsho/toggleterm.nvim",
+            tag = 'v2.*',
+            config = [[require("config/toggleterm")]],
+        }
+
         -- use {
         -- 	"iamcco/markdown-preview.nvim",
         -- 	run = "cd app && yarn install", -- Need `yarn` for installation.
