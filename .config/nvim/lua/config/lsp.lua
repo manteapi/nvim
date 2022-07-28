@@ -67,10 +67,7 @@ local formatting_callback = function(client, bufnr, mapping_opts)
 end
 
 local on_attach = function(client, buffer)
-	local buffer_opts = { noremap = true, silent = true, buffer = buffer }
-	if client.name ~= "sumneko_lua" then
-		formatting_callback(client, buffer, buffer_opts)
-	end
+    vim.api.nvim_buf_set_keymap(buffer, "n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(buffer, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(buffer, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(buffer, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
@@ -92,7 +89,7 @@ for _, server in ipairs(servers) do
 		flags = flags,
 	}
 	if server == "null-ls" then
-        nullls.register(gitlint)
+        -- nullls.register(gitlint)
         nullls.setup({
             sources = {
 				require("null-ls").builtins.formatting.stylua,
@@ -108,7 +105,8 @@ for _, server in ipairs(servers) do
 					vim.fn.expand("$HOME", "", "")
 						.. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server",
 				},
-				on_attach = on_attach,
+				on_attach = on_attach
+               ,
 			},
 			capabilities = capabilities,
 			flags = flags,
