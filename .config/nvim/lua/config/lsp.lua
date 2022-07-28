@@ -13,34 +13,43 @@ local servers = {
 	"sumneko_lua",
 }
 
+local formatting_callback = function(client, bufnr)
+	if client.supports_method("textDocument/formatting") then
+		vim.keymap.set("n", "<leader>f", function()
+			local params = vim.lsp.util.make_formatting_params({})
+			client.request("textDocument/formatting", params, nil, bufnr)
+		end, { buffer = bufnr })
+	end
+end
+
 local h = require("null-ls.helpers")
 local methods = require("null-ls.methods")
 local DIAGNOSTICS = methods.internal.DIAGNOSTICS
 local gitlint = {
-    name = "gitlint",
-    meta = {
-        url = "https://jorisroovers.com/gitlint/",
-        description = "Linter for Git commit messages.",
-    },
-    method = DIAGNOSTICS,
-    filetypes = { "gitcommit", "NeogitCommitMessage" },
-    generator = nullls.generator({
-        command = "gitlint",
-        args = { "--msg-filename", "$FILENAME" },
-        to_temp_file = true,
-        from_stderr = true,
-        format = "line",
-        check_exit_code = function(code)
-            return code <= 1
-        end,
-        on_output = h.diagnostics.from_patterns({
-            {
-                pattern = [[(%d+): (%w+) (.+)]],
-                groups = { "row", "code", "message" },
-            },
-        }),
-    }),
-    factory = h.generator_factory,
+	name = "gitlint",
+	meta = {
+		url = "https://jorisroovers.com/gitlint/",
+		description = "Linter for Git commit messages.",
+	},
+	method = DIAGNOSTICS,
+	filetypes = { "gitcommit", "NeogitCommitMessage" },
+	generator = nullls.generator({
+		command = "devmoji",
+		args = { "--lint", "--text", "$TEXT" },
+		to_temp_file = true,
+		from_stderr = true,
+		format = "line",
+		check_exit_code = function(code)
+			return code <= 1
+		end,
+		on_output = h.diagnostics.from_patterns({
+			{
+				pattern = [[(%d+): (%w+) (.+)]],
+				groups = { "row", "code", "message" },
+			},
+		}),
+	}),
+	factory = h.generator_factory,
 }
 
 require("nvim-lsp-installer").setup({
@@ -57,17 +66,11 @@ vim.keymap.set("n", "<leader>sr", require("telescope.builtin").lsp_references, o
 vim.keymap.set("n", "<leader>sds", require("telescope.builtin").lsp_document_symbols, opts)
 vim.keymap.set("n", "<leader>sws", require("telescope.builtin").lsp_workspace_symbols, opts)
 
--- INFO: https://github.com/neovim/nvim-lspconfig/wiki/Multiple-language-servers-FAQ#i-see-multiple-formatting-options-and-i-want-a-single-server-to-format-how-do-i-do-this
-local formatting_callback = function(client, bufnr, mapping_opts)
-	local util = require("vim.lsp.util")
-	vim.keymap.set("n", "<leader>f", function()
-        local params = util.make_formatting_params({})
-        client.request("textDocument/formatting", params, nil, bufnr)
-	end, mapping_opts)
-end
-
 local on_attach = function(client, buffer)
-    vim.api.nvim_buf_set_keymap(buffer, "n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+	-- INFO: see https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
+	if client.name ~= "sumneko_lua" then
+		formatting_callback(client, buffer)
+	end
 	vim.api.nvim_buf_set_keymap(buffer, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(buffer, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(buffer, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
@@ -89,13 +92,15 @@ for _, server in ipairs(servers) do
 		flags = flags,
 	}
 	if server == "null-ls" then
-        -- nullls.register(gitlint)
-        nullls.setup({
-            sources = {
-				require("null-ls").builtins.formatting.stylua,
-                nullls.builtins.formatting.stylua,
-            },
-			on_attach = on_attach,
+		-- nullls.register(gitlint)
+		nullls.setup({
+			sources = {
+				nullls.builtins.formatting.stylua,
+			},
+			on_attach = function(client, buffer)
+				-- formatting_callback(client, buffer)
+				on_attach(client, buffer)
+			end,
 			capabilities = capabilities,
 		})
 	elseif server == "sumneko_lua" then
@@ -105,9 +110,9 @@ for _, server in ipairs(servers) do
 					vim.fn.expand("$HOME", "", "")
 						.. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server",
 				},
-				on_attach = on_attach
-               ,
+				on_attach = on_attach,
 			},
+			on_attach = on_attach,
 			capabilities = capabilities,
 			flags = flags,
 		})
