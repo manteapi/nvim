@@ -1,5 +1,7 @@
 local lspconfig = require("lspconfig")
 
+local nullls = require("null-ls")
+
 local servers = {
 	"jedi_language_server",
 	"pylsp",
@@ -9,6 +11,36 @@ local servers = {
 	"rust_analyzer",
 	"null-ls",
 	"sumneko_lua",
+}
+
+local h = require("null-ls.helpers")
+local methods = require("null-ls.methods")
+local DIAGNOSTICS = methods.internal.DIAGNOSTICS
+local gitlint = {
+    name = "gitlint",
+    meta = {
+        url = "https://jorisroovers.com/gitlint/",
+        description = "Linter for Git commit messages.",
+    },
+    method = DIAGNOSTICS,
+    filetypes = { "gitcommit", "NeogitCommitMessage" },
+    generator = nullls.generator({
+        command = "gitlint",
+        args = { "--msg-filename", "$FILENAME" },
+        to_temp_file = true,
+        from_stderr = true,
+        format = "line",
+        check_exit_code = function(code)
+            return code <= 1
+        end,
+        on_output = h.diagnostics.from_patterns({
+            {
+                pattern = [[(%d+): (%w+) (.+)]],
+                groups = { "row", "code", "message" },
+            },
+        }),
+    }),
+    factory = h.generator_factory,
 }
 
 require("nvim-lsp-installer").setup({
@@ -29,8 +61,8 @@ vim.keymap.set("n", "<leader>sws", require("telescope.builtin").lsp_workspace_sy
 local formatting_callback = function(client, bufnr, mapping_opts)
 	local util = require("vim.lsp.util")
 	vim.keymap.set("n", "<leader>f", function()
-		local params = util.make_formatting_params({})
-		client.request("textDocument/formatting", params, nil, bufnr)
+        local params = util.make_formatting_params({})
+        client.request("textDocument/formatting", params, nil, bufnr)
 	end, mapping_opts)
 end
 
@@ -60,10 +92,12 @@ for _, server in ipairs(servers) do
 		flags = flags,
 	}
 	if server == "null-ls" then
-		require("null-ls").setup({
-			sources = {
+        nullls.register(gitlint)
+        nullls.setup({
+            sources = {
 				require("null-ls").builtins.formatting.stylua,
-			},
+                nullls.builtins.formatting.stylua,
+            },
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
