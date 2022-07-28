@@ -148,6 +148,10 @@ local packer_startup = {
             config = [[require("config/lsp")]],
         }
 
+        use {
+            'jose-elias-alvarez/null-ls.nvim',
+        }
+
         use {'j-hui/fidget.nvim',
             config = function()
                 require("fidget").setup({})
