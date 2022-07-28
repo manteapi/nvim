@@ -37,6 +37,8 @@ vim.o.updatetime = 250 --Decrease update time
 
 vim.wo.signcolumn = 'yes' -- Always show signcolumn
 
+vim.g.do_filetype_lua = 1
+
 vim.g.matchparen_timeout=12         -- time in ms to find matching parenthesis
 vim.g.matchparen_insert_timeout=12  -- time ins ms to find matching parenthesis in insert mode
 

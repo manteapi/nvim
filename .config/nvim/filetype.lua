@@ -1,0 +1,9 @@
+-- vim.filetype.add({
+--     extension = {
+--         qmljs = "qmljs",
+--         qml = "qmljs"
+--     },
+--     filename = {
+--         qmldir = "qmljs",
+--     },
+-- })
