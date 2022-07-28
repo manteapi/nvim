@@ -6,12 +6,13 @@ local servers = {
     "pyright",
     "cmake",
     "clangd",
-    "sumneko_lua",
     "rust_analyzer",
+    "null-ls",
+    "sumneko_lua",
 }
 
 require("nvim-lsp-installer").setup({
-    ensure_installed = servers,
+    ensure_installed = servers
 })
 
 local opts = { noremap = true, silent = true }
@@ -24,13 +25,24 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').lsp_references, o
 vim.keymap.set('n', '<leader>sds', require('telescope.builtin').lsp_document_symbols, opts)
 vim.keymap.set('n', '<leader>sws', require('telescope.builtin').lsp_workspace_symbols, opts)
 
-local on_attach = function(_, buffer)
+local formatting_callback = function(client, bufnr, opts)
+    local util = require 'vim.lsp.util'
+    vim.keymap.set('n', '<leader>f', function()
+        local params = util.make_formatting_params({})
+        client.request('textDocument/formatting', params, nil, bufnr)
+    end, { buffer = bufnr })
+end
+
+local on_attach = function(client, buffer)
+    local buffer_opts = { noremap = true, silent = true, buffer = buffer }
+    if client.name ~= "sumneko_lua" then
+        formatting_callback(client, buffer, buffer_opts)
+    end
     vim.api.nvim_buf_set_keymap(buffer, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buffer, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buffer, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buffer, "n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buffer, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(buffer, 'n', '<leader>f', "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buffer, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buffer, "n", "<leader>h", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buffer, "i", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
@@ -46,13 +58,21 @@ for _, server in ipairs(servers) do
         on_attach = on_attach,
         flags = flags
     }
-    if server == 'sumneko_lua' then
+    if server == 'null-ls' then
+        require("null-ls").setup({
+            sources = {
+                require("null-ls").builtins.formatting.stylua,
+            },
+            on_attach = on_attach,
+            capabilities = capabilities,
+        })
+    elseif server == 'sumneko_lua' then
         local luadev_opts = require("lua-dev").setup({
             lspconfig = {
                 cmd = {vim.fn.expand('$HOME', "", "") .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"},
+                on_attach = on_attach,
             },
             capabilities = capabilities,
-            on_attach = on_attach,
             flags = flags
         })
         lspconfig[server].setup(luadev_opts)
