@@ -59,10 +59,9 @@ require('telescope').load_extension('repo')
 
 local opts = { noremap = true }
 vim.keymap.set("n", "<leader>sn", function()
-    print(vim.fn.getcwd())
-    -- local current_file = vim.fn.expand('%:p:h', "", "")
-    -- local command = "TodoTelescope cwd="..current_file
-    -- vim.api.nvim_command(command)
+    local current_file = vim.fn.expand('%:p:h', "", "")
+    local command = "TodoTelescope cwd="..current_file
+    vim.api.nvim_command(command)
 end, opts)
 vim.keymap.set("n", "<leader>sf", require('telescope.builtin').find_files, opts)
 vim.keymap.set("n", "<leader>sF", require('telescope').extensions.repo.list, opts)
