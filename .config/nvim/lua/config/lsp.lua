@@ -2,6 +2,8 @@ local lspconfig = require("lspconfig")
 
 local nullls = require("null-ls")
 
+local devmojilint = require("config.null-ls.devmoji")
+
 local servers = {
 	"jedi_language_server",
 	"pylsp",
@@ -21,48 +23,6 @@ local formatting_callback = function(client, bufnr)
 		end, { buffer = bufnr })
 	end
 end
-
-local h = require("null-ls.helpers")
-local methods = require("null-ls.methods")
-local DIAGNOSTICS = methods.internal.DIAGNOSTICS
-local devmojilint= {
-	name = "devmojilint",
-	meta = {
-		url = "https://github.com/folke/devmoji",
-		description = "Linter for Git commit messages.",
-	},
-	method = DIAGNOSTICS,
-	filetypes = { "gitcommit", "NeogitCommitMessage" },
-	generator = nullls.generator({
-		command = "devmoji",
-		args = { "--lint", "--text", "$TEXT" },
-		to_temp_file = true,
-		from_stderr = true,
-		format = "raw",
-		check_exit_code = function(code)
-			return code <= 1
-		end,
-        on_output = function(params, done)
-            local diags = {}
-            if (params.output == nil or params.output == '') then
-                done(diags)
-            end
-            local splits = vim.split(params.output, "\n")
-            local output = "Expecting a commit message like: '" .. splits[2] .. "'"
-            output = output:gsub("%✖", "")
-            output = output:gsub("%   ", "")
-            table.insert(diags, {
-                row = 1,
-                col = 1,
-                end_col = 1,
-                message = output,
-                severity = "error",
-            })
-            done(diags)
-        end,
-	}),
-	factory = h.generator_factory,
-}
 
 require("nvim-lsp-installer").setup({
 	ensure_installed = servers,
@@ -110,7 +70,6 @@ for _, server in ipairs(servers) do
 				nullls.builtins.formatting.stylua,
 			},
 			on_attach = function(client, buffer)
-				-- formatting_callback(client, buffer)
 				on_attach(client, buffer)
 			end,
 			capabilities = capabilities,
