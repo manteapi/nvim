@@ -28,7 +28,8 @@ for k, v in pairs(options) do
 end
 
 -- Treat "_" as a keyword separator
-vim.opt.iskeyword:remove("_")
+-- NOTE: With hope, i can simply move to "_" and use dot command
+-- vim.opt.iskeyword:remove("_")
 
 vim.o.ignorecase = false
 vim.o.smartcase = true
