@@ -3,6 +3,7 @@ local lspconfig = require("lspconfig")
 local nullls = require("null-ls")
 
 local devmojilint = require("config.null-ls.devmoji")
+local commitlint = require("config.null-ls.commitlint")
 
 local servers = {
 	"jedi_language_server",
@@ -64,7 +65,8 @@ for _, server in ipairs(servers) do
 		flags = flags,
 	}
 	if server == "null-ls" then
-		nullls.register(devmojilint)
+		-- nullls.register(devmojilint)
+		nullls.register(commitlint)
 		nullls.setup({
 			sources = {
 				nullls.builtins.formatting.stylua,
