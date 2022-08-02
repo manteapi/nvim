@@ -144,8 +144,14 @@ local packer_startup = {
 
 
         use {
-            'williamboman/nvim-lsp-installer', -- lsp managers
-            config = [[require("config/lsp")]],
+            'williamboman/mason.nvim', -- lsp managers
+            config = {
+                [[require("config/mason")]],
+                [[require("config/lsp")]]
+            },
+            requires = {
+                'williamboman/mason-lspconfig.nvim'
+            }
         }
 
         use {

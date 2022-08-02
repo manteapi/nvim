@@ -25,10 +25,6 @@ local formatting_callback = function(client, bufnr)
 	end
 end
 
-require("nvim-lsp-installer").setup({
-	ensure_installed = servers,
-})
-
 local opts = { noremap = true, silent = true }
 
 -- Goto previous/next diagnostic warning/error
@@ -81,7 +77,7 @@ for _, server in ipairs(servers) do
 			lspconfig = {
 				cmd = {
 					vim.fn.expand("$HOME", "", "")
-						.. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server",
+						.. "/.local/share/nvim/mason//bin/lua-language-server",
 				},
 				on_attach = on_attach,
 			},
