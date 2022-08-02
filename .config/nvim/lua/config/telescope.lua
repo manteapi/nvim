@@ -64,7 +64,24 @@ vim.keymap.set("n", "<leader>sn", function()
 	local command = "TodoTelescope cwd=" .. current_file
 	vim.api.nvim_command(command)
 end, opts)
-vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files, opts)
+
+vim.keymap.set("n", "<leader>scf", function()
+    require("telescope.builtin").find_files({
+        cwd = "~/repositories/lucy-deployment/sofa-submodules/circle/",
+    })
+end, opts)
+
+vim.keymap.set("n", "<leader>scr", function()
+    require("telescope").extensions.live_grep_args.live_grep_args({
+        previewer = false,
+        cwd = "~/repositories/lucy-deployment/sofa-submodules/circle/",
+    })
+end, opts)
+
+vim.keymap.set("n", "<leader>sf", function()
+    require("telescope.builtin").find_files({
+    })
+end, opts)
 vim.keymap.set("n", "<leader>sF", require("telescope").extensions.repo.list, opts)
 vim.keymap.set("n", "<leader>se", function()
 	require("telescope").extensions.file_browser.file_browser({
@@ -72,12 +89,24 @@ vim.keymap.set("n", "<leader>se", function()
 	})
 end, opts)
 vim.keymap.set("n", "<leader>sB", function()
-	require("telescope.builtin").live_grep({ grep_open_files = true })
+    require("telescope.builtin").live_grep(
+        {
+            grep_open_files = true,
+            previewer = false
+        })
 end, opts)
 vim.keymap.set("n", "<leader>ss", require("telescope.builtin").current_buffer_fuzzy_find, opts)
 vim.keymap.set("n", "<leader>sS", require("telescope.builtin").grep_string, opts)
-vim.keymap.set("n", "<leader>sL", require("telescope.builtin").live_grep, opts)
-vim.keymap.set("n", "<leader>sR", require("telescope").extensions.live_grep_args.live_grep_args, opts)
+vim.keymap.set("n", "<leader>sL", function()
+require("telescope.builtin").live_grep({
+        previewer = false
+    })
+end, opts)
+vim.keymap.set("n", "<leader>sR", function()
+    require("telescope").extensions.live_grep_args.live_grep_args({
+        previewer = false
+    })
+end, opts)
 vim.keymap.set("n", "<leader>sb", require("telescope.builtin").buffers, opts)
 vim.keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, opts)
 vim.keymap.set("n", "<leader>sgf", require("telescope.builtin").git_files, opts)
