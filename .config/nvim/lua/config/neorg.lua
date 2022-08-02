@@ -2,7 +2,11 @@ require("neorg").setup({
 	load = {
 		["core.defaults"] = {},
 		["core.norg.qol.toc"] = {},
-		["core.gtd.base"] = {},
+		["core.gtd.base"] = {
+            config = {
+                workspace = "work"
+            }
+        },
 		["core.norg.journal"] = {
 			config = {
 				workspaces = "home",
