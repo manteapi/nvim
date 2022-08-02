@@ -56,6 +56,7 @@ require('telescope').setup {
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('frecency')
 require('telescope').load_extension('repo')
+require('telescope').load_extension('file_browser')
 
 local opts = { noremap = true }
 vim.keymap.set("n", "<leader>sn", function()
@@ -65,6 +66,7 @@ vim.keymap.set("n", "<leader>sn", function()
 end, opts)
 vim.keymap.set("n", "<leader>sf", require('telescope.builtin').find_files, opts)
 vim.keymap.set("n", "<leader>sF", require('telescope').extensions.repo.list, opts)
+vim.keymap.set("n", "<leader>se", require('telescope').extensions.file_browser.file_browser, opts)
 vim.keymap.set("n", "<leader>sB", function() require('telescope.builtin').live_grep({grep_open_files=true}) end, opts)
 vim.keymap.set("n", "<leader>ss", require('telescope.builtin').current_buffer_fuzzy_find, opts)
 vim.keymap.set("n", "<leader>sS", require('telescope.builtin').grep_string, opts)
