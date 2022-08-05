@@ -60,6 +60,11 @@ local packer_startup = {
 		})
 
 		use({
+			"fedepujol/move.nvim",
+			config = [[require("config/move")]],
+		})
+
+		use({
 			"karb94/neoscroll.nvim", -- smooth scrolling
 			config = [[require("config/neoscroll")]],
 		})
