@@ -39,6 +39,8 @@ local packer_startup = {
 		-- 	ft = "markdown"
 		-- }
 
+		use({ "rcarriga/nvim-notify", config = [[require("config/nvim-notify")]] })
+
 		use({
 			"nvim-neotest/neotest",
 			requires = {
@@ -57,6 +59,11 @@ local packer_startup = {
 			config = function()
 				require("todo-comments").setup()
 			end,
+		})
+
+		use({
+			"stevearc/overseer.nvim",
+			config = [[require("config/overseer")]],
 		})
 
 		use({
