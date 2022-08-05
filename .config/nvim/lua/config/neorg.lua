@@ -1,6 +1,7 @@
 require("neorg").setup({
 	load = {
 		["core.defaults"] = {},
+		["core.keybinds"] = {},
 		["core.norg.qol.toc"] = {},
 		["core.gtd.base"] = {
             config = {
