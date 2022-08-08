@@ -1,3 +1,3 @@
 require("overseer").setup({
-	templates = { "builtin", "sandbox.first_task" },
+	templates = { "circle.build_task" },
 })
