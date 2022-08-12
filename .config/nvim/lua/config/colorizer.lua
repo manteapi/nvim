@@ -1,3 +1,4 @@
 vim.o.termguicolors = true
 
-require("colorizer").setup{}
+-- Is colorizer working ? #558817
+require("colorizer").setup{"*"}
