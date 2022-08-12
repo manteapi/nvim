@@ -10,6 +10,13 @@ local packer_startup = {
 
 		use({ "machakann/vim-sandwich" }) -- operators for sandwiched texts
 
+		use({
+			"kylechui/nvim-surround",
+			config = function()
+				require("nvim-surround").setup()
+			end,
+		})
+
 		use({ -- automatic pairs
 			"windwp/nvim-autopairs",
 			config = [[require("config/autopairs")]],
@@ -31,6 +38,12 @@ local packer_startup = {
 			"akinsho/toggleterm.nvim",
 			tag = "v2.*",
 			config = [[require("config/toggleterm")]],
+		})
+
+		use({
+			"kevinhwang91/nvim-bqf",
+			ft = "qf",
+			config = [[require("config/nvim-bqf")]],
 		})
 
 		-- use {
@@ -117,6 +130,11 @@ local packer_startup = {
 		use({ -- strip trailing whitespaces
 			"ntpeters/vim-better-whitespace",
 			config = [[require("config/better-whitespace")]],
+		})
+
+		use({
+			"chentoast/marks.nvim",
+			config = [[require("config/marks")]],
 		})
 
 		use({
