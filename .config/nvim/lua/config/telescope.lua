@@ -1,3 +1,6 @@
+local current_selection = require("utils.helpers").current_selection
+local current_word = require("utils.helpers").current_word
+
 require("telescope").setup({
 	pickers = {
 		find_files = {
@@ -65,22 +68,8 @@ vim.keymap.set("n", "<leader>sn", function()
 	vim.api.nvim_command(command)
 end, opts)
 
-vim.keymap.set("n", "<leader>scf", function()
-    require("telescope.builtin").find_files({
-        cwd = "~/repositories/lucy-deployment/sofa-submodules/circle/",
-    })
-end, opts)
-
-vim.keymap.set("n", "<leader>scr", function()
-    require("telescope").extensions.live_grep_args.live_grep_args({
-        previewer = false,
-        cwd = "~/repositories/lucy-deployment/sofa-submodules/circle/",
-    })
-end, opts)
-
 vim.keymap.set("n", "<leader>sf", function()
-    require("telescope.builtin").find_files({
-    })
+	require("telescope.builtin").find_files({})
 end, opts)
 vim.keymap.set("n", "<leader>sF", require("telescope").extensions.repo.list, opts)
 vim.keymap.set("n", "<leader>se", function()
@@ -88,25 +77,59 @@ vim.keymap.set("n", "<leader>se", function()
 		path = vim.fn.expand("%:p:h", "", ""),
 	})
 end, opts)
-vim.keymap.set("n", "<leader>sB", function()
-    require("telescope.builtin").live_grep(
-        {
-            grep_open_files = true,
-            previewer = false
-        })
+
+vim.keymap.set("n", "<leader>sfc", function()
+	require("telescope.builtin").find_files({
+		cwd = "~/repositories/lucy-deployment/sofa-submodules/circle/",
+	})
 end, opts)
-vim.keymap.set("n", "<leader>ss", require("telescope.builtin").current_buffer_fuzzy_find, opts)
-vim.keymap.set("n", "<leader>sS", require("telescope.builtin").grep_string, opts)
-vim.keymap.set("n", "<leader>sL", function()
-require("telescope.builtin").live_grep({
-        previewer = false
+
+vim.keymap.set("n", "<leader>sSc", function()
+	require("telescope").extensions.live_grep_args.live_grep_args({
+		previewer = false,
+		cwd = "~/repositories/lucy-deployment/sofa-submodules/circle/",
+        default_text = current_word()
+	})
+end, opts)
+
+vim.keymap.set("v", "<leader>sSc", function()
+	require("telescope").extensions.live_grep_args.live_grep_args({
+		previewer = false,
+		cwd = "~/repositories/lucy-deployment/sofa-submodules/circle/",
+        default_text = current_selection()
+	})
+end, opts)
+
+-- require("telescope.builtin").live_grep({grep_open_files = true,})
+-- require("telescope.builtin").grep_string({})
+-- require("telescope.builtin").live_grep({})
+
+vim.keymap.set("v", "<leader>ss", function()
+	require("telescope.builtin").current_buffer_fuzzy_find({
+        default_text = current_selection()
     })
 end, opts)
-vim.keymap.set("n", "<leader>sR", function()
-    require("telescope").extensions.live_grep_args.live_grep_args({
-        previewer = false
+
+vim.keymap.set("n", "<leader>ss", function()
+	require("telescope.builtin").current_buffer_fuzzy_find({
+        default_text = current_word()
     })
 end, opts)
+
+vim.keymap.set("n", "<leader>sS", function()
+	require("telescope").extensions.live_grep_args.live_grep_args({
+		previewer = false,
+        default_text = current_word()
+	})
+end, opts)
+
+vim.keymap.set("v", "<leader>sS", function()
+	require("telescope").extensions.live_grep_args.live_grep_args({
+		previewer = false,
+        default_text = current_selection()
+	})
+end, opts)
+
 vim.keymap.set("n", "<leader>sb", require("telescope.builtin").buffers, opts)
 vim.keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, opts)
 vim.keymap.set("n", "<leader>sgf", require("telescope.builtin").git_files, opts)
