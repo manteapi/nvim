@@ -77,7 +77,7 @@ for _, server in ipairs(servers) do
 			lspconfig = {
 				cmd = {
 					vim.fn.expand("$HOME", "", "")
-						.. "/.local/share/nvim/mason//bin/lua-language-server",
+						.. "/.local/share/nvim/mason/bin/lua-language-server",
 				},
 				on_attach = on_attach,
 			},
