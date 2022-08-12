@@ -42,6 +42,11 @@ local packer_startup = {
 		use({ "rcarriga/nvim-notify", config = [[require("config/nvim-notify")]] })
 
 		use({
+			"folke/which-key.nvim",
+			config = [[require("config/which-key")]],
+		})
+
+		use({
 			"nvim-neotest/neotest",
 			requires = {
 				"nvim-lua/plenary.nvim",
