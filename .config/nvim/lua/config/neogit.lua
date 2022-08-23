@@ -4,9 +4,13 @@ neogit.setup({
     disable_commit_confirmation = true
 })
 
+local raw_notify = require("utils.raw_notify").notify
+
 vim.api.nvim_create_user_command('NeogitOpen',
     function()
-        neogit.open({ cwd = vim.fn.expand('%:p:h') })
+        local current_directory = vim.fn.expand('%:p:h')
+        neogit.open({ cwd = current_directory })
+		raw_notify(" " .. current_directory .. " used for neogit !", "achieve")
     end,
     {nargs=0}
 )
