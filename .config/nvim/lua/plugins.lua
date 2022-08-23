@@ -11,7 +11,7 @@ local packer_startup = {
 		use({ "machakann/vim-sandwich" }) -- operators for sandwiched texts
 
 		use({
-			"kylechui/nvim-surround",
+			"kylechui/nvim-surround", -- ys / ds / cs
 			config = function()
 				require("nvim-surround").setup()
 			end,
@@ -128,6 +128,13 @@ local packer_startup = {
 			"norcalli/nvim-colorizer.lua", -- show color in terminal #B22222
 			config = [[require("config/colorizer")]],
 		})
+
+        use({"abecodes/tabout.nvim",
+            config = function()
+                require('tabout').setup({})
+            end
+        })
+
 
 		use({ -- strip trailing whitespaces
 			"ntpeters/vim-better-whitespace",
