@@ -14,6 +14,7 @@ local servers = {
 	"rust_analyzer",
 	"null-ls",
 	"sumneko_lua",
+	"tsserver",
 }
 
 local formatting_callback = function(client, bufnr)
@@ -76,8 +77,7 @@ for _, server in ipairs(servers) do
 		local luadev_opts = require("lua-dev").setup({
 			lspconfig = {
 				cmd = {
-					vim.fn.expand("$HOME", "", "")
-						.. "/.local/share/nvim/mason/bin/lua-language-server",
+					vim.fn.expand("$HOME", "", "") .. "/.local/share/nvim/mason/bin/lua-language-server",
 				},
 				on_attach = on_attach,
 			},

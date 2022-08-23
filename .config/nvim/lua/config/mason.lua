@@ -15,6 +15,7 @@ require("mason-lspconfig").setup({
 		"clangd",
 		"rust_analyzer",
 		"null-ls",
-		"lua-language-server",
+		"sumneko_lua",
+		"tsserver",
 	},
 })
