@@ -84,8 +84,10 @@ local packer_startup = {
 			config = [[require("config/overseer")]],
 		})
 
+        use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
+
 		use({
-			"fedepujol/move.nvim",
+			"fedepujol/move.nvim", -- move lines vertically
 			config = [[require("config/move")]],
 		})
 
