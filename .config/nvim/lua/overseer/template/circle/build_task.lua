@@ -1,4 +1,9 @@
 local overseer = require("overseer")
+local Path = require("plenary.path")
+
+local homedir = Path:new(Path.path.home)
+local projectdir = homedir:joinpath("repositories"):joinpath("lucy-deployment")
+local builddir = homedir:joinpath("repositories"):joinpath("build-release")
 
 return {
 	name = "Build Lucy",
@@ -7,7 +12,7 @@ return {
 			cmd = { "ninja" },
 			args = { "-j", "100" },
 			name = "Build lucy",
-			cwd = "/home/pierre-luc/repositories/build-release",
+			cwd = builddir:absolute(),
             components = {"default", "restart_on_save"},
 			env = {},
 			metadata = {},
@@ -17,6 +22,6 @@ return {
 	tags = { overseer.TAG.BUILD },
 	priority = 0,
 	condition = {
-		dir = "/home/pierre-luc/repositories/lucy-deployment",
+		dir = projectdir:absolute()
 	},
 }
