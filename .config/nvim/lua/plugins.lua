@@ -54,10 +54,10 @@ local packer_startup = {
 
 		use({ "rcarriga/nvim-notify", config = [[require("config/nvim-notify")]] })
 
-		use({
-			"folke/which-key.nvim",
-			config = [[require("config/which-key")]],
-		})
+		-- use({
+		-- 	"folke/which-key.nvim",
+		-- 	config = [[require("config/which-key")]],
+		-- })
 
 		use({
 			"nvim-neotest/neotest",
@@ -84,7 +84,7 @@ local packer_startup = {
 			config = [[require("config/overseer")]],
 		})
 
-        use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
+        -- use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
 
 		use({
 			"fedepujol/move.nvim", -- move lines vertically
@@ -367,6 +367,13 @@ local packer_startup = {
 			config = [[require("config/neorg")]],
 			requires = "nvim-lua/plenary.nvim",
 		})
+
+        use {
+            'phaazon/mind.nvim',
+            branch = 'v2.2',
+            requires = { 'nvim-lua/plenary.nvim' },
+            config = [[require("config/mind")]],
+        }
 	end,
 	config = { autoremove = true },
 }

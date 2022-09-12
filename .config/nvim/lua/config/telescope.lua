@@ -1,6 +1,8 @@
 local current_selection = require("utils.helpers").current_selection
 local current_word = require("utils.helpers").current_word
 
+local lga_actions = require("telescope-live-grep-args.actions")
+
 require("telescope").setup({
 	pickers = {
 		find_files = {
@@ -54,6 +56,14 @@ require("telescope").setup({
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 			-- the default case_mode is "smart_case"
 		},
+		live_grep_args = {
+			auto_quoting = true,
+			mappings = {
+				i = {
+					["<C-t>"] = lga_actions.quote_prompt({ postfix = " -t" }),
+				},
+			},
+		},
 	},
 })
 require("telescope").load_extension("fzf")
@@ -84,19 +94,19 @@ vim.keymap.set("n", "<leader>sfc", function()
 	})
 end, opts)
 
-vim.keymap.set("n", "<leader>sSc", function()
+vim.keymap.set("n", "<leader>sSC", function()
 	require("telescope").extensions.live_grep_args.live_grep_args({
 		previewer = false,
 		cwd = "~/repositories/lucy-deployment/sofa-submodules/circle/",
-        default_text = current_word()
+		default_text = "",
 	})
 end, opts)
 
-vim.keymap.set("v", "<leader>sSc", function()
+vim.keymap.set("v", "<leader>sSC", function()
 	require("telescope").extensions.live_grep_args.live_grep_args({
 		previewer = false,
 		cwd = "~/repositories/lucy-deployment/sofa-submodules/circle/",
-        default_text = current_selection()
+		default_text = current_selection(),
 	})
 end, opts)
 
@@ -106,27 +116,27 @@ end, opts)
 
 vim.keymap.set("v", "<leader>ss", function()
 	require("telescope.builtin").current_buffer_fuzzy_find({
-        default_text = current_selection()
-    })
+		default_text = current_selection(),
+	})
 end, opts)
 
 vim.keymap.set("n", "<leader>ss", function()
 	require("telescope.builtin").current_buffer_fuzzy_find({
-        default_text = current_word()
-    })
+		default_text = "",
+	})
 end, opts)
 
 vim.keymap.set("n", "<leader>sS", function()
 	require("telescope").extensions.live_grep_args.live_grep_args({
 		previewer = false,
-        default_text = current_word()
+		default_text = "",
 	})
 end, opts)
 
 vim.keymap.set("v", "<leader>sS", function()
 	require("telescope").extensions.live_grep_args.live_grep_args({
 		previewer = false,
-        default_text = current_selection()
+		default_text = current_selection(),
 	})
 end, opts)
 
