@@ -1,21 +1,18 @@
 vim.o.termguicolors = true
 
-vim.g.tokyonight_style = "night"
+require("tokyonight").setup({
+    style = "night",
+    terminal_colors = true,
+    styles = {
+        comments = {italic = true},
+        functions = {italic = true},
+        sidebars = "dark",
+        floats = "dark",
+    },
+    lualine_bold = true
+})
 
 local colors = require("tokyonight.colors").setup({})
-
-vim.g.tokyonight_hide_inactive_statusline = "true"
-vim.g.tokyonight_italic_functions = true
-vim.g.tokyonight_italic_variables = true
-vim.g.tokyonight_lualine_bold = true
-vim.g.tokyonight_colors = {
-    gitSigns = {
-        add = colors.green,
-        change = colors.blue0,
-        delete = colors.red1
-    },
-    border = colors.dark3
-}
 
 -- WARNING: set colorscheme after configuration
 vim.cmd[[colorscheme tokyonight]]
