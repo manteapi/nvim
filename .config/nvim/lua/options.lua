@@ -20,7 +20,7 @@ local options = {
     relativenumber = true,                 -- Show relative line number
     signcolumn = "yes",                    -- Always show signcolumn
     autoread = true,                       -- Detect when a file has been changed and load it again
-    directory = "~/.local/share/nvim/swap" -- NOTE: Required on my encrypted filesystem, dunno why
+    -- directory = "~/.local/share/nvim/swap" -- NOTE: Required on my encrypted filesystem, dunno why
 }
 
 for k, v in pairs(options) do
