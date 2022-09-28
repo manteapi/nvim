@@ -117,6 +117,8 @@ for _, server in ipairs(servers) do
 				local fallback = lspconfig.util.root_pattern(unpack(fallback_root_files))(filename)
 				return primary or fallback
 			end,
+            -- NOTE: See https://pypi.org/project/python-lsp-server/
+            -- Install all optional providers: pip install "python-lsp-server[all]"
 			cmd = { "pylsp" },
 			settings = {
 				pylsp = {
