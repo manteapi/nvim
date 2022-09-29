@@ -22,8 +22,8 @@ require("neorg").setup({
 		["core.norg.dirman"] = {
 			config = {
 				workspaces = {
-					work = "~/repositories/neo-notes/work",
-					home = "~/repositories/neo-notes/home",
+					work = "~/repositories/dotfiles/neo-notes/work",
+					home = "~/repositories/dotfiles/neo-notes/home",
 				},
 			},
 		},
