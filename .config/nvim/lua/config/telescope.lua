@@ -8,6 +8,9 @@ require("telescope").setup({
 		find_files = {
 			theme = "dropdown",
 			hidden = true,
+            follow = true,
+            no_ignore = true,
+            no_ignore_parent = true
 		},
 	},
 	defaults = {
