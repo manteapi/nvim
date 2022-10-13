@@ -9,7 +9,10 @@ require("tokyonight").setup({
         sidebars = "dark",
         floats = "dark",
     },
-    lualine_bold = true
+    lualine_bold = true,
+    on_colors = function(colors)
+        colors.border = colors.blue5
+    end
 })
 
 local colors = require("tokyonight.colors").setup({})
