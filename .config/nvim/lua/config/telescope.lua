@@ -11,6 +11,7 @@ require("telescope").setup({
 			follow = true,
 			no_ignore = true,
 			no_ignore_parent = true,
+            find_command = { "fd", "--type", "f", "--hidden", "--exclude", ".git"}
 		},
 	},
 	defaults = {
@@ -29,6 +30,7 @@ require("telescope").setup({
 		},
 		file_ignore_patterns = {
 			"%.stl",
+			"%.STL",
 			"%.webm",
 			"%.mhd",
 			"%.idx",
@@ -52,13 +54,7 @@ require("telescope").setup({
 		},
 	},
 	extensions = {
-		fzf = {
-			fuzzy = true, -- false will only do exact matching
-			override_generic_sorter = true, -- override the generic sorter
-			override_file_sorter = true, -- override the file sorter
-			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-			-- the default case_mode is "smart_case"
-		},
+		fzf = {},
 		live_grep_args = {
 			auto_quoting = true,
 			mappings = {
@@ -71,10 +67,13 @@ require("telescope").setup({
 })
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("frecency")
-require("telescope").load_extension("repo")
 require("telescope").load_extension("file_browser")
 
 local opts = { noremap = true }
+
+vim.keymap.set("n", "<leader>sd", function()
+	require("telescope.builtin").diagnostics({})
+end, opts)
 
 vim.keymap.set("n", "<leader>st", function()
 	local current_file = vim.fn.expand("%:p:h", "", "")
@@ -85,8 +84,6 @@ end, opts)
 vim.keymap.set("n", "<leader>sf", function()
 	require("telescope.builtin").find_files({})
 end, opts)
-
-vim.keymap.set("n", "<leader>sF", require("telescope").extensions.repo.list, opts)
 
 vim.keymap.set("n", "<leader>se", function()
 	require("telescope").extensions.file_browser.file_browser({
