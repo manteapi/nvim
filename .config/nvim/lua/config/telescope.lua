@@ -106,6 +106,12 @@ vim.keymap.set("n", "<leader>sfn", function()
 	})
 end, opts)
 
+vim.keymap.set("n", "<leader>sfs", function()
+	require("telescope.builtin").find_files({
+		cwd = "~/Documents/sandbox/",
+	})
+end, opts)
+
 vim.keymap.set("n", "<leader>sSC", function()
 	require("telescope").extensions.live_grep_args.live_grep_args({
 		previewer = false,

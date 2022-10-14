@@ -4,13 +4,19 @@ require("neorg").setup({
 		["core.keybinds"] = {},
 		["core.norg.qol.toc"] = {},
 		["core.gtd.base"] = {
-            config = {
-                workspace = "work"
-            }
-        },
+			config = {
+				workspace = "work",
+			},
+		},
+		["core.presenter"] = {
+			config = {
+				zen_mode = "zen-mode",
+			},
+		},
 		["core.norg.journal"] = {
 			config = {
 				workspaces = "home",
+				strategy = "flat",
 			},
 		},
 		["core.norg.completion"] = {

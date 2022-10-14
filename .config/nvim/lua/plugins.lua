@@ -58,6 +58,20 @@ local packer_startup = {
 		-- 	"folke/which-key.nvim",
 		-- 	config = [[require("config/which-key")]],
 		-- })
+		--
+		use({
+			"folke/zen-mode.nvim",
+			config = function()
+				require("zen-mode").setup({})
+			end,
+		})
+
+		use({
+			"Pocco81/true-zen.nvim",
+			config = function()
+				require("true-zen").setup({})
+			end,
+		})
 
 		use({
 			"nvim-neotest/neotest",
@@ -84,7 +98,7 @@ local packer_startup = {
 			config = [[require("config/overseer")]],
 		})
 
-        -- use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
+		-- use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
 
 		use({
 			"fedepujol/move.nvim", -- move lines vertically
@@ -129,12 +143,12 @@ local packer_startup = {
 			config = [[require("config/colorizer")]],
 		})
 
-        use({"abecodes/tabout.nvim",
-            config = function()
-                require('tabout').setup({})
-            end
-        })
-
+		use({
+			"abecodes/tabout.nvim",
+			config = function()
+				require("tabout").setup({})
+			end,
+		})
 
 		use({ -- strip trailing whitespaces
 			"ntpeters/vim-better-whitespace",
@@ -204,7 +218,7 @@ local packer_startup = {
 			},
 			requires = {
 				"williamboman/mason-lspconfig.nvim",
-                "kyazdani42/nvim-web-devicons",
+				"kyazdani42/nvim-web-devicons",
 			},
 		})
 
@@ -349,6 +363,7 @@ local packer_startup = {
 
 		use({
 			"nvim-neorg/neorg",
+			run = ":Neorg sync-parsers",
 			config = [[require("config/neorg")]],
 			requires = "nvim-lua/plenary.nvim",
 		})
