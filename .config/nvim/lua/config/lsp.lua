@@ -74,18 +74,12 @@ for _, server in ipairs(servers) do
 			capabilities = capabilities,
 		})
 	elseif server == "sumneko_lua" then
-		local luadev_opts = require("lua-dev").setup({
-			lspconfig = {
-				cmd = {
-					vim.fn.expand("$HOME", "", "") .. "/.local/share/nvim/mason/bin/lua-language-server",
-				},
-				on_attach = on_attach,
-			},
+		server_opts = {
 			on_attach = on_attach,
 			capabilities = capabilities,
 			flags = flags,
-		})
-		lspconfig[server].setup(luadev_opts)
+		}
+		lspconfig[server].setup(server_opts)
 	elseif server == "pyright" then
 		server_opts = {
 			cmd = { "pyright-langserver", "--stdio" },
@@ -117,8 +111,8 @@ for _, server in ipairs(servers) do
 				local fallback = lspconfig.util.root_pattern(unpack(fallback_root_files))(filename)
 				return primary or fallback
 			end,
-            -- NOTE: See https://pypi.org/project/python-lsp-server/
-            -- Install all optional providers: pip install "python-lsp-server[all]"
+			-- NOTE: See https://pypi.org/project/python-lsp-server/
+			-- Install all optional providers: pip install "python-lsp-server[all]"
 			cmd = { "pylsp" },
 			settings = {
 				pylsp = {

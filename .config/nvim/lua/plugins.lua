@@ -204,6 +204,7 @@ local packer_startup = {
 			},
 			requires = {
 				"williamboman/mason-lspconfig.nvim",
+                "kyazdani42/nvim-web-devicons",
 			},
 		})
 
@@ -223,23 +224,7 @@ local packer_startup = {
 			config = [[require("config/lsp_lines")]],
 		})
 
-		-- nvim dev
-		use({
-			"folke/lua-dev.nvim",
-			config = function()
-				require("lua-dev").setup({
-					library = { plugins = { "neotest" }, types = true },
-				})
-			end,
-		})
-
 		use({ "tjdevries/nlua.nvim" })
-
-		use({
-			"folke/trouble.nvim", -- diagnostics visualizer
-			requires = "kyazdani42/nvim-web-devicons",
-			config = [[require("config/trouble")]],
-		})
 
 		use({
 			"liuchengxu/vista.vim",
@@ -367,13 +352,6 @@ local packer_startup = {
 			config = [[require("config/neorg")]],
 			requires = "nvim-lua/plenary.nvim",
 		})
-
-        use {
-            'phaazon/mind.nvim',
-            branch = 'v2.2',
-            requires = { 'nvim-lua/plenary.nvim' },
-            config = [[require("config/mind")]],
-        }
 	end,
 	config = { autoremove = true },
 }

@@ -8,9 +8,9 @@ require("telescope").setup({
 		find_files = {
 			theme = "dropdown",
 			hidden = true,
-            follow = true,
-            no_ignore = true,
-            no_ignore_parent = true
+			follow = true,
+			no_ignore = true,
+			no_ignore_parent = true,
 		},
 	},
 	defaults = {
@@ -75,7 +75,8 @@ require("telescope").load_extension("repo")
 require("telescope").load_extension("file_browser")
 
 local opts = { noremap = true }
-vim.keymap.set("n", "<leader>sn", function()
+
+vim.keymap.set("n", "<leader>st", function()
 	local current_file = vim.fn.expand("%:p:h", "", "")
 	local command = "TodoTelescope cwd=" .. current_file
 	vim.api.nvim_command(command)
@@ -84,7 +85,9 @@ end, opts)
 vim.keymap.set("n", "<leader>sf", function()
 	require("telescope.builtin").find_files({})
 end, opts)
+
 vim.keymap.set("n", "<leader>sF", require("telescope").extensions.repo.list, opts)
+
 vim.keymap.set("n", "<leader>se", function()
 	require("telescope").extensions.file_browser.file_browser({
 		path = vim.fn.expand("%:p:h", "", ""),
@@ -94,6 +97,12 @@ end, opts)
 vim.keymap.set("n", "<leader>sfc", function()
 	require("telescope.builtin").find_files({
 		cwd = "~/repositories/lucy-deployment/sofa-submodules/circle/",
+	})
+end, opts)
+
+vim.keymap.set("n", "<leader>sfn", function()
+	require("telescope.builtin").find_files({
+		cwd = "~/repositories/dotfiles/neo-notes/",
 	})
 end, opts)
 
