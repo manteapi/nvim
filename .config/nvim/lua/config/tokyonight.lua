@@ -20,8 +20,6 @@ local colors = require("tokyonight.colors").setup({})
 -- WARNING: set colorscheme after configuration
 vim.cmd[[colorscheme tokyonight]]
 
-vim.opt.laststatus=3
-
 -- Setup neogit highlight colors
 vim.api.nvim_set_hl(0, 'NeogitDiffAddHighlight', {background=colors.green2, foreground=colors.black})
 vim.api.nvim_set_hl(0, 'NeogitDiffDeleteHighlight', {background=colors.red1, foreground=colors.black})

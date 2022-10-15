@@ -21,7 +21,9 @@ local options = {
 	signcolumn = "yes", -- Always show signcolumn
 	autoread = true, -- Detect when a file has been changed and load it again
 	directory = vim.fn.expand("$HOME", "", "") .. "/.local/share/nvim/swap", -- NOTE: Required on my encrypted filesystem, dunno why
-    spell = true
+    spell = true,
+    laststatus = 3,
+    cmdheight = 0
 }
 
 
