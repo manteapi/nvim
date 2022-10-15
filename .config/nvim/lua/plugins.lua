@@ -250,6 +250,8 @@ local packer_startup = {
 			config = [[require("config/tokyonight")]],
 		}) -- color scheme
 
+        use({"folke/neodev.nvim"})
+
 		-- completion
 		use({
 			"hrsh7th/nvim-cmp",

@@ -1,3 +1,6 @@
+-- WARNING: make sure to setup neodev BEFORE lspconfig
+require("neodev").setup({})
+
 local lspconfig = require("lspconfig")
 
 local nullls = require("null-ls")
@@ -75,6 +78,13 @@ for _, server in ipairs(servers) do
 		})
 	elseif server == "sumneko_lua" then
 		server_opts = {
+			settings = {
+				Lua = {
+					completion = {
+						callSnippet = "Replace",
+					},
+				},
+			},
 			on_attach = on_attach,
 			capabilities = capabilities,
 			flags = flags,
