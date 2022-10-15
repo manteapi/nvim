@@ -8,7 +8,8 @@ local packer_startup = {
 
 		use({ "dstein64/vim-startuptime" })
 
-		use({ "machakann/vim-sandwich" }) -- operators for sandwiched texts
+        -- TODO: REMOVE
+		-- use({ "machakann/vim-sandwich" }) -- operators for sandwiched texts
 
 		use({
 			"kylechui/nvim-surround", -- ys / ds / cs
@@ -67,13 +68,6 @@ local packer_startup = {
 		})
 
 		use({
-			"Pocco81/true-zen.nvim",
-			config = function()
-				require("true-zen").setup({})
-			end,
-		})
-
-		use({
 			"nvim-neotest/neotest",
 			requires = {
 				"nvim-lua/plenary.nvim",
@@ -97,8 +91,6 @@ local packer_startup = {
 			"stevearc/overseer.nvim",
 			config = [[require("config/overseer")]],
 		})
-
-		-- use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
 
 		use({
 			"fedepujol/move.nvim", -- move lines vertically
@@ -143,12 +135,13 @@ local packer_startup = {
 			config = [[require("config/colorizer")]],
 		})
 
-		use({
-			"abecodes/tabout.nvim",
-			config = function()
-				require("tabout").setup({})
-			end,
-		})
+        -- TODO: REMOVE
+		-- use({
+		-- 	"abecodes/tabout.nvim",
+		-- 	config = function()
+		-- 		require("tabout").setup({})
+		-- 	end,
+		-- })
 
 		use({ -- strip trailing whitespaces
 			"ntpeters/vim-better-whitespace",
@@ -324,11 +317,12 @@ local packer_startup = {
 			config = [[require("config/scalpel")]],
 		})
 
-		use({
-			"windwp/nvim-spectre", -- easy search and replace across filesystems
-			requires = "nvim-lua/plenary.nvim",
-			config = [[require("config/spectre")]],
-		})
+        -- TODO: REMOVE
+		-- use({
+		-- 	"windwp/nvim-spectre", -- easy search and replace across filesystems
+		-- 	requires = "nvim-lua/plenary.nvim",
+		-- 	config = [[require("config/spectre")]],
+		-- })
 
 		-- git
 		use({
