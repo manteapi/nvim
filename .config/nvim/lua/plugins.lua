@@ -8,14 +8,12 @@ local packer_startup = {
 
 		use({ "dstein64/vim-startuptime" })
 
-        -- TODO: REMOVE
+		-- TODO: REMOVE
 		-- use({ "machakann/vim-sandwich" }) -- operators for sandwiched texts
 
 		use({
 			"kylechui/nvim-surround", -- ys / ds / cs
-			config = function()
-				require("nvim-surround").setup()
-			end,
+			config = [[require("config/nvim-surround")]],
 		})
 
 		use({ -- automatic pairs
@@ -62,9 +60,7 @@ local packer_startup = {
 		--
 		use({
 			"folke/zen-mode.nvim",
-			config = function()
-				require("zen-mode").setup({})
-			end,
+			config = [[require("config/zen-mode")]],
 		})
 
 		use({
@@ -82,9 +78,7 @@ local packer_startup = {
 		use({
 			"folke/todo-comments.nvim", -- flashy highlights for todo comments
 			requires = "nvim-lua/plenary.nvim",
-			config = function()
-				require("todo-comments").setup()
-			end,
+			config = [[require("config/todo-comments")]],
 		})
 
 		use({
@@ -120,12 +114,7 @@ local packer_startup = {
 				"html",
 				"racket",
 			},
-			config = function()
-				require("indent_blankline").setup({
-					show_current_context = true,
-					show_current_context_start = true,
-				})
-			end,
+			config = [[require("config/indent-blankline")]],
 		})
 
 		use({ "godlygeek/tabular" }) -- line up texts
@@ -135,7 +124,7 @@ local packer_startup = {
 			config = [[require("config/colorizer")]],
 		})
 
-        -- TODO: REMOVE
+		-- TODO: REMOVE
 		-- use({
 		-- 	"abecodes/tabout.nvim",
 		-- 	config = function()
@@ -161,9 +150,7 @@ local packer_startup = {
 
 		use({
 			"max397574/better-escape.nvim",
-			config = function()
-				require("better_escape").setup()
-			end,
+			config = [[require("config/better-escape")]],
 		})
 
 		use({ -- greeting screen
@@ -221,9 +208,7 @@ local packer_startup = {
 
 		use({
 			"j-hui/fidget.nvim",
-			config = function()
-				require("fidget").setup({})
-			end,
+			config = [[require("config/fidget")]],
 		})
 
 		use({
@@ -243,7 +228,7 @@ local packer_startup = {
 			config = [[require("config/tokyonight")]],
 		}) -- color scheme
 
-        use({"folke/neodev.nvim"})
+		use({ "folke/neodev.nvim" })
 
 		-- completion
 		use({
@@ -317,7 +302,7 @@ local packer_startup = {
 			config = [[require("config/scalpel")]],
 		})
 
-        -- TODO: REMOVE
+		-- TODO: REMOVE
 		-- use({
 		-- 	"windwp/nvim-spectre", -- easy search and replace across filesystems
 		-- 	requires = "nvim-lua/plenary.nvim",
@@ -345,9 +330,7 @@ local packer_startup = {
 		use({
 			"ruifm/gitlinker.nvim", -- git code browser
 			requires = "nvim-lua/plenary.nvim",
-			config = function()
-				require("gitlinker").setup({})
-			end,
+			config = [[require("config/gitlinker")]],
 		})
 
 		use("NoahTheDuke/vim-just") -- syntax highlight for justfiles
