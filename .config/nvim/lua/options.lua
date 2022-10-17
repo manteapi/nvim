@@ -23,7 +23,8 @@ local options = {
 	directory = vim.fn.expand("$HOME", "", "") .. "/.local/share/nvim/swap", -- NOTE: Required on my encrypted filesystem, dunno why
     spell = true,
     laststatus = 3,
-    cmdheight = 0
+    -- WARNING: Tried 0 but some drawbacks made me turn back. Among them, the fact that I do not know when I record a macro
+    cmdheight = 1
 }
 
 
