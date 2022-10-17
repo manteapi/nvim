@@ -216,6 +216,11 @@ local packer_startup = {
 			config = [[require("config/lsp_lines")]],
 		})
 
+		use({
+			"smjonas/inc-rename.nvim",
+			config = [[require("config/inc-rename")]],
+		})
+
 		use({ "tjdevries/nlua.nvim" })
 
 		use({
@@ -342,10 +347,10 @@ local packer_startup = {
 
 		use({
 			"nvim-neorg/neorg",
-            ft = "norg",
+			ft = "norg",
 			after = {
 				"nvim-treesitter",
-            },
+			},
 			run = ":Neorg sync-parsers",
 			config = [[require("config/neorg")]],
 			requires = "nvim-lua/plenary.nvim",
