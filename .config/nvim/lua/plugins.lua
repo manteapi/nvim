@@ -4,6 +4,8 @@ local packer_startup = {
 	function(use)
 		use({ "wbthomason/packer.nvim" })
 
+		use({ "lewis6991/impatient.nvim", config = [[require("config/impatient")]] })
+
 		use({ "nvim-lua/plenary.nvim" }) -- nvim lua helpers
 
 		use({ "dstein64/vim-startuptime" })
