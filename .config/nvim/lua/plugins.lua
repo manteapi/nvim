@@ -251,7 +251,7 @@ local packer_startup = {
 			"L3MON4D3/LuaSnip",
 			config = [[require("config/luasnip")]],
 		})
-
+		--
 		-- tmux
 		use({ "christoomey/vim-tmux-navigator" })
 
@@ -302,12 +302,12 @@ local packer_startup = {
 			config = [[require("config/scalpel")]],
 		})
 
-		-- TODO: REMOVE
-		-- use({
-		-- 	"windwp/nvim-spectre", -- easy search and replace across filesystems
-		-- 	requires = "nvim-lua/plenary.nvim",
-		-- 	config = [[require("config/spectre")]],
-		-- })
+		-- -- TODO: REMOVE
+		-- -- use({
+		-- -- 	"windwp/nvim-spectre", -- easy search and replace across filesystems
+		-- -- 	requires = "nvim-lua/plenary.nvim",
+		-- -- 	config = [[require("config/spectre")]],
+		-- -- })
 
 		-- git
 		use({
@@ -342,6 +342,10 @@ local packer_startup = {
 
 		use({
 			"nvim-neorg/neorg",
+            ft = "norg",
+			after = {
+				"nvim-treesitter",
+            },
 			run = ":Neorg sync-parsers",
 			config = [[require("config/neorg")]],
 			requires = "nvim-lua/plenary.nvim",
