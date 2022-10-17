@@ -32,26 +32,32 @@ end
 local opts = { noremap = true, silent = true }
 
 -- Goto previous/next diagnostic warning/error
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {})
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {})
+vim.keymap.set("n", "<leader>de", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, opts)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
 vim.keymap.set("n", "<leader>sr", require("telescope.builtin").lsp_references, opts)
 vim.keymap.set("n", "<leader>sds", require("telescope.builtin").lsp_document_symbols, opts)
 vim.keymap.set("n", "<leader>sws", require("telescope.builtin").lsp_workspace_symbols, opts)
 
-local on_attach = function(client, buffer)
+local on_attach = function(client, bufnr)
 	-- INFO: see https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
 	if client.name ~= "sumneko_lua" then
-		formatting_callback(client, buffer)
+		formatting_callback(client, bufnr)
 	end
-	vim.api.nvim_buf_set_keymap(buffer, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(buffer, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(buffer, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(buffer, "n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(buffer, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(buffer, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(buffer, "n", "<leader>h", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(buffer, "i", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+    local bufopts = {noremap=true, silent=true, buffer=bufnr}
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
+	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+
+    -- INFO: Replaced by IncRename in inc-rename.lua
+	-- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+
+	vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, bufopts)
+	vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, opts)
 end
 
 local flags = {}
