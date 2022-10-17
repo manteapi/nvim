@@ -46,23 +46,38 @@ local on_attach = function(client, bufnr)
 	if client.name ~= "sumneko_lua" then
 		formatting_callback(client, bufnr)
 	end
-    local bufopts = {noremap=true, silent=true, buffer=bufnr}
+	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
 
-    -- INFO: Replaced by IncRename in inc-rename.lua
+	-- INFO: Replaced by IncRename in inc-rename.lua
 	-- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
 
 	vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, bufopts)
 	vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, opts)
 end
 
-local flags = {}
+local flags = {
+	-- This is the default in Nvim 0.7+
+	debounce_text_changes = 150,
+}
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+local get_root_dir = function(filename, _)
+	local root_files = {
+		"neovim.toml",
+	}
+	local fallback_root_files = {
+		".git",
+	}
+	local primary = lspconfig.util.root_pattern(unpack(root_files))(filename)
+	local fallback = lspconfig.util.root_pattern(unpack(fallback_root_files))(filename)
+	return primary or fallback
+end
 
 for _, server in ipairs(servers) do
 	local server_opts = {
@@ -98,6 +113,7 @@ for _, server in ipairs(servers) do
 		lspconfig[server].setup(server_opts)
 	elseif server == "pyright" then
 		server_opts = {
+			root_dir = get_root_dir,
 			cmd = { "pyright-langserver", "--stdio" },
 			settings = {
 				pyright = {
@@ -116,17 +132,7 @@ for _, server in ipairs(servers) do
 		lspconfig[server].setup(server_opts)
 	elseif server == "pylsp" then
 		server_opts = {
-			root_dir = function(filename, _)
-				local root_files = {
-					"neovim.toml",
-				}
-				local fallback_root_files = {
-					".git",
-				}
-				local primary = lspconfig.util.root_pattern(unpack(root_files))(filename)
-				local fallback = lspconfig.util.root_pattern(unpack(fallback_root_files))(filename)
-				return primary or fallback
-			end,
+			root_dir = get_root_dir,
 			-- NOTE: See https://pypi.org/project/python-lsp-server/
 			-- Install all optional providers: pip install "python-lsp-server[all]"
 			cmd = { "pylsp" },
@@ -155,6 +161,7 @@ for _, server in ipairs(servers) do
 		lspconfig[server].setup(server_opts)
 	elseif server == "jedi_language_server" then
 		server_opts = {
+			root_dir = get_root_dir,
 			cmd = { "jedi-language-server" },
 			init_options = {
 				diagnostics = {
