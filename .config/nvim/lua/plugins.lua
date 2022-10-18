@@ -47,6 +47,8 @@ local packer_startup = {
 			config = [[require("config/nvim-bqf")]],
 		})
 
+		use({ "kevinhwang91/nvim-hlslens" })
+
 		-- use {
 		-- 	"iamcco/markdown-preview.nvim",
 		-- 	run = "cd app && yarn install", -- Need `yarn` for installation.
