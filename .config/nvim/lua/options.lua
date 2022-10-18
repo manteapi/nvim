@@ -21,12 +21,11 @@ local options = {
 	signcolumn = "yes", -- Always show signcolumn
 	autoread = true, -- Detect when a file has been changed and load it again
 	directory = vim.fn.expand("$HOME", "", "") .. "/.local/share/nvim/swap", -- NOTE: Required on my encrypted filesystem, dunno why
-    spell = true,
-    laststatus = 3,
-    -- WARNING: Tried 0 but some drawbacks made me turn back. Among them, the fact that I do not know when I record a macro
-    cmdheight = 1
+	spell = true,
+	laststatus = 3,
+	-- WARNING: Tried 0 but some drawbacks made me turn back. Among them, the fact that I do not know when I record a macro
+	cmdheight = 1,
 }
-
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
