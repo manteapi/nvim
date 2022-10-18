@@ -37,7 +37,7 @@ cmp.setup({
 			},
 		},
 		{ name = "path" },
-        { name = "neorg"}
+		{ name = "neorg" },
 	},
 	snippet = {
 		expand = function(args)
