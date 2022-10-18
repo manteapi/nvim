@@ -8,5 +8,5 @@ require'nvim-tree'.setup {
 }
 
 local opts = {noremap=true, silent=true}
-vim.api.nvim_set_keymap("n", "<C-n>", "<cmd>:NvimTreeToggle<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>:NvimTreeFocus<CR>", opts)
+vim.keymap.set("n", "<C-n>", "<cmd>:NvimTreeToggle<CR>", opts)
+vim.keymap.set("n", "<leader>t", "<cmd>:NvimTreeFocus<CR>", opts)
