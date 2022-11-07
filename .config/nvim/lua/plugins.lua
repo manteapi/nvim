@@ -52,11 +52,16 @@ local packer_startup = {
 			config = [[require("config/nvim-hlslens")]],
 		})
 
-		-- use {
-		-- 	"iamcco/markdown-preview.nvim",
-		-- 	run = "cd app && yarn install", -- Need `yarn` for installation.
-		-- 	ft = "markdown"
-		-- }
+		-- install without yarn or npm
+		use({
+			"iamcco/markdown-preview.nvim",
+			run = "cd app && npm install",
+			setup = function()
+				vim.g.mkdp_filetypes = { "markdown" }
+			end,
+			ft = { "markdown" },
+		})
+
 
 		use({ "rcarriga/nvim-notify", config = [[require("config/nvim-notify")]] })
 
