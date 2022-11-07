@@ -47,7 +47,10 @@ local packer_startup = {
 			config = [[require("config/nvim-bqf")]],
 		})
 
-		use({ "kevinhwang91/nvim-hlslens" })
+		use({
+			"kevinhwang91/nvim-hlslens",
+			config = [[require("config/nvim-hlslens")]],
+		})
 
 		-- use {
 		-- 	"iamcco/markdown-preview.nvim",
