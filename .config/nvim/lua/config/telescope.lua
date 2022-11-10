@@ -103,6 +103,12 @@ vim.keymap.set("n", "<leader>sfn", function()
 	})
 end, opts)
 
+vim.keymap.set("n", "<leader>sfv", function()
+	require("telescope.builtin").find_files({
+		cwd = "~/repositories/dotfiles/nvim/",
+	})
+end, opts)
+
 vim.keymap.set("n", "<leader>sfs", function()
 	require("telescope.builtin").find_files({
 		cwd = "~/Documents/sandbox/",
