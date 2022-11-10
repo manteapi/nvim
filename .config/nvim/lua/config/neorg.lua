@@ -1,15 +1,17 @@
 require("neorg").setup({
 	load = {
 		["core.defaults"] = {},
-        ["core.export"] = {},
+		["core.export"] = {},
 		["core.export.markdown"] = {},
 		["core.keybinds"] = {},
 		["core.norg.qol.toc"] = {},
 		["core.gtd.base"] = {
 			config = {
 				workspace = "work",
+                exclude = {"journal", "presentations"}
 			},
 		},
+		["core.gtd.ui"] = {},
 		["core.presenter"] = {
 			config = {
 				zen_mode = "zen-mode",
