@@ -1,1 +1,1 @@
-vim.api.nvim_command("set makeprg=cargo\\ build")
+vim.api.nvim_command("set makeprg=cargo")

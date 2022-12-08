@@ -3,50 +3,44 @@ require("neodev").setup({})
 
 local lspconfig = require("lspconfig")
 
-local nullls = require("null-ls")
-
-local devmojilint = require("config.null-ls.devmoji")
-local commitlint = require("config.null-ls.commitlint")
-
-local servers = {
+local mason_servers = {
 	"jedi_language_server",
 	"pylsp",
 	"pyright",
 	"cmake",
 	"clangd",
 	"rust_analyzer",
-	"null-ls",
 	"sumneko_lua",
 	"tsserver",
 }
 
-local formatting_callback = function(client, bufnr)
-	if client.supports_method("textDocument/formatting") then
-		vim.keymap.set("n", "<leader>f", function()
-			local params = vim.lsp.util.make_formatting_params({})
-			client.request("textDocument/formatting", params, nil, bufnr)
-		end, { buffer = bufnr })
-	end
-end
+require("mason").setup({})
+require("mason-lspconfig").setup({
+	ensure_installed = mason_servers,
+})
 
-local opts = { noremap = true, silent = true }
+local nullls = require("null-ls")
+local devmojilint = require("config.null-ls.devmoji")
+local commitlint = require("config.null-ls.commitlint")
 
 -- Goto previous/next diagnostic warning/error
+local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<leader>de", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, opts)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
-vim.keymap.set("n", "<leader>sr", require("telescope.builtin").lsp_references, opts)
-vim.keymap.set("n", "<leader>sds", require("telescope.builtin").lsp_document_symbols, opts)
-vim.keymap.set("n", "<leader>sws", require("telescope.builtin").lsp_workspace_symbols, opts)
-
 local on_attach = function(client, bufnr)
+	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	-- INFO: see https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
 	if client.name ~= "sumneko_lua" then
-		formatting_callback(client, bufnr)
+        vim.keymap.set("n", "<Leader>f", function()
+            vim.lsp.buf.format({ async = true })
+        end, bufopts)
 	end
-	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+	vim.keymap.set("n", "<leader>sr", require("telescope.builtin").lsp_references, bufopts)
+	vim.keymap.set("n", "<leader>sds", require("telescope.builtin").lsp_document_symbols, bufopts)
+	vim.keymap.set("n", "<leader>sws", require("telescope.builtin").lsp_workspace_symbols, bufopts)
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
@@ -65,7 +59,7 @@ local flags = {
 	debounce_text_changes = 150,
 }
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local get_root_dir = function(filename, _)
 	local root_files = {
@@ -78,6 +72,9 @@ local get_root_dir = function(filename, _)
 	local fallback = lspconfig.util.root_pattern(unpack(fallback_root_files))(filename)
 	return primary or fallback
 end
+
+local servers = mason_servers
+table.insert(servers, "null-ls")
 
 for _, server in ipairs(servers) do
 	local server_opts = {

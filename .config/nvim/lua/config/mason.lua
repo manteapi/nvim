@@ -1,20 +1,16 @@
-require("mason").setup({
-	ui = {
-		icons = {
-			package_installed = "✓",
-		},
-	},
-})
+require("mason").setup({})
+
+local servers = {
+    "jedi_language_server",
+    "pylsp",
+    "pyright",
+    "cmake",
+    "clangd",
+    "rust_analyzer",
+    "sumneko_lua",
+    "tsserver"
+}
 
 require("mason-lspconfig").setup({
-	ensure_installed = {
-		"jedi_language_server",
-		"pylsp",
-		"pyright",
-		"cmake",
-		"clangd",
-		"rust_analyzer",
-		"sumneko_lua",
-		"tsserver",
-	},
+	ensure_installed = servers
 })

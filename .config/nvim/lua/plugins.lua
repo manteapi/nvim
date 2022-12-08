@@ -62,7 +62,6 @@ local packer_startup = {
 			ft = { "markdown" },
 		})
 
-
 		use({ "rcarriga/nvim-notify", config = [[require("config/nvim-notify")]] })
 
 		-- use({
@@ -180,37 +179,28 @@ local packer_startup = {
 
 		use({
 			"nvim-treesitter/nvim-treesitter",
-			run = ":TSUpdate",
-			config = [[require("config/treesitter")]],
-		})
-
-		use({
-			"nvim-treesitter/nvim-treesitter-textobjects",
-			config = [[require("config/treesitter-textobjects")]],
-		})
-
-		use({
-			"nvim-treesitter/playground",
-		})
-
-		use({
-			"nvim-treesitter/nvim-treesitter-context",
-			config = [[require("config/treesitter-context")]],
-		})
+            -- WARNING: This causes trouble when installing plugins for the first time
+			-- run = ":TSUpdate",
+			config = {
+                [[require("config/treesitter")]],
+        		-- [[require("config/treesitter-textobjects")]],
+			    [[require("config/treesitter-context")]],
+            },
+            requires = {
+                -- "nvim-treesitter/nvim-treesitter-textobjects",
+                "nvim-treesitter/nvim-treesitter-context",
+                "nvim-treesitter/playground"
+            }
+        })
 
 		use({
 			"neovim/nvim-lspconfig", -- good defaults for lsp
-		})
-
-		use({
-			"williamboman/mason.nvim", -- lsp managers
-			config = {
-				[[require("config/mason")]],
-				[[require("config/lsp")]],
-			},
 			requires = {
+				"williamboman/mason.nvim",
 				"williamboman/mason-lspconfig.nvim",
-				"kyazdani42/nvim-web-devicons",
+			},
+			config = {
+				[[require("config/lsp")]],
 			},
 		})
 
@@ -251,13 +241,16 @@ local packer_startup = {
 		use({
 			"hrsh7th/nvim-cmp",
 			config = [[require("config/cmp")]],
+			requires = {
+				{ "hrsh7th/cmp-buffer" },
+				{ "hrsh7th/cmp-path" },
+				{ "hrsh7th/cmp-cmdline" },
+				{ "hrsh7th/cmp-nvim-lua" },
+				{ "hrsh7th/cmp-nvim-lsp" },
+				{ "saadparwaiz1/cmp_luasnip" },
+			},
 		})
-		use({ "hrsh7th/cmp-buffer" })
-		use({ "hrsh7th/cmp-path" })
-		use({ "hrsh7th/cmp-cmdline" })
-		use({ "hrsh7th/cmp-nvim-lua" })
-		use({ "hrsh7th/cmp-nvim-lsp" })
-		use({ "saadparwaiz1/cmp_luasnip" })
+
 		use({
 			"onsails/lspkind.nvim",
 			config = [[require("config/lspkind")]],
@@ -354,7 +347,6 @@ local packer_startup = {
 
 		use({
 			"simrat39/rust-tools.nvim", -- enhanced tools for rust development
-			commit = "7b4d155dd47e211ee661cbb4c7969b245f768edb",
 		})
 
 		use({
@@ -363,7 +355,8 @@ local packer_startup = {
 			after = {
 				"nvim-treesitter",
 			},
-			run = ":Neorg sync-parsers",
+            -- WARNING: This causes trouble when installing plugins for the first time
+			-- run = ":Neorg sync-parsers",
 			config = [[require("config/neorg")]],
 			requires = "nvim-lua/plenary.nvim",
 		})

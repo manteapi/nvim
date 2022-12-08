@@ -8,7 +8,7 @@ require("neorg").setup({
 		["core.gtd.base"] = {
 			config = {
 				workspace = "work",
-                exclude = {"journal", "presentations"}
+                exclude = {"journal", "presentations", "tasks/trash"}
 			},
 		},
 		["core.gtd.ui"] = {},
