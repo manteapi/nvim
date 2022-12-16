@@ -51,12 +51,12 @@ local on_attach = function(client, bufnr)
 	-- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
 
 	vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, bufopts)
-	vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, opts)
+	vim.keymap.set("i", "<leader>H", vim.lsp.buf.signature_help, opts)
 end
 
 local flags = {
-	-- This is the default in Nvim 0.7+
-	debounce_text_changes = 150,
+	-- NOTE: This is the default in Nvim 0.7+
+	-- debounce_text_changes = 150,
 }
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
