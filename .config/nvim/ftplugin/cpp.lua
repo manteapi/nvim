@@ -1,3 +1,4 @@
+vim.opt.foldlevel=99
 vim.opt.foldmethod="expr"
 vim.wo.foldmethod="expr"
 vim.wo.foldexpr="nvim_treesitter#foldexpr()"
