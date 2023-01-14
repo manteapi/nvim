@@ -1,1 +1,3 @@
-vim.g.Illuminate_delay = 0
+require('illuminate').configure({
+    large_file_cutoff = 10000
+})
