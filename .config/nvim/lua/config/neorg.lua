@@ -5,13 +5,13 @@ require("neorg").setup({
 		["core.export.markdown"] = {},
 		["core.keybinds"] = {},
 		["core.norg.qol.toc"] = {},
-		["core.gtd.base"] = {
-			config = {
-				workspace = "work",
-                exclude = {"journal", "presentations", "tasks/trash"}
-			},
-		},
-		["core.gtd.ui"] = {},
+		-- ["core.gtd.base"] = {
+		-- 	config = {
+		-- 		workspace = "work",
+        --               exclude = {"journal", "presentations", "tasks/trash"}
+		-- 	},
+		-- },
+		-- ["core.gtd.ui"] = {},
 		["core.presenter"] = {
 			config = {
 				zen_mode = "zen-mode",

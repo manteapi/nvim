@@ -79,7 +79,6 @@ local packer_startup = {
 			requires = {
 				"nvim-lua/plenary.nvim",
 				"nvim-treesitter/nvim-treesitter",
-				"antoinemadec/FixCursorHold.nvim",
 				"nvim-neotest/neotest-vim-test",
 				"vim-test/vim-test",
 			},
