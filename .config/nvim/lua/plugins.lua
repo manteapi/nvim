@@ -97,11 +97,6 @@ local packer_startup = {
 		})
 
 		use({
-			"fedepujol/move.nvim", -- move lines vertically
-			config = [[require("config/move")]],
-		})
-
-		use({
 			"karb94/neoscroll.nvim", -- smooth scrolling
 			config = [[require("config/neoscroll")]],
 		})
@@ -282,12 +277,6 @@ local packer_startup = {
 				{ "nvim-telescope/telescope-file-browser.nvim" },
 			},
 			config = [[require("config/telescope")]],
-		})
-
-		-- WARNING: Requires sqlite3
-		use({
-			"nvim-telescope/telescope-frecency.nvim",
-			requires = { "kkharji/sqlite.lua" },
 		})
 
 		use({
