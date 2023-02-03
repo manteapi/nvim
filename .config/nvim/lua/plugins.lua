@@ -77,11 +77,6 @@ local packer_startup = {
 		})
 
 		use({
-			"stevearc/overseer.nvim",
-			config = [[require("config/overseer")]],
-		})
-
-		use({
 			"karb94/neoscroll.nvim", -- smooth scrolling
 			config = [[require("config/neoscroll")]],
 		})
