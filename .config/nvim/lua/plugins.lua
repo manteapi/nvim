@@ -4,14 +4,9 @@ local packer_startup = {
 	function(use)
 		use({ "wbthomason/packer.nvim" })
 
-		use({ "lewis6991/impatient.nvim", config = [[require("config/impatient")]] })
-
 		use({ "nvim-lua/plenary.nvim" }) -- nvim lua helpers
 
 		use({ "dstein64/vim-startuptime" })
-
-		-- TODO: REMOVE
-		-- use({ "machakann/vim-sandwich" }) -- operators for sandwiched texts
 
 		use({
 			"kylechui/nvim-surround", -- ys / ds / cs
@@ -63,16 +58,6 @@ local packer_startup = {
 		})
 
 		use({ "rcarriga/nvim-notify", config = [[require("config/nvim-notify")]] })
-
-		-- use({
-		-- 	"folke/which-key.nvim",
-		-- 	config = [[require("config/which-key")]],
-		-- })
-		--
-		use({
-			"folke/zen-mode.nvim",
-			config = [[require("config/zen-mode")]],
-		})
 
 		use({
 			"nvim-neotest/neotest",
@@ -129,14 +114,6 @@ local packer_startup = {
 			config = [[require("config/colorizer")]],
 		})
 
-		-- TODO: REMOVE
-		-- use({
-		-- 	"abecodes/tabout.nvim",
-		-- 	config = function()
-		-- 		require("tabout").setup({})
-		-- 	end,
-		-- })
-
 		use({ -- strip trailing whitespaces
 			"ntpeters/vim-better-whitespace",
 			config = [[require("config/better-whitespace")]],
@@ -160,6 +137,7 @@ local packer_startup = {
 
 		use({ -- greeting screen
 			"glepnir/dashboard-nvim",
+            event = "VimEnter",
 			config = [[require("config/dashboard")]],
 		})
 
@@ -205,16 +183,6 @@ local packer_startup = {
 		use({
 			"j-hui/fidget.nvim",
 			config = [[require("config/fidget")]],
-		})
-
-		use({
-			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-			config = [[require("config/lsp_lines")]],
-		})
-
-		use({
-			"smjonas/inc-rename.nvim",
-			config = [[require("config/inc-rename")]],
 		})
 
 		use({ "tjdevries/nlua.nvim" })
@@ -295,27 +263,12 @@ local packer_startup = {
 
 		use({ "numToStr/Comment.nvim", config = [[require("config/comment")]] }) -- comments
 
-		use({
-			"wincent/scalpel",
-			config = [[require("config/scalpel")]],
-		})
-
-		-- -- TODO: REMOVE
-		-- -- use({
-		-- -- 	"windwp/nvim-spectre", -- easy search and replace across filesystems
-		-- -- 	requires = "nvim-lua/plenary.nvim",
-		-- -- 	config = [[require("config/spectre")]],
-		-- -- })
-
 		-- git
 		use({
 			"TimUntersberger/neogit", -- magit for neovim
 			requires = "nvim-lua/plenary.nvim",
 			config = [[require("config/neogit")]],
 		})
-
-		use({ "tpope/vim-fugitive" })
-		use({ "tpope/vim-abolish" })
 
 		use({
 			"lewis6991/gitsigns.nvim",

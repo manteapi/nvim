@@ -10,7 +10,7 @@ vim.api.nvim_create_user_command('NeogitOpen',
     function()
         local current_directory = vim.fn.expand('%:p:h')
         neogit.open({ cwd = current_directory })
-		raw_notify(" " .. current_directory .. " used for neogit !", "achieve")
+        raw_notify(" " .. current_directory .. " used for neogit !", "achieve")
     end,
-    {nargs=0}
+    { desc = "Open Neogit for the current file", nargs = 0 }
 )
