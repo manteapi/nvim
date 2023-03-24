@@ -180,6 +180,14 @@ local packer_startup = {
 			config = [[require("config/fidget")]],
 		})
 
+        use ({
+            'mfussenegger/nvim-dap-python',
+            requires = {
+                'mfussenegger/nvim-dap',
+            },
+            config = [[require("config/nvim-dap")]]
+        })
+
 		use({ "tjdevries/nlua.nvim" })
 
 		use({

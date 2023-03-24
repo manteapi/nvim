@@ -1,4 +1,4 @@
-vim.g.python3_host_prog = '~/.venv/bin/python3'
+vim.g.python3_host_prog = '~/.venv/bin/python'
 
 vim.opt.foldlevel=99
 vim.opt.foldmethod="expr"

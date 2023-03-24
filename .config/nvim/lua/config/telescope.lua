@@ -92,7 +92,7 @@ end, opts)
 
 vim.keymap.set("n", "<leader>sfc", function()
 	require("telescope.builtin").find_files({
-		cwd = "~/repositories/lucy-deployment/sofa-submodules/circle/",
+		cwd = "~/repositories/lucy-deployment/lucy/",
 	})
 end, opts)
 
@@ -117,7 +117,7 @@ end, opts)
 vim.keymap.set("n", "<leader>sSC", function()
 	require("telescope").extensions.live_grep_args.live_grep_args({
 		previewer = false,
-		cwd = "~/repositories/lucy-deployment/sofa-submodules/circle/",
+		cwd = "~/repositories/lucy-deployment/lucy/",
 		default_text = "",
 	})
 end, opts)
@@ -125,7 +125,7 @@ end, opts)
 vim.keymap.set("v", "<leader>sSC", function()
 	require("telescope").extensions.live_grep_args.live_grep_args({
 		previewer = false,
-		cwd = "~/repositories/lucy-deployment/sofa-submodules/circle/",
+		cwd = "~/repositories/lucy-deployment/lucy/",
 		default_text = current_selection(),
 	})
 end, opts)

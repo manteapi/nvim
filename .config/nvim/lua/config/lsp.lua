@@ -8,10 +8,8 @@ local mason_servers = {
     "cmake",
     "clangd",
     "rust_analyzer",
-    "sumneko_lua",
     "tsserver",
 }
-
 require("mason").setup({})
 require("mason-lspconfig").setup({
     ensure_installed = mason_servers,
@@ -31,7 +29,7 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 local on_attach = function(client, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     -- INFO: see https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
-    if client.name ~= "sumneko_lua" then
+    if client.name ~= "lua_ls" then
         vim.keymap.set("n", "<Leader>f", function()
             vim.lsp.buf.format({ async = true })
         end, bufopts)
@@ -45,8 +43,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
 
-    -- INFO: Replaced by IncRename in inc-rename.lua
-    -- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
 
     vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, bufopts)
     vim.keymap.set("i", "<leader>H", vim.lsp.buf.signature_help, opts)
@@ -94,20 +91,6 @@ for _, server in ipairs(servers) do
             end,
             capabilities = capabilities,
         })
-    elseif server == "sumneko_lua" then
-        server_opts = {
-            settings = {
-                Lua = {
-                    completion = {
-                        callSnippet = "Replace",
-                    },
-                },
-            },
-            on_attach = on_attach,
-            capabilities = capabilities,
-            flags = flags,
-        }
-        lspconfig[server].setup(server_opts)
     elseif server == "pyright" then
         server_opts = {
             root_dir = get_root_dir,
