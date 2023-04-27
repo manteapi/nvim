@@ -92,7 +92,13 @@ end, opts)
 
 vim.keymap.set("n", "<leader>sfc", function()
 	require("telescope.builtin").find_files({
-		cwd = "~/repositories/lucy-deployment/lucy/",
+		cwd = "~/repositories/lucy-deployment/circlecad/",
+	})
+end, opts)
+
+vim.keymap.set("n", "<leader>sfb", function()
+	require("telescope.builtin").find_files({
+		cwd = "~/repositories/lucy-deployment/circlecad/",
 	})
 end, opts)
 
@@ -117,7 +123,7 @@ end, opts)
 vim.keymap.set("n", "<leader>sSC", function()
 	require("telescope").extensions.live_grep_args.live_grep_args({
 		previewer = false,
-		cwd = "~/repositories/lucy-deployment/lucy/",
+		cwd = "~/repositories/lucy-deployment/circlecad/",
 		default_text = "",
 	})
 end, opts)
@@ -125,7 +131,7 @@ end, opts)
 vim.keymap.set("v", "<leader>sSC", function()
 	require("telescope").extensions.live_grep_args.live_grep_args({
 		previewer = false,
-		cwd = "~/repositories/lucy-deployment/lucy/",
+		cwd = "~/repositories/lucy-deployment/circlecad/",
 		default_text = current_selection(),
 	})
 end, opts)

@@ -9,6 +9,7 @@ local mason_servers = {
     "clangd",
     "rust_analyzer",
     "tsserver",
+    "lua_ls"
 }
 require("mason").setup({})
 require("mason-lspconfig").setup({
@@ -68,66 +69,108 @@ local get_root_dir = function(filename, _)
     return primary or fallback
 end
 
-local servers = mason_servers
-table.insert(servers, "null-ls")
+nullls.register(devmojilint)
+nullls.register(commitlint)
+nullls.setup({
+    sources = {
+        nullls.builtins.formatting.stylua,
+        nullls.builtins.formatting.yapf,
+        nullls.builtins.formatting.qmlformat,
+        nullls.builtins.diagnostics.qmllint,
+        nullls.builtins.diagnostics.flake8
+    },
+    on_attach = function(client, buffer)
+        on_attach(client, buffer)
+    end,
+    capabilities = capabilities,
+})
 
-for _, server in ipairs(servers) do
-    local server_opts = {
+local server_opts = {
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+lspconfig["lua_ls"].setup(server_opts)
+
+server_opts = {
+    root_dir = get_root_dir,
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = flags,
+}
+lspconfig["pyright"].setup(server_opts)
+
+server_opts = {
+    root_dir = get_root_dir,
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = flags,
+}
+lspconfig["clangd"].setup(server_opts)
+
+server_opts = {
+    root_dir = get_root_dir,
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = flags,
+}
+lspconfig["tsserver"].setup(server_opts)
+
+server_opts = {
+    root_dir = get_root_dir,
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = flags,
+}
+lspconfig["cmake"].setup(server_opts)
+
+require("rust-tools").setup({
+    tools = {
+        autoSetHints = true,
+        inlay_hints = {
+            show_parameter_hints = false,
+            parameter_hints_prefix = "",
+            other_hints_prefix = "",
+        },
+    },
+    settings = {
+        ["rust-analyzer"] = { -- INFO: https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+            checkOnSave = {
+                command = "clippy",
+            },
+        },
+    },
+    server = {
         capabilities = capabilities,
         on_attach = on_attach,
         flags = flags,
-    }
-    if server == "null-ls" then
-        -- nullls.register(devmojilint)
-        nullls.register(commitlint)
-        nullls.setup({
-            sources = {
-                nullls.builtins.formatting.stylua,
-                nullls.builtins.formatting.yapf,
-                nullls.builtins.diagnostics.flake8
-            },
-            on_attach = function(client, buffer)
-                on_attach(client, buffer)
-            end,
-            capabilities = capabilities,
-        })
-    elseif server == "pyright" then
-        server_opts = {
-            root_dir = get_root_dir,
-            capabilities = capabilities,
-            on_attach = on_attach,
-            flags = flags,
-        }
-        lspconfig[server].setup(server_opts)
-    elseif server == "rust_analyzer" then
-        require("rust-tools").setup({
-            tools = {
-                autoSetHints = true,
-                inlay_hints = {
-                    show_parameter_hints = false,
-                    parameter_hints_prefix = "",
-                    other_hints_prefix = "",
-                },
-            },
-            settings = {
-                ["rust-analyzer"] = { -- INFO: https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-                    checkOnSave = {
-                        command = "clippy",
-                    },
-                },
-            },
-            server = {
-                capabilities = capabilities,
-                on_attach = on_attach,
-                flags = flags,
-            },
-        })
-    else
-        server_opts = {
-            capabilities = capabilities,
-            on_attach = on_attach,
-            flags = flags,
-        }
-        lspconfig[server].setup(server_opts)
-    end
-end
+    },
+})
+
+server_opts = {
+    cmd = {"qmlls", "--build-dir", "/home/pmanteaux/repositories/build-release/data"},
+    filetypes = {"qml"},
+    single_file_support = true,
+    root_dir = get_root_dir,
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = flags,
+}
+lspconfig["qmlls"].setup(server_opts)
