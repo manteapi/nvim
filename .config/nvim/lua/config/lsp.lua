@@ -34,6 +34,9 @@ local on_attach = function(client, bufnr)
         vim.keymap.set("n", "<Leader>f", function()
             vim.lsp.buf.format({ async = true })
         end, bufopts)
+        vim.keymap.set("v", "<Leader>f", function()
+            vim.lsp.buf.format({ async = true })
+        end, bufopts)
     end
     vim.keymap.set("n", "<leader>sr", require("telescope.builtin").lsp_references, bufopts)
     vim.keymap.set("n", "<leader>sds", require("telescope.builtin").lsp_document_symbols, bufopts)
@@ -74,7 +77,10 @@ nullls.register(commitlint)
 nullls.setup({
     sources = {
         nullls.builtins.formatting.stylua,
-        nullls.builtins.formatting.yapf,
+        -- nullls.builtins.formatting.yapf,
+        nullls.builtins.formatting.black.with({
+            args={ "--stdin-filename", "$FILENAME", "--quiet", "--line-length", "88" ,"-" }
+        }),
         nullls.builtins.formatting.qmlformat,
         nullls.builtins.diagnostics.qmllint,
         nullls.builtins.diagnostics.flake8
