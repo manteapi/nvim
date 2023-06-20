@@ -178,6 +178,7 @@ local packer_startup = {
 		use({
 			"j-hui/fidget.nvim",
 			config = [[require("config/fidget")]],
+            tag = "legacy"
 		})
 
         use ({
