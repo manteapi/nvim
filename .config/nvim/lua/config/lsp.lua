@@ -79,10 +79,10 @@ nullls.setup({
         nullls.builtins.formatting.stylua,
         -- nullls.builtins.formatting.yapf,
         nullls.builtins.formatting.black.with({
-            args={ "--stdin-filename", "$FILENAME", "--quiet", "--line-length", "88" ,"-" }
+            args={ "--stdin-filename", "$FILENAME", "--quiet", "--line-length", "120" ,"-" }
         }),
         nullls.builtins.formatting.qmlformat,
-        nullls.builtins.diagnostics.qmllint,
+        -- nullls.builtins.diagnostics.qmllint,
         nullls.builtins.diagnostics.flake8
     },
     on_attach = function(client, buffer)
@@ -179,4 +179,4 @@ server_opts = {
     on_attach = on_attach,
     flags = flags,
 }
-lspconfig["qmlls"].setup(server_opts)
+-- lspconfig["qmlls"].setup(server_opts)
