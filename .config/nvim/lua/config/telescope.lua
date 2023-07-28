@@ -37,7 +37,6 @@ require("telescope").setup({
 			"%.gz",
 			"%.zip",
 			"%.jpg",
-			"%.json.hash",
 			"%.bmp",
 			"%.raw",
 			"%.png",
@@ -46,8 +45,6 @@ require("telescope").setup({
 			"%.o",
 			".mypy_cache/*",
 			".venv/*",
-			"%-data*",
-			"%-model*",
 			"build*",
 			".cache/.*",
 			".git/.*",
@@ -72,6 +69,11 @@ local opts = { noremap = true }
 
 vim.keymap.set("n", "<leader>sd", function()
 	require("telescope.builtin").diagnostics({})
+end, opts)
+
+vim.keymap.set("n", "<leader>so", function()
+	require("telescope.builtin").lsp_dynamic_workspace_symbols({})
+	-- require("telescope.builtin").lsp_workspace_symbols({})
 end, opts)
 
 vim.keymap.set("n", "<leader>st", function()

@@ -294,17 +294,17 @@ local packer_startup = {
 			"simrat39/rust-tools.nvim", -- enhanced tools for rust development
 		})
 
-		use({
-			"nvim-neorg/neorg",
-			ft = "norg",
-			after = {
-				"nvim-treesitter",
-			},
-            -- WARNING: This causes trouble when installing plugins for the first time
-			-- run = ":Neorg sync-parsers",
-			config = [[require("config/neorg")]],
-			requires = "nvim-lua/plenary.nvim",
-		})
+		--use({
+		--	"nvim-neorg/neorg",
+		--	ft = "norg",
+		--	after = {
+		--		"nvim-treesitter",
+		--	},
+        --    -- WARNING: This causes trouble when installing plugins for the first time
+		--	-- run = ":Neorg sync-parsers",
+		--	config = [[require("config/neorg")]],
+		--	requires = "nvim-lua/plenary.nvim",
+		--})
 	end,
 	config = { autoremove = true },
 }
