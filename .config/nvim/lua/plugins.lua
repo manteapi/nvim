@@ -294,29 +294,30 @@ local packer_startup = {
 			"simrat39/rust-tools.nvim", -- enhanced tools for rust development
 		})
 
-		--use({
-		--	"nvim-neorg/neorg",
-		--	ft = "norg",
-		--	after = {
-		--		"nvim-treesitter",
-		--	},
-        --    -- WARNING: This causes trouble when installing plugins for the first time
-		--	-- run = ":Neorg sync-parsers",
-		--	config = [[require("config/neorg")]],
-		--	requires = "nvim-lua/plenary.nvim",
-		--})
+		use({
+		"nvim-neorg/neorg",
+		ft = "norg",
+		after = {
+			"nvim-treesitter",
+		},
+           -- WARNING: This causes trouble when installing plugins for the first time
+		-- run = ":Neorg sync-parsers",
+		config = [[require("config/neorg")]],
+		requires = "nvim-lua/plenary.nvim",
+		})
 	end,
 	config = { autoremove = true },
 }
 
 packer_boot.bootstrap(packer_startup)
 
-local packer = vim.api.nvim_create_augroup("Packer", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
-	group = packer,
-	pattern = "plugins.lua",
-	command = "source <afile> | PackerSync",
-})
+-- FIXME: Make this a binding instead
+-- local packer = vim.api.nvim_create_augroup("Packer", { clear = true })
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+-- 	group = packer,
+-- 	pattern = "plugins.lua",
+-- 	command = "source <afile> | PackerSync",
+-- })
 
 local raw_notify = require("utils.raw_notify").notify
 
