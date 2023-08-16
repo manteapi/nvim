@@ -1,8 +1,8 @@
--- local neogit = require('neogit')
+local neogit = require('neogit')
 
--- neogit.setup({
+neogit.setup({
 --     disable_commit_confirmation = true
--- })
+})
 
 -- local raw_notify = require("utils.raw_notify").notify
 --

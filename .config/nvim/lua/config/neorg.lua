@@ -26,6 +26,7 @@ require("neorg").setup({
         ["core.pivot"] = {},
         ["core.itero"] = {},
         ["core.promo"] = {},
-        ["core.qol.toc"] = { config={close_after_use = true} }
+        ["core.esupports.metagen"] = { config = { update_date = true } },
+        ["core.qol.toc"] = { config = { close_after_use = true } },
     },
 })

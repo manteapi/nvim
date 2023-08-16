@@ -296,12 +296,11 @@ local packer_startup = {
 
 		use({
 		"nvim-neorg/neorg",
-		ft = "norg",
 		after = {
 			"nvim-treesitter",
 		},
            -- WARNING: This causes trouble when installing plugins for the first time
-		-- run = ":Neorg sync-parsers",
+		run = ":Neorg sync-parsers",
 		config = [[require("config/neorg")]],
 		requires = "nvim-lua/plenary.nvim",
 		})
