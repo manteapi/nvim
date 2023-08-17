@@ -274,11 +274,11 @@ local packer_startup = {
 			config = [[require("config/neogit")]],
 		})
 
-		use({
-			"lewis6991/gitsigns.nvim",
-			requires = { { "nvim-lua/plenary.nvim" } },
-			config = [[require("config/gitsigns")]],
-		}) -- git gutter
+		-- use({
+		-- 	"lewis6991/gitsigns.nvim",
+		-- 	requires = { { "nvim-lua/plenary.nvim" } },
+		-- 	config = [[require("config/gitsigns")]],
+		-- }) -- git gutter
 
 		use({ "rhysd/git-messenger.vim" }) -- current line git message displayer
 
