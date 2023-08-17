@@ -1,4 +1,2 @@
-require "options"
-require "highlight"
-require "mappings"
-require "plugins"
+-- bootstrap lazy.nvim and my plugins
+require("config.lazy")
