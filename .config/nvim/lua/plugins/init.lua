@@ -13,7 +13,8 @@ plugins = {
     { "christoomey/vim-tmux-navigator", name = "tmux-navigator"},
     {
         "nvim-treesitter/nvim-treesitter",
-        name="treesitter"
+        name="treesitter",
+        config=function() require("plugins.treesitter") end,
     },
     {
         "nvim-neorg/neorg",
