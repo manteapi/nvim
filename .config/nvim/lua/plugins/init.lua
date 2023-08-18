@@ -12,6 +12,17 @@ plugins = {
     -- Allow seamless navigation between vim window and tmux pane
     { "christoomey/vim-tmux-navigator", name = "tmux-navigator"},
     {
+        "nvim-neorg/neorg",
+        ft="norg",
+        dependencies={{"plenary", "treesitter"}},
+        build= ":Neorg sync-parsers",
+        cmd="Neorg",
+        config=function() require("plugins.neorg") end,
+    }
+}
+
+treesitter = {
+    {
         "nvim-treesitter/nvim-treesitter",
         name="treesitter",
         config=function() require("plugins.treesitter") end,
@@ -22,17 +33,9 @@ plugins = {
         config=function() require("plugins.treesitter-context") end,
         dependencies={{"treesitter"}},
     },
-    {
-        "nvim-neorg/neorg",
-        ft="norg",
-        dependencies={{"plenary", "treesitter"}},
-        build= ":Neorg sync-parsers",
-        cmd="Neorg",
-        config=function() require("plugins.neorg") end,
-    }
 }
 
-lsp_plugins = {
+lsp = {
     {
         "williamboman/mason.nvim", 
         name="mason"
@@ -58,7 +61,6 @@ lsp_plugins = {
 completion =  {
     {
         "hrsh7th/nvim-cmp",
-        version = false, -- last release is way too old
         event = "InsertEnter",
         dependencies = {
             "cmp-nvim-lsp",
@@ -71,6 +73,10 @@ completion =  {
 }
 
 navigation = {
+    {
+        "nvim-tree/nvim-tree.lua",
+        config=function() require("plugins.tree") end,
+    },
     {
         "nvim-telescope/telescope.nvim",
         config=function() require("plugins.telescope") end,
@@ -86,15 +92,25 @@ themes = {
 
 comments = {
     {
-		"numToStr/Comment.nvim", 
+        "numToStr/Comment.nvim", 
         config=function() require("plugins.comment") end,
     }
+}
+
+git = {
+    {
+        "ruifm/gitlinker.nvim",
+        config=function() require("plugins.git.gitlinker") end,
+        dependencies={{"plenary"}},
+    },
 }
 
 table.insert(plugins, comments)
 table.insert(plugins, navigation)
 table.insert(plugins, completion)
-table.insert(plugins, lsp_plugins)
+table.insert(plugins, treesitter)
+table.insert(plugins, git)
+table.insert(plugins, lsp)
 table.insert(plugins, themes)
 
 opts = {
