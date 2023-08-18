@@ -15,6 +15,12 @@ plugins = {
         "nvim-treesitter/nvim-treesitter",
         name="treesitter",
         config=function() require("plugins.treesitter") end,
+        build=":TSUpdate",
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        config=function() require("plugins.treesitter-context") end,
+        dependencies={{"treesitter"}},
     },
     {
         "nvim-neorg/neorg",
@@ -78,6 +84,14 @@ themes = {
     }
 }
 
+comments = {
+    {
+		"numToStr/Comment.nvim", 
+        config=function() require("plugins.comment") end,
+    }
+}
+
+table.insert(plugins, comments)
 table.insert(plugins, navigation)
 table.insert(plugins, completion)
 table.insert(plugins, lsp_plugins)

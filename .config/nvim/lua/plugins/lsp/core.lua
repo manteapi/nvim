@@ -11,6 +11,11 @@ local lspconfig = require("lspconfig")
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 local get_servers = require('mason-lspconfig').get_installed_servers
 
+-- Goto previous/next diagnostic warning/error
+local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+
 local custom_on_attach = function(client, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
@@ -53,4 +58,10 @@ for _, server_name in ipairs(get_servers()) do
     capabilities = lsp_capabilities,
     on_attach = custom_on_attach
   })
+end
+
+-- If no active clients were found, we map the formatting shortcut to an indent command
+local active_clients = vim.lsp.get_active_clients()
+if #active_clients == 0 then
+    vim.keymap.set("n", "<Leader>f","gg=G``", {silent=true})
 end

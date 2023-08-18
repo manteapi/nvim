@@ -28,7 +28,8 @@ require("neorg").setup({
         ["core.promo"] = {},
         ["core.esupports.metagen"] = { config = { update_date = true } },
         ["core.qol.toc"] = { config = { close_after_use = true } },
-        ["core.summary"] = {}
+        ["core.summary"] = {},
+        ["core.export"] = {}
     },
 })
 

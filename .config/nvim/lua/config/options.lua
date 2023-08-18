@@ -9,9 +9,13 @@ vim.opt.shiftround = true -- rounds the indent spacing to the next multiple of s
 vim.opt.ignorecase = true -- search is case insentitive
 vim.opt.smartcase = true -- search can dynamically become case sensitive
 
-vim.opt.autoread = true, -- detect when a file has been changed and load it again
+vim.opt.autoread = true -- detect when a file has been changed and load it again
+
+vim.opt.number = true -- display line numbers
+
+vim.opt.signcolumn = "yes" -- always show signcolumn
 
 --Remap space as leader key
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = ","
