@@ -7,8 +7,10 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 plugins = {
+	-- Utility needed by other plugins
 	{ "nvim-lua/plenary.nvim", name = "plenary", lazy = true },
-
+	-- Allow seamless navigation between vim window and tmux pane
+	{ "christoomey/vim-tmux-navigator", name = "tmux-navigator"},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		name="treesitter"
