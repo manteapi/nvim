@@ -6,6 +6,11 @@ vim.opt.softtabstop = 4 -- number of columns when tab or backspace are pressed
 vim.opt.expandtab = true -- converts tabs to whitespace
 vim.opt.shiftround = true -- rounds the indent spacing to the next multiple of shiftwidth -> easier indent when using `>`, `<`
 
+vim.opt.ignorecase = true -- search is case insentitive
+vim.opt.smartcase = true -- search can dynamically become case sensitive
+
+vim.opt.autoread = true, -- detect when a file has been changed and load it again
+
 --Remap space as leader key
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
