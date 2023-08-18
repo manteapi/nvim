@@ -70,8 +70,21 @@ navigation = {
     }
 }
 
+themes = {
+    {
+        "folke/tokyonight.nvim",
+        config=function() require("plugins.themes.tokyonight") end,
+    }
+}
+
 table.insert(plugins, navigation)
 table.insert(plugins, completion)
 table.insert(plugins, lsp_plugins)
+table.insert(plugins, themes)
 
-require("lazy").setup(plugins)
+opts = {
+    install = {
+        colorscheme = {'tokyonight'},
+    }
+}
+require("lazy").setup(plugins, opts)
