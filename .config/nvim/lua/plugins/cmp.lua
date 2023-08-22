@@ -14,10 +14,11 @@ cmp.setup({
 		}),
 	},
 	sources = {
+		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
+		{ name = "neorg" },
 		{ name = "buffer" },
 		{ name = "path" },
-		{ name = "neorg" },
 	},
 })
 

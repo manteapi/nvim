@@ -12,8 +12,12 @@ vim.opt.smartcase = true -- search can dynamically become case sensitive
 vim.opt.autoread = true -- detect when a file has been changed and load it again
 
 vim.opt.number = true -- display line numbers
+vim.opt.relativenumber = true -- display relative line number
 
 vim.opt.signcolumn = "yes" -- always show signcolumn
+
+vim.opt.hlsearch = false -- do not highlight search
+vim.opt.incsearch = true -- enable incremental search
 
 --Remap space as leader key
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
