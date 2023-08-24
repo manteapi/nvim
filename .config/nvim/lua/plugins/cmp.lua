@@ -14,11 +14,16 @@ cmp.setup({
 		}),
 	},
 	sources = {
-		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
 		{ name = "neorg" },
 		{ name = "buffer" },
 		{ name = "path" },
+	},
+	snippet = {
+		expand = function(args)
+			require("luasnip").lsp_expand(args.body)
+		end,
 	},
 })
 

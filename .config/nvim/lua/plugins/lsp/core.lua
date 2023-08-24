@@ -3,7 +3,7 @@ require("mason").setup({})
 -- https://github.com/williamboman/mason-lspconfig.nvim
 local mason_lspconfig = require("mason-lspconfig")
 mason_lspconfig.setup({ensure_installed={
-    "pyright"
+    "pylsp",
 }})
 
 -- https://github.com/neovim/nvim-lspconfig
@@ -23,22 +23,8 @@ local custom_on_attach = function(client, bufnr)
     vim.keymap.set("n", "<Leader>f", function() 
         vim.lsp.buf.format{async=true}
     end, bufopts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, bufopts)
 end
-
-local nullls = require("null-ls")
-
-nullls.setup({
-    sources = {
-        nullls.builtins.formatting.black.with({
-            args={ "--stdin-filename", "$FILENAME", "--quiet", "--line-length", "120" ,"-" }
-        }),
-        nullls.builtins.diagnostics.flake8
-    },
-    on_attach = function(client, buffer)
-        custom_on_attach(client, buffer)
-    end,
-    capabilities = capabilities,
-})
 
 local get_root_dir = function(filename, _)
     local root_files = {
@@ -52,12 +38,29 @@ local get_root_dir = function(filename, _)
     return primary or fallback
 end
 
+local function prequire(m) 
+  local ok, err = pcall(require, m) 
+  if not ok then return nil, err end
+  return err
+end
+
+local get_settings = function(server_name)
+    module_name = "plugins.lsp."..server_name
+    local_module = prequire(module_name)
+    if local_module then
+        return local_module.settings()
+    else
+        return {}
+    end
+end
+
 for _, server_name in ipairs(get_servers()) do
-  lspconfig[server_name].setup({
-    root_dir = get_root_dir,
-    capabilities = lsp_capabilities,
-    on_attach = custom_on_attach
-  })
+    lspconfig[server_name].setup({
+        root_dir = get_root_dir,
+        capabilities = lsp_capabilities,
+        on_attach = custom_on_attach,
+        settings = get_settings(server_name)
+    })
 end
 
 -- If no active clients were found, we map the formatting shortcut to an indent command

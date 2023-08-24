@@ -1,5 +1,7 @@
 vim.opt.clipboard = "unnamedplus" -- using system clipboard -> allow to copy-paste from/to outside/inside neovim
 
+vim.opt.cmdheight = 0 -- set the cmd line height
+
 vim.opt.tabstop = 4 -- number of columns occupied by a tab
 vim.opt.shiftwidth = 4 -- number of columns for an indent level
 vim.opt.softtabstop = 4 -- number of columns when tab or backspace are pressed
