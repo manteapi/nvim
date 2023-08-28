@@ -23,13 +23,13 @@ vim.keymap.set("n", "<Leader>tw", builtin.lsp_dynamic_workspace_symbols, opts)
 vim.keymap.set("n", "<Leader>tm", builtin.marks, opts)
 
 vim.keymap.set("n", "<Leader>tc", function()
-    require("telescope.builtin").find_files({
+    builtin.find_files({
         cwd = "~/repositories/dotfiles/nvim/",
     })
 end, opts)
 
 vim.keymap.set("n", "<Leader>tn", function()
-    require("telescope.builtin").find_files({
+    builtin.find_files({
         cwd = "~/repositories/dotfiles/neo-notes/",
     })
 end, opts)
