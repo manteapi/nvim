@@ -2,10 +2,6 @@ require('telescope').setup{
 	defaults = {
 		path_display={
             truncate=3
-            -- shorten = {
-            --     len = 1,
-            --     exclude = {-1, -2, -3}
-            -- }
         } 
 	}
 }
