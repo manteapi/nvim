@@ -108,6 +108,10 @@ git = {
         config=function() require("plugins.git.gitlinker") end,
         dependencies={{"plenary"}},
     },
+    {
+        "tpope/vim-fugitive",
+        config=function() require("plugins.git.fugitive") end,
+    },
 }
 
 table.insert(plugins, comments)
