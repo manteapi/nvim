@@ -23,6 +23,8 @@ vim.opt.incsearch = true -- enable incremental search
 
 vim.opt.spell = true -- enable spell check
 
+vim.opt.foldmethod="indent"
+
 --Remap space as leader key
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
