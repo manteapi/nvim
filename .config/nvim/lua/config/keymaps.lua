@@ -16,5 +16,3 @@ vim.keymap.set("n", "<Leader>b", ":bdelete<CR>", { silent = true, desc = "Delete
 vim.keymap.set("n", "<Leader>B", ":bdelete!<CR>", { silent = true, desc = "Force current buffer deletion" })
 
 vim.keymap.set("n", "<Leader>ss", ":set spell!<CR>", { desc = "Toggle spelling", silent = true })
-vim.keymap.set("n", "<Leader>sf", ":set spelllang=fr<CR>", { desc = "Set spell lang to French", silent = true })
-vim.keymap.set("n", "<Leader>se", ":set spelllang=en<CR>", { desc = "Set spell lang to English", silent = true })
