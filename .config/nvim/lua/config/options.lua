@@ -21,6 +21,8 @@ vim.opt.signcolumn = "yes" -- always show signcolumn
 vim.opt.hlsearch = false -- do not highlight search
 vim.opt.incsearch = true -- enable incremental search
 
+vim.opt.spell = true -- enable spell check
+
 --Remap space as leader key
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
