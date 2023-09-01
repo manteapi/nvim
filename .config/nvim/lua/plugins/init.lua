@@ -35,6 +35,19 @@ treesitter = {
     },
 }
 
+dap = {
+    {
+        "mfussenegger/nvim-dap",
+        name="dap",
+        config=function() require("plugins.dap.core") end,
+    },
+    {
+        'mfussenegger/nvim-dap-python',
+        dependencies={"dap"},
+        config=function() require("plugins.dap.debugpy") end,
+    },
+}
+
 lsp = {
     {
         "williamboman/mason.nvim",
@@ -120,6 +133,7 @@ table.insert(plugins, navigation)
 table.insert(plugins, treesitter)
 table.insert(plugins, git)
 table.insert(plugins, lsp)
+table.insert(plugins, dap)
 table.insert(plugins, themes)
 
 opts = {

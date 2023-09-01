@@ -14,7 +14,7 @@ function M.settings()
                 },
                 jedi_completion = {
                     enabled = true,
-                    include_params = true 
+                    include_params = true
                 },
                 mccabe = {
                     enabled = false
@@ -36,8 +36,8 @@ function M.settings()
                     enabled = true,
                     config = "~/.config/ruff/pyproject.toml"
                 },
-                mypy = {
-                    enabled = false
+                pylsp_mypy = {
+                    enabled = true
                 },
             }
         }
