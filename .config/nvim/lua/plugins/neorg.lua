@@ -11,11 +11,11 @@ require("neorg").setup({
             },
         },
         ["core.concealer"] = {},
-        -- ["core.completion"] = {
-        --     config = {
-        --         engine = "nvim-cmp",
-        --     },
-        -- },
+        ["core.completion"] = {
+            config = {
+                engine = "nvim-cmp",
+            },
+        },
         ["core.journal"] = {
             config = {
                 workspace = "work",

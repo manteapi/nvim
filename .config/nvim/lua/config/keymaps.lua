@@ -1,6 +1,6 @@
 local raw_notify = require("utils.raw_notify").notify
 
-vim.keymap.set("n", "<Leader><Leader>", 
+vim.keymap.set("n", "<Leader><Leader>",
 function()
 	local current_file = vim.fn.expand("%:p", "", "")
 	if vim.bo.filetype == "lua" then
@@ -16,3 +16,5 @@ vim.keymap.set("n", "<Leader>b", ":bdelete<CR>", { silent = true, desc = "Delete
 vim.keymap.set("n", "<Leader>B", ":bdelete!<CR>", { silent = true, desc = "Force current buffer deletion" })
 
 vim.keymap.set("n", "<Leader>ss", ":set spell!<CR>", { desc = "Toggle spelling", silent = true })
+
+vim.keymap.set("n", "<Leader>e", ":Ex<CR><CR>", { desc = "Open Netrw", silent = true })

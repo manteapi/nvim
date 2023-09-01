@@ -37,11 +37,11 @@ treesitter = {
 
 lsp = {
     {
-        "williamboman/mason.nvim", 
+        "williamboman/mason.nvim",
         name="mason"
     },
     {
-        "williamboman/mason-lspconfig.nvim", 
+        "williamboman/mason-lspconfig.nvim",
         name="mason-lspconfig"
     },
     {
@@ -58,7 +58,15 @@ lsp = {
     }
 }
 
-completion =  {
+editing = {
+    {
+        "ntpeters/vim-better-whitespace",
+        config=function() require("plugins.editing.whitespace") end,
+    },
+    {
+        "numToStr/Comment.nvim",
+        config=function() require("plugins.editing.comment") end,
+    },
     {
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
@@ -69,8 +77,11 @@ completion =  {
             "hrsh7th/cmp-cmdline",
             "saadparwaiz1/cmp_luasnip"
         },
-        config=function() require("plugins.cmp") end,
+        config=function() require("plugins.editing.cmp") end,
     },
+}
+
+snippets = {
     {
         "L3MON4D3/LuaSnip",
         config=function() require("plugins.snippets.luasnip") end,
@@ -78,10 +89,6 @@ completion =  {
 }
 
 navigation = {
-    {
-        "nvim-tree/nvim-tree.lua",
-        config=function() require("plugins.tree") end,
-    },
     {
         "nvim-telescope/telescope.nvim",
         config=function() require("plugins.telescope") end,
@@ -92,13 +99,6 @@ themes = {
     {
         "folke/tokyonight.nvim",
         config=function() require("plugins.themes.tokyonight") end,
-    }
-}
-
-comments = {
-    {
-        "numToStr/Comment.nvim", 
-        config=function() require("plugins.comment") end,
     }
 }
 
@@ -114,9 +114,9 @@ git = {
     },
 }
 
-table.insert(plugins, comments)
+table.insert(plugins, editing)
+table.insert(plugins, snippets)
 table.insert(plugins, navigation)
-table.insert(plugins, completion)
 table.insert(plugins, treesitter)
 table.insert(plugins, git)
 table.insert(plugins, lsp)

@@ -10,7 +10,6 @@ mason_lspconfig.setup({ensure_installed={
 local lspconfig = require("lspconfig")
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 local get_servers = require('mason-lspconfig').get_installed_servers
-
 -- Goto previous/next diagnostic warning/error
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
@@ -20,10 +19,12 @@ local custom_on_attach = function(client, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
     vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename, bufopts)
-    vim.keymap.set("n", "<Leader>f", function() 
+    vim.keymap.set("n", "<Leader>f", function()
         vim.lsp.buf.format{async=true}
     end, bufopts)
     vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', '<Leader>h', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<Leader>H', vim.lsp.buf.signature, opts)
 end
 
 local get_root_dir = function(filename, _)
@@ -38,8 +39,8 @@ local get_root_dir = function(filename, _)
     return primary or fallback
 end
 
-local function prequire(m) 
-  local ok, err = pcall(require, m) 
+local function prequire(m)
+  local ok, err = pcall(require, m)
   if not ok then return nil, err end
   return err
 end

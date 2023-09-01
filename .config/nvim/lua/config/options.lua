@@ -25,6 +25,8 @@ vim.opt.spell = true -- enable spell check
 
 vim.opt.foldmethod="indent"
 
+vim.opt.termguicolors = true
+
 --Remap space as leader key
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "

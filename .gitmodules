@@ -1,0 +1,3 @@
+[submodule ".config/nvim/lua/config/circle"]
+	path = .config/nvim/lua/config/circle
+	url = git@github.com:manteapi/circle_nvim.git
