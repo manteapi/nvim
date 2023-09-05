@@ -1,9 +1,19 @@
 require('telescope').setup{
-	defaults = {
-		path_display={
+    defaults = {
+        path_display={
             truncate=3
-        } 
-	}
+        }
+    },
+    pickers = {
+        buffers = {
+            show_all_buffers = true,
+            mappings = {
+                i = {
+                    ["<c-d>"] = "delete_buffer",
+                }
+            }
+        }
+    }
 }
 
 builtin = require('telescope.builtin')
