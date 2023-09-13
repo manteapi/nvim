@@ -40,9 +40,9 @@ local get_root_dir = function(filename, _)
 end
 
 local function prequire(m)
-  local ok, err = pcall(require, m)
-  if not ok then return nil, err end
-  return err
+    local ok, err = pcall(require, m)
+    if not ok then return nil, err end
+    return err
 end
 
 local get_settings = function(server_name)

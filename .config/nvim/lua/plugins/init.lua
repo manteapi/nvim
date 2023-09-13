@@ -59,6 +59,7 @@ lsp = {
     },
     {
         "neovim/nvim-lspconfig",
+        name="lspconfig",
         dependencies={"mason", "mason-lspconfig"},
         config=function() require("plugins.lsp.core") end,
     },
@@ -68,6 +69,11 @@ lsp = {
     },
     {
         "jose-elias-alvarez/null-ls.nvim",
+    },
+    {
+        url="https://gitlab.com/schrieveslaach/sonarlint.nvim.git",
+        dependencies={"lspconfig"},
+        config=function() require("plugins.lsp.sonarlint") end,
     }
 }
 
