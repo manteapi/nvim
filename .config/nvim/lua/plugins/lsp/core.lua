@@ -4,6 +4,7 @@ require("mason").setup({})
 local mason_lspconfig = require("mason-lspconfig")
 mason_lspconfig.setup({ensure_installed={
     "pylsp",
+    "ruff_lsp"
 }})
 
 -- https://github.com/neovim/nvim-lspconfig

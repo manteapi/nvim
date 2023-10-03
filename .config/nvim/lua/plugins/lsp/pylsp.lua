@@ -3,7 +3,7 @@ local M = {}
 -- Requirements
 -- pip install python-lsp-server
 -- pip install "python-lsp-server[all]"
--- :PyLspInstall pylsp-black pylsp-ruff pylsp-rope pylsp-mypy
+-- :PyLspInstall pylsp-black pylsp-rope pylsp-mypy
 -- Source: https://github.com/williamboman/mason-lspconfig.nvim/blob/main/lua/mason-lspconfig/server_configurations/pylsp/README.md
 function M.settings()
     return {
@@ -33,11 +33,14 @@ function M.settings()
                     line_length = 120
                 },
                 ruff = {
-                    enabled = true,
+                    enabled = false,
                     config = "~/.config/ruff/pyproject.toml"
                 },
                 pylsp_mypy = {
                     enabled = true
+                },
+                pylsp_rope = {
+                    enabled = false
                 },
             }
         }
