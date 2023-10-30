@@ -111,9 +111,6 @@ navigation = {
     {
         "nvim-telescope/telescope.nvim",
         config=function() require("plugins.telescope") end,
-        dependencies = {
-            "nvim-telescope/telescope-live-grep-args.nvim"
-        }
     }
 }
 

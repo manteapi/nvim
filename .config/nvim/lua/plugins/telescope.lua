@@ -1,14 +1,10 @@
 local telescope = require('telescope')
 
-telescope.load_extension("live_grep_args")
-
-local lga_actions = require("telescope-live-grep-args.actions")
-
 telescope.setup{
     defaults = {
         path_display={
             truncate=3
-        }
+        },
     },
     pickers = {
         buffers = {
@@ -20,17 +16,18 @@ telescope.setup{
             }
         }
     },
-    extensions = {
-        live_grep_args = {
-            auto_quoting = true,
-            mappings = {
-                i = {
-					["<c-t>"] = lga_actions.quote_prompt({ postfix = " -t" }),
-                },
-            },
-        }
-    }
 }
+
+function split(inputstr, sep)
+    if sep == nil then
+        sep = "%s"
+    end
+    local t={}
+    for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+        table.insert(t, str)
+    end
+    return t
+end
 
 local current_selection = function()
    local register = vim.fn.getreg("\"")
@@ -45,15 +42,32 @@ builtin = require('telescope.builtin')
 local opts = { noremap = true }
 
 vim.keymap.set("n", "<Leader>tb", builtin.buffers, opts)
+
 vim.keymap.set("n", "<Leader>tg", function()
-    builtin.grep_string({search = vim.fn.input("Grep > ")})
-end, opts)
-vim.keymap.set("n", "<Leader>tl", function()
-    telescope.extensions.live_grep_args.live_grep_args({
-        default_text = current_selection(),
+    builtin.grep_string({
+        search = vim.fn.input("Grep > "),
     })
 end, opts)
-vim.keymap.set("n", "<Leader>tf", builtin.find_files, opts)
+
+vim.keymap.set("n", "<Leader>tl", function()
+    builtin.live_grep({
+        glob_pattern = vim.fn.input("Pattern > ", "*.py")
+    })
+end, opts)
+
+vim.keymap.set("n", "<Leader>tf", function()
+    raw_args = vim.fn.input("Fd > ")
+    args = {"fd", "--hidden", "--type", "file"}
+    split_args = split(raw_args)
+    for k,v in pairs(split_args) do
+        table.insert(args, v)
+        print(k,v)
+    end
+    builtin.find_files({
+        find_command = args
+    })
+end, opts)
+
 vim.keymap.set("n", "<Leader>th", builtin.help_tags, opts)
 vim.keymap.set("n", "<Leader>tk", builtin.keymaps, opts)
 vim.keymap.set("n", "<Leader>ts", builtin.lsp_document_symbols, opts)
