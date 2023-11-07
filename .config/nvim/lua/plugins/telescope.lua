@@ -68,6 +68,12 @@ vim.keymap.set("n", "<Leader>tf", function()
     })
 end, opts)
 
+vim.keymap.set("n", "<Leader>td", function()
+    builtin.diagnostics({
+        bufnr=0
+    })
+end, opts)
+vim.keymap.set("n", "<Leader>tt", builtin.tags, opts)
 vim.keymap.set("n", "<Leader>th", builtin.help_tags, opts)
 vim.keymap.set("n", "<Leader>tk", builtin.keymaps, opts)
 vim.keymap.set("n", "<Leader>ts", builtin.lsp_document_symbols, opts)
