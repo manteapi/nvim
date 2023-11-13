@@ -1,5 +1,5 @@
 require('treesitter-context').setup({
-    enable = true,
+    enable = false,
 })
 vim.keymap.set("n", "[c", function()
   require("treesitter-context").go_to_context()

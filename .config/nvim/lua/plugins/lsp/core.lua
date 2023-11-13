@@ -4,7 +4,8 @@ require("mason").setup({})
 local mason_lspconfig = require("mason-lspconfig")
 mason_lspconfig.setup({ensure_installed={
     "pylsp",
-    "ruff_lsp"
+    "ruff_lsp",
+    "clangd"
 }})
 
 -- https://github.com/neovim/nvim-lspconfig
@@ -25,7 +26,7 @@ local custom_on_attach = function(client, bufnr)
     end, bufopts)
     vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', '<Leader>h', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '<Leader>H', vim.lsp.buf.signature, opts)
+    vim.keymap.set('n', '<Leader>H', vim.lsp.buf.signature_help, opts)
 end
 
 local get_root_dir = function(filename, _)

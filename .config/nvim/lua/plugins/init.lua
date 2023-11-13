@@ -90,10 +90,11 @@ editing = {
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
         dependencies = {
-            "cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-nvim-lsp-signature-help",
             "saadparwaiz1/cmp_luasnip"
         },
         config=function() require("plugins.editing.cmp") end,
@@ -111,9 +112,9 @@ navigation = {
     {
         "nvim-telescope/telescope.nvim",
         config=function() require("plugins.telescope") end,
-        dependencies = {
-            "nvim-telescope/telescope-live-grep-args.nvim"
-        }
+    },
+    {
+        "liuchengxu/vista.vim"
     }
 }
 
