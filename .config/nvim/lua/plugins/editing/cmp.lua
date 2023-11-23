@@ -38,7 +38,10 @@ cmp.setup({
 cmp.setup.cmdline({"/", "?"}, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-        { name = "buffer" },
+        {
+            name = "buffer",
+            keyword_length = 5
+        },
     },
 })
 

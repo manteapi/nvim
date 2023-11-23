@@ -79,6 +79,10 @@ lsp = {
 
 editing = {
     {
+        "folke/flash.nvim",
+        config=function() require("plugins.editing.flash") end,
+    },
+    {
         "ntpeters/vim-better-whitespace",
         config=function() require("plugins.editing.whitespace") end,
     },
