@@ -5,7 +5,8 @@ local mason_lspconfig = require("mason-lspconfig")
 mason_lspconfig.setup({ensure_installed={
     "pylsp",
     "ruff_lsp",
-    "clangd"
+    "clangd",
+    "rust_analyzer"
 }})
 
 -- https://github.com/neovim/nvim-lspconfig
