@@ -6,6 +6,7 @@ mason_lspconfig.setup({ensure_installed={
     "pylsp",
     "ruff_lsp",
     "clangd",
+    "cmake",
     "rust_analyzer"
 }})
 
