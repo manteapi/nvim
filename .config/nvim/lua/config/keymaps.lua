@@ -24,3 +24,5 @@ vim.keymap.set("t", "<A-h>", "<C-\\><C-N><C-w>h", {desc = "Switch to left window
 vim.keymap.set("t", "<A-j>", "<C-\\><C-N><C-w>j", {desc = "Switch to bottom window", silent = true, noremap = true })
 vim.keymap.set("t", "<A-k>", "<C-\\><C-N><C-w>k", {desc = "Switch to top window", silent = true, noremap = true })
 vim.keymap.set("t", "<A-l>", "<C-\\><C-N><C-w>l", {desc = "Switch to right window", silent = true, noremap = true })
+
+vim.keymap.set("n", "<Leader>s", ":%s/<C-r><C-w>//gc<Left><Left><Left>", {desc = "Search/Replace word under cursor", silent = true, noremap = true})
