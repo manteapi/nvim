@@ -119,6 +119,10 @@ navigation = {
     },
     {
         "liuchengxu/vista.vim"
+    },
+    {
+        "nvim-tree/nvim-tree.lua",
+        config=function() require("plugins.navigation.nvimtree") end,
     }
 }
 

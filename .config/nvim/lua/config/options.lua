@@ -1,3 +1,7 @@
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.opt.clipboard = "unnamedplus" -- using system clipboard -> allow to copy-paste from/to outside/inside neovim
 
 vim.opt.cmdheight = 0 -- set the cmd line height

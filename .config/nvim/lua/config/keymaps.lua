@@ -17,8 +17,6 @@ vim.keymap.set("n", "<Leader>B", ":bdelete!<CR>", { silent = true, desc = "Force
 
 vim.keymap.set("n", "<Leader>ss", ":set spell!<CR>", { desc = "Toggle spelling", silent = true })
 
-vim.keymap.set("n", "<Leader>e", ":Ex<CR><CR>", { desc = "Open Netrw", silent = true })
-
 vim.keymap.set("t", "<Leader><Esc>", ":<C-\\><C-n>", { desc = "Leave terminal mode", silent = true, noremap = true })
 vim.keymap.set("t", "<A-h>", "<C-\\><C-N><C-w>h", {desc = "Switch to left window", silent = true, noremap = true })
 vim.keymap.set("t", "<A-j>", "<C-\\><C-N><C-w>j", {desc = "Switch to bottom window", silent = true, noremap = true })
