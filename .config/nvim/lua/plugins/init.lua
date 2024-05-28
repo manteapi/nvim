@@ -22,6 +22,7 @@ plugins = {
         ft="norg",
         dependencies={{"plenary", "treesitter", "luarocks"}},
         version = "*",
+        cmd="Neorg",
         config=function() require("plugins.neorg") end
     },
 }
