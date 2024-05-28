@@ -8,23 +8,25 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 plugins = {
     -- Utility needed by other plugins
-    { "nvim-lua/plenary.nvim", name = "plenary", lazy = true },
+    { "nvim-lua/plenary.nvim", name = "plenary"},
     -- Allow seamless navigation between vim window and tmux pane
     { "christoomey/vim-tmux-navigator", name = "tmux-navigator"},
-    {
-        "vhyrro/luarocks.nvim",
-        priority = 1000,
-        config = true,
-        name="luarocks"
-    },
-    {
-        "nvim-neorg/neorg",
-        ft="norg",
-        dependencies={{"plenary", "treesitter", "luarocks"}},
-        version = "*",
-        cmd="Neorg",
-        config=function() require("plugins.neorg") end
-    },
+    -- {
+    --     "vhyrro/luarocks.nvim",
+    --     priority = 1000,
+    --     config = true,
+    --     name="luarocks",
+    --     lazy = false,
+    -- },
+    -- {
+    --     "nvim-neorg/neorg",
+    --     ft="norg",
+    --     dependencies={{"plenary", "treesitter", "luarocks"}},
+    --     lazy = false,
+    --     version = "*",
+    --     cmd="Neorg",
+    --     config=function() require("plugins.neorg") end
+    -- },
 }
 
 treesitter = {

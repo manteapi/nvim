@@ -12,7 +12,7 @@
   "gitlinker.nvim": { "branch": "master", "commit": "cc59f732f3d043b626c8702cb725c82e54d35c25" },
   "lazy.nvim": { "branch": "main", "commit": "24fa2a97085ca8a7220b5b078916f81e316036fd" },
   "lspconfig": { "branch": "master", "commit": "38de86f82efd9ba0881203767d6a8e1815abca28" },
-  "luarocks": { "branch": "main", "commit": "d3dda396d66e484590f253d1ac6d8980e3130807" },
+  "luarocks.nvim": { "branch": "main", "commit": "1db9093915eb16ba2473cfb8d343ace5ee04130a" },
   "mason": { "branch": "main", "commit": "49ff59aded1047a773670651cfa40e76e63c6377" },
   "mason-lspconfig": { "branch": "main", "commit": "a4caa0d083aab56f6cd5acf2d42331b74614a585" },
   "neorg": { "branch": "main", "commit": "aa47d93cc71e540b400a9718bff1e6af3b1db8c9" },
