@@ -19,13 +19,16 @@ plugins = {
     },
 
     {
+        -- TIPS: If any error then run:
+        -- 1. Lazy build luarocks
+        -- 1. Lazy build neorg
         "nvim-neorg/neorg",
         ft = "norg",
-        dependencies = {{ "luarocks" }},
+        dependencies = {{ "luarocks" }
+        },
         config=function() require("plugins.neorg") end,
         cmd="Neorg",
-        build= ":Neorg sync-parsers",
-        version = "v7.0.0",
+        version = "*",
         lazy = false
     }
 }
