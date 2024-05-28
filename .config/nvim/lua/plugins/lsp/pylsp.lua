@@ -40,7 +40,7 @@ function M.settings()
                     enabled = true
                 },
                 pylsp_rope = {
-                    enabled = false
+                    enabled = true
                 },
             }
         }

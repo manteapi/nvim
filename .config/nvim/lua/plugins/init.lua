@@ -12,13 +12,18 @@ plugins = {
     -- Allow seamless navigation between vim window and tmux pane
     { "christoomey/vim-tmux-navigator", name = "tmux-navigator"},
     {
+        "vhyrro/luarocks.nvim",
+        priority = 1000,
+        config = true,
+        name="luarocks"
+    },
+    {
         "nvim-neorg/neorg",
         ft="norg",
-        dependencies={{"plenary", "treesitter"}},
-        build= ":Neorg sync-parsers",
-        cmd="Neorg",
-        config=function() require("plugins.neorg") end,
-    }
+        dependencies={{"plenary", "treesitter", "luarocks"}},
+        version = "*",
+        config=function() require("plugins.neorg") end
+    },
 }
 
 treesitter = {
