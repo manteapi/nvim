@@ -17,7 +17,6 @@ plugins = {
         config = true,
         name = "luarocks",
     },
-
     {
         -- TIPS: If any error then run:
         -- 1. Lazy build luarocks
