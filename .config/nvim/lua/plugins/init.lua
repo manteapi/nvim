@@ -19,8 +19,9 @@ plugins = {
     },
     {
         -- TIPS: If any error then run:
+        -- 0. sudo apt install lua5.4
         -- 1. Lazy build luarocks
-        -- 1. Lazy build neorg
+        -- 2. Lazy build neorg
         "nvim-neorg/neorg",
         ft = "norg",
         dependencies = {{ "luarocks" }
