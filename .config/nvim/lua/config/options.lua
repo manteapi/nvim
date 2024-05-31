@@ -28,6 +28,7 @@ vim.opt.incsearch = true -- enable incremental search
 vim.opt.spell = true -- enable spell check
 
 vim.opt.foldmethod="indent"
+vim.opt.foldlevelstart=20
 
 vim.opt.termguicolors = true
 

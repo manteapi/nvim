@@ -39,8 +39,9 @@ function M.settings()
                 pylsp_mypy = {
                     enabled = true
                 },
+                -- WARNING: rope is too slow on large projects
                 pylsp_rope = {
-                    enabled = true
+                    enabled = false
                 },
             }
         }

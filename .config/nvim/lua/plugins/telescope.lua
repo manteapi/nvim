@@ -92,3 +92,15 @@ vim.keymap.set("n", "<Leader>tn", function()
         cwd = "~/repositories/dotfiles/neo-notes/",
     })
 end, opts)
+
+vim.keymap.set("n", "<Leader>gb", function()
+    builtin.git_branches({
+        use_file_path = true,
+    })
+end, opts)
+
+vim.keymap.set("n", "<Leader>gs", function()
+    builtin.git_status({
+        use_file_path = true,
+    })
+end, opts)
