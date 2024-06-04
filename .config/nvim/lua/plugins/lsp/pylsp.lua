@@ -41,7 +41,7 @@ function M.settings()
                 },
                 -- WARNING: rope is too slow on large projects
                 pylsp_rope = {
-                    enabled = false
+                    enabled = true
                 },
             }
         }
