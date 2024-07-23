@@ -1,1 +1,1 @@
-vim.keymap.set("n", "<Leader>gc", ":Git commit -m \"", {noremap=false, desc="Commit staged changes"})
+vim.keymap.set("n", "<Leader>gB", ":Git blame<CR>", {silent = true, noremap = true, desc = "Git blame on current file"})

@@ -91,8 +91,8 @@ lsp = {
 
 editing = {
     {
-        "folke/flash.nvim",
-        config=function() require("plugins.editing.flash") end,
+        "smoka7/hop.nvim",
+        config=function() require("plugins.editing.hop") end,
     },
     {
         "ntpeters/vim-better-whitespace",
@@ -155,6 +155,22 @@ git = {
         "tpope/vim-fugitive",
         config=function() require("plugins.git.fugitive") end,
     },
+    {
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",         -- required
+            "sindrets/diffview.nvim",        -- optional - Diff integration
+            "nvim-telescope/telescope.nvim", -- optional
+        },
+        config=function() require("plugins.git.neogit") end,
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        config=function() require("plugins.git.gitsigns") end,
+    },
+    {
+        "sindrets/diffview.nvim"
+    }
 }
 
 table.insert(plugins, editing)

@@ -98,9 +98,3 @@ vim.keymap.set("n", "<Leader>gb", function()
         use_file_path = true,
     })
 end, opts)
-
-vim.keymap.set("n", "<Leader>gs", function()
-    builtin.git_status({
-        use_file_path = true,
-    })
-end, opts)
