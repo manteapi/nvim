@@ -91,6 +91,10 @@ lsp = {
 
 editing = {
     {
+        "max397574/better-escape.nvim",
+        config=function() require("plugins.editing.betterescape") end,
+    },
+    {
         "smoka7/hop.nvim",
         config=function() require("plugins.editing.hop") end,
     },
