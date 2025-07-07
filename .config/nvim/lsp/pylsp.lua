@@ -1,12 +1,15 @@
-local M = {}
-
--- Requirements
--- pip install python-lsp-server
--- pip install "python-lsp-server[all]"
--- :PyLspInstall pylsp-black pylsp-rope pylsp-mypy
--- Source: https://github.com/williamboman/mason-lspconfig.nvim/blob/main/lua/mason-lspconfig/server_configurations/pylsp/README.md
-function M.settings()
-    return {
+return {
+    cmd = { 'pylsp' },
+    filetypes = { 'python' },
+    root_markers = {
+        'pyproject.toml',
+        'setup.py',
+        'setup.cfg',
+        'requirements.txt',
+        'Pipfile',
+        '.git',
+    },
+    settings = {
         pylsp = {
             plugins = {
                 autopep8 = {
@@ -29,7 +32,7 @@ function M.settings()
                     enabled = false
                 },
                 black = {
-                    enabled = true,
+                    enabled = false,
                     line_length = 120
                 },
                 ruff = {
@@ -46,6 +49,4 @@ function M.settings()
             }
         }
     }
-end
-
-return M
+}

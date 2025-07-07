@@ -4,7 +4,7 @@ require("mason").setup({})
 local mason_lspconfig = require("mason-lspconfig")
 mason_lspconfig.setup({ensure_installed={
     "pylsp",
-    "ruff_lsp",
+    "ruff",
     "clangd",
     "cmake",
     "rust_analyzer"
@@ -60,11 +60,11 @@ local get_settings = function(server_name)
 end
 
 for _, server_name in ipairs(get_servers()) do
-    lspconfig[server_name].setup({
-        root_dir = get_root_dir,
+    vim.lsp.enable(server_name)
+    vim.lsp.config(server_name, {
+        -- root_dir = get_root_dir,
         capabilities = lsp_capabilities,
         on_attach = custom_on_attach,
-        settings = get_settings(server_name)
     })
 end
 
