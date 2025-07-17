@@ -113,9 +113,13 @@ navigation = {
         "liuchengxu/vista.vim"
     },
     {
+        "stevearc/oil.nvim",
+        config=function() require("plugins.navigation.oil") end,
+    },
+    {
         "nvim-tree/nvim-tree.lua",
         config=function() require("plugins.navigation.nvimtree") end,
-    }
+    },
 }
 
 themes = {
