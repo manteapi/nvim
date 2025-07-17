@@ -11,26 +11,6 @@ plugins = {
     { "nvim-lua/plenary.nvim", name = "plenary"},
     -- Allow seamless navigation between vim window and tmux pane
     { "christoomey/vim-tmux-navigator", name = "tmux-navigator"},
-    {
-        "vhyrro/luarocks.nvim",
-        priority = 1000,
-        config = true,
-        name = "luarocks",
-    },
-    {
-        -- TIPS: If any error then run:
-        -- 0. sudo apt install lua5.4
-        -- 1. Lazy build luarocks
-        -- 2. Lazy build neorg
-        "nvim-neorg/neorg",
-        ft = "norg",
-        dependencies = {{ "luarocks" }
-        },
-        config=function() require("plugins.neorg") end,
-        cmd="Neorg",
-        version = "*",
-        lazy = false
-    }
 }
 
 treesitter = {
