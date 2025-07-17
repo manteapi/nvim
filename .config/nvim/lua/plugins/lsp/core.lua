@@ -69,7 +69,7 @@ for _, server_name in ipairs(get_servers()) do
 end
 
 -- If no active clients were found, we map the formatting shortcut to an indent command
-local active_clients = vim.lsp.get_active_clients()
+local active_clients = vim.lsp.get_clients()
 if #active_clients == 0 then
     vim.keymap.set("n", "<Leader>f","gg=G``", {silent=true})
 end
