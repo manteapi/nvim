@@ -7,7 +7,8 @@ mason_lspconfig.setup({ensure_installed={
     "ruff",
     "clangd",
     "cmake",
-    "rust_analyzer"
+    "rust_analyzer",
+    "lua-language-server"
 }})
 
 -- https://github.com/neovim/nvim-lspconfig
