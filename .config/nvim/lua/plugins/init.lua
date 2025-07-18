@@ -1,86 +1,86 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     -- bootstrap lazy.nvim: https://github.com/folke/lazy.nvim
-    -- stylua: ignore
-    vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+    vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable",
+        lazypath })
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-plugins = {
+local plugins = {
     -- Utility needed by other plugins
-    { "nvim-lua/plenary.nvim", name = "plenary"},
+    { "nvim-lua/plenary.nvim",          name = "plenary" },
     -- Allow seamless navigation between vim window and tmux pane
-    { "christoomey/vim-tmux-navigator", name = "tmux-navigator"},
+    { "christoomey/vim-tmux-navigator", name = "tmux-navigator" },
 }
 
-treesitter = {
+local treesitter = {
     {
         "nvim-treesitter/nvim-treesitter",
-        name="treesitter",
-        config=function() require("plugins.treesitter") end,
-        build=":TSUpdate",
+        name = "treesitter",
+        config = function() require("plugins.treesitter") end,
+        build = ":TSUpdate",
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
-        config=function() require("plugins.treesitter-context") end,
-        dependencies={{"treesitter"}},
+        config = function() require("plugins.treesitter-context") end,
+        dependencies = { { "treesitter" } },
     },
 }
 
-dap = {
+local dap = {
     {
         "mfussenegger/nvim-dap",
-        name="dap",
-        config=function() require("plugins.dap.core") end,
+        name = "dap",
+        config = function() require("plugins.dap.core") end,
     },
     {
         'mfussenegger/nvim-dap-python',
-        dependencies={"dap"},
-        config=function() require("plugins.dap.debugpy") end,
+        dependencies = { "dap" },
+        config = function() require("plugins.dap.debugpy") end,
     },
 }
 
-lsp = {
+local lsp = {
     {
         "williamboman/mason.nvim",
-        name="mason"
+        name = "mason"
     },
     {
         "williamboman/mason-lspconfig.nvim",
-        name="mason-lspconfig"
+        name = "mason-lspconfig"
     },
     {
         "neovim/nvim-lspconfig",
-        name="lspconfig",
-        dependencies={"mason", "mason-lspconfig"},
-        config=function() require("plugins.lsp.core") end,
+        name = "lspconfig",
+        dependencies = { "mason", "mason-lspconfig" },
+        config = function() require("plugins.lsp.core") end,
     },
     {
         "hrsh7th/cmp-nvim-lsp", -- lsp completion
-        name="cmp-nvim-lsp"
+        name = "cmp-nvim-lsp"
     },
     {
         "jose-elias-alvarez/null-ls.nvim",
     },
     {
-        url="https://gitlab.com/schrieveslaach/sonarlint.nvim.git",
-        dependencies={"lspconfig"},
-        config=function() require("plugins.lsp.sonarlint") end,
+        url = "https://gitlab.com/schrieveslaach/sonarlint.nvim.git",
+        dependencies = { "lspconfig" },
+        config = function() require("plugins.lsp.sonarlint") end,
     }
 }
 
-editing = {
+local editing = {
     {
         "smoka7/hop.nvim",
-        config=function() require("plugins.editing.hop") end,
+        config = function() require("plugins.editing.hop") end,
     },
     {
         "ntpeters/vim-better-whitespace",
-        config=function() require("plugins.editing.whitespace") end,
+        config = function() require("plugins.editing.whitespace") end,
     },
     {
         "numToStr/Comment.nvim",
-        config=function() require("plugins.editing.comment") end,
+        config = function() require("plugins.editing.comment") end,
     },
     {
         "hrsh7th/nvim-cmp",
@@ -93,56 +93,64 @@ editing = {
             "hrsh7th/cmp-nvim-lsp-signature-help",
             "saadparwaiz1/cmp_luasnip"
         },
-        config=function() require("plugins.editing.cmp") end,
+        config = function() require("plugins.editing.cmp") end,
     },
     {
         'MeanderingProgrammer/render-markdown.nvim',
-        config=function() require("plugins.editing.rendermarkdown") end,
+        config = function() require("plugins.editing.rendermarkdown") end,
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-    }
+    },
+    {
+        'kylechui/nvim-surround',
+        config = function() require("plugins.editing.surround") end,
+    },
+    {
+        'windwp/nvim-autopairs',
+        config = function() require("plugins.editing.autopairs") end,
+    },
 }
 
-snippets = {
+local snippets = {
     {
         "L3MON4D3/LuaSnip",
-        config=function() require("plugins.snippets.luasnip") end,
+        config = function() require("plugins.snippets.luasnip") end,
     }
 }
 
-navigation = {
+local navigation = {
     {
         "nvim-telescope/telescope.nvim",
-        config=function() require("plugins.telescope") end,
+        config = function() require("plugins.telescope") end,
     },
     {
         "liuchengxu/vista.vim"
     },
     {
         "stevearc/oil.nvim",
-        config=function() require("plugins.navigation.oil") end,
+        config = function() require("plugins.navigation.oil") end,
     },
     {
         "nvim-tree/nvim-tree.lua",
-        config=function() require("plugins.navigation.nvimtree") end,
+        config = function() require("plugins.navigation.nvimtree") end,
     },
 }
 
-themes = {
+local themes = {
     {
         "folke/tokyonight.nvim",
-        config=function() require("plugins.themes.tokyonight") end,
+        config = function() require("plugins.themes.tokyonight") end,
     }
 }
 
-git = {
+local git = {
     {
         "ruifm/gitlinker.nvim",
-        config=function() require("plugins.git.gitlinker") end,
-        dependencies={{"plenary"}},
+        config = function() require("plugins.git.gitlinker") end,
+        dependencies = { { "plenary" } },
     },
     {
         "tpope/vim-fugitive",
-        config=function() require("plugins.git.fugitive") end,
+        config = function() require("plugins.git.fugitive") end,
     },
     {
         "NeogitOrg/neogit",
@@ -151,11 +159,11 @@ git = {
             "sindrets/diffview.nvim",        -- optional - Diff integration
             "nvim-telescope/telescope.nvim", -- optional
         },
-        config=function() require("plugins.git.neogit") end,
+        config = function() require("plugins.git.neogit") end,
     },
     {
         "lewis6991/gitsigns.nvim",
-        config=function() require("plugins.git.gitsigns") end,
+        config = function() require("plugins.git.gitsigns") end,
     },
     {
         "sindrets/diffview.nvim"
@@ -171,9 +179,10 @@ table.insert(plugins, lsp)
 table.insert(plugins, dap)
 table.insert(plugins, themes)
 
-opts = {
+local opts = {
     install = {
-        colorscheme = {'tokyonight'},
+        colorscheme = { 'tokyonight' },
     }
 }
+
 require("lazy").setup(plugins, opts)
