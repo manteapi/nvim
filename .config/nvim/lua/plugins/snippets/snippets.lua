@@ -16,11 +16,12 @@ local common = require("plugins.snippets.common_snippets")
 -- https://www.youtube.com/watch?v=KtQZRAkgLqo
 
 luasnip.add_snippets("all",
-{
-    s("mail", fmt("pierre-luc.manteaux@circle.dental", {})),
-}
+    {
+        s("mail", fmt("pierre-luc.manteaux@circle.dental", {})),
+    }
 )
 
 require("plugins.snippets.lua_snippets")
 require("plugins.snippets.python_snippets")
 require("plugins.snippets.qml_snippets")
+require("plugins.snippets.markdown_snippets")
