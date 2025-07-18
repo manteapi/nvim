@@ -95,6 +95,11 @@ editing = {
         },
         config=function() require("plugins.editing.cmp") end,
     },
+    {
+        'MeanderingProgrammer/render-markdown.nvim',
+        config=function() require("plugins.editing.rendermarkdown") end,
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    }
 }
 
 snippets = {
