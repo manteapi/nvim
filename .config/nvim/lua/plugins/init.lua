@@ -72,6 +72,10 @@ local lsp = {
 
 local editing = {
     {
+        "danymat/neogen",
+        config = function() require("plugins.editing.neogen") end,
+    },
+    {
         "smoka7/hop.nvim",
         config = function() require("plugins.editing.hop") end,
     },
