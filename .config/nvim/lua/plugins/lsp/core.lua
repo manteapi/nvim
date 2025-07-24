@@ -79,3 +79,23 @@ local active_clients = vim.lsp.get_clients()
 if #active_clients == 0 then
     vim.keymap.set("n", "<Leader>f", "gg=G``", { silent = true })
 end
+
+-- Python autocmd to fix all and format on buffer write
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.py",
+    callback = function()
+        -- First, fix all suggestions
+        local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+        for _, client in ipairs(clients) do
+            if client.supports_method("textDocument/codeAction") then
+                vim.lsp.buf.code_action({
+                    context = { only = { "source.fixAll" }, diagnostics = {} },
+                    apply = true,
+                })
+                break
+            end
+        end
+        -- Lastly, format the file
+        vim.lsp.buf.format({ async = false })
+    end,
+})
