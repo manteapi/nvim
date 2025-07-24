@@ -2,14 +2,14 @@ require('gitsigns').setup()
 
 local gitsigns = require('gitsigns')
 
-vim.keymap.set("n", "]c", function()
-    if vim.wo.diff then return "]c" end
+vim.keymap.set("n", "]h", function()
+    if vim.wo.diff then return "]h" end
     vim.schedule(function() gitsigns.next_hunk() end)
     return '<Ignore>'
 end, {expr= true, desc="Move to next hunk"})
 
-vim.keymap.set("n", "[c", function()
-    if vim.wo.diff then return "[c" end
+vim.keymap.set("n", "[h", function()
+    if vim.wo.diff then return "[h" end
     vim.schedule(function() gitsigns.prev_hunk() end)
     return '<Ignore>'
 end, {expr= true, desc="Move to previous hunk"})
