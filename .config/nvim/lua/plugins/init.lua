@@ -17,12 +17,13 @@ local treesitter = {
     {
         "nvim-treesitter/nvim-treesitter",
         name = "treesitter",
-        config = function() require("plugins.treesitter") end,
+        config = function() require("plugins.treesitter.treesitter") end,
         build = ":TSUpdate",
+        dependencies = { { "nvim-treesitter/nvim-treesitter-textobjects" } }
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
-        config = function() require("plugins.treesitter-context") end,
+        config = function() require("plugins.treesitter.treesitter-context") end,
         dependencies = { { "treesitter" } },
     },
 }
