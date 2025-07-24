@@ -8,10 +8,6 @@ vim.keymap.set('', '<leader>w', function()
     hop.hint_words()
 end, { desc = 'Hop to word' })
 
-vim.keymap.set('', '<leader>c', function()
-    hop.hint_char1()
-end, { desc = 'Hop to 1 character' })
-
 vim.keymap.set('', '<leader>l', function()
     hop.hint_lines()
 end, { desc = 'Hop to line' })
