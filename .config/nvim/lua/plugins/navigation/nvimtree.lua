@@ -9,4 +9,3 @@ require("nvim-tree").setup({
 )
 
 vim.keymap.set("n", "<Leader>E", ":NvimTreeToggle<cr>", {silent = true, noremap = true, desc = "Explore filesystem"})
-vim.keymap.set("n", "<Leader>t", ":NvimTreeFocus<cr>", {silent = true, noremap = true, desc = "Explore filesystem"})
