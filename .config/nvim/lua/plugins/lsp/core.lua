@@ -9,9 +9,10 @@ mason_lspconfig.setup({
         "clangd",
         "cmake",
         "rust_analyzer",
-        "lua-language-server",
-        "harper-ls"
-    }
+        "lua_ls",
+        -- "harper_ls" -- Configuration is not taken into account correctly. Waiting for a fix.
+    },
+    automatic_enable = false -- enable / config is performed below
 })
 
 -- https://github.com/neovim/nvim-lspconfig
