@@ -37,34 +37,6 @@ local custom_on_attach = function(client, bufnr)
     vim.keymap.set('n', '<Leader>H', vim.lsp.buf.signature_help, opts)
 end
 
-local get_root_dir = function(filename, _)
-    local root_files = {
-        "neovim.toml",
-    }
-    local fallback_root_files = {
-        ".git",
-    }
-    local primary = lspconfig.util.root_pattern(unpack(root_files))(filename)
-    local fallback = lspconfig.util.root_pattern(unpack(fallback_root_files))(filename)
-    return primary or fallback
-end
-
-local function prequire(m)
-    local ok, err = pcall(require, m)
-    if not ok then return nil, err end
-    return err
-end
-
-local get_settings = function(server_name)
-    module_name = "plugins.lsp." .. server_name
-    local_module = prequire(module_name)
-    if local_module then
-        return local_module.settings()
-    else
-        return {}
-    end
-end
-
 for _, server_name in ipairs(get_servers()) do
     vim.lsp.enable(server_name)
     vim.lsp.config(server_name, {
