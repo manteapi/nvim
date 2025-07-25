@@ -57,10 +57,6 @@ local lsp = {
         config = function() require("plugins.lsp.core") end,
     },
     {
-        "hrsh7th/cmp-nvim-lsp", -- lsp completion
-        name = "cmp-nvim-lsp"
-    },
-    {
         "jose-elias-alvarez/null-ls.nvim",
     },
     {
@@ -92,17 +88,9 @@ local editing = {
         config = function() require("plugins.editing.comment") end,
     },
     {
-        "hrsh7th/nvim-cmp",
-        event = "InsertEnter",
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
-            "hrsh7th/cmp-nvim-lsp-signature-help",
-            "saadparwaiz1/cmp_luasnip"
-        },
-        config = function() require("plugins.editing.cmp") end,
+        "saghen/blink.cmp",
+        version = "1.*",
+        config = function() require("plugins.editing.blink") end,
     },
     {
         'MeanderingProgrammer/render-markdown.nvim',
