@@ -1,5 +1,6 @@
 require('treesitter-context').setup({
     enable = true,
+    max_lines = 10
 })
 
 vim.keymap.set("n", "[c", function()

@@ -72,6 +72,10 @@ local lsp = {
 
 local editing = {
     {
+        "lukas-reineke/indent-blankline.nvim",
+        config = function() require("plugins.editing.indentblankline") end,
+    },
+    {
         "danymat/neogen",
         config = function() require("plugins.editing.neogen") end,
     },
