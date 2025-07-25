@@ -76,7 +76,7 @@ vim.keymap.set("n", "<Leader>tm", builtin.marks, opts)
 
 vim.keymap.set("n", "<Leader>tc", function()
     builtin.find_files({
-        cwd = "~/repositories/dotfiles/nvim/",
+        cwd = "~/repositories/dotfiles/",
     })
 end, opts)
 
