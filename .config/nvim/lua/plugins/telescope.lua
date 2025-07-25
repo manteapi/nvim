@@ -1,4 +1,5 @@
 local telescope = require('telescope')
+local explore = require("utils.explore")
 
 telescope.setup {
     defaults = {
@@ -87,6 +88,6 @@ end, opts)
 
 vim.keymap.set("n", "<Leader>gb", function()
     builtin.git_branches({
-        use_file_path = true,
+        cwd = explore.git_root_from_buffer()
     })
 end, opts)
