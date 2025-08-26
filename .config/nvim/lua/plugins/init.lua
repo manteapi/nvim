@@ -63,7 +63,7 @@ local lsp = {
         url = "https://gitlab.com/schrieveslaach/sonarlint.nvim.git",
         dependencies = { "lspconfig" },
         config = function() require("plugins.lsp.sonarlint") end,
-    }
+    },
 }
 
 local editing = {
@@ -105,6 +105,10 @@ local editing = {
         'windwp/nvim-autopairs',
         config = function() require("plugins.editing.autopairs") end,
     },
+    {
+        'stevearc/conform.nvim',
+        config = function() require("plugins.editing.conform") end,
+    }
 }
 
 local snippets = {
