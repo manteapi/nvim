@@ -66,13 +66,15 @@ vim.keymap.set("n", "<Leader>td", function()
         bufnr = 0
     })
 end, opts)
-vim.keymap.set("n", "<Leader>tt", builtin.tags, opts)
+
 vim.keymap.set("n", "<Leader>th", builtin.help_tags, opts)
 vim.keymap.set("n", "<Leader>tk", builtin.keymaps, opts)
-vim.keymap.set("n", "<Leader>ts", builtin.lsp_document_symbols, opts)
-vim.keymap.set("n", "<Leader>tr", builtin.lsp_references, opts)
-vim.keymap.set("n", "<Leader>tw", builtin.lsp_dynamic_workspace_symbols, opts)
-vim.keymap.set("n", "<Leader>tm", builtin.marks, opts)
+
+-- Navigation
+vim.keymap.set("n", "gs", builtin.lsp_document_symbols, opts)
+vim.keymap.set("n", "gS", builtin.lsp_dynamic_workspace_symbols, opts)
+vim.keymap.set("n", "gm", builtin.marks, opts)
+vim.keymap.set("n", "gr", builtin.lsp_references, opts)
 
 vim.keymap.set("n", "<Leader>tc", function()
     builtin.find_files({
