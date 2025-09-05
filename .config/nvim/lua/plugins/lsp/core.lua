@@ -10,7 +10,8 @@ mason_lspconfig.setup({
         "cmake",
         "rust_analyzer",
         "lua_ls",
-        "just"
+        "just",
+        "tombi"
         -- "harper_ls" -- Configuration is not taken into account correctly. Waiting for a fix.
     },
 })
