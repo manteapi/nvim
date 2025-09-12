@@ -13,6 +13,14 @@ require("blink.cmp").setup({
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
+        providers = {
+            path = {
+                opts = {
+                    show_hidden_files_by_default = true,
+                }
+            }
+
+        }
     },
 
     -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
