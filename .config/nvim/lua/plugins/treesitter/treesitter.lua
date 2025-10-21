@@ -1,6 +1,7 @@
 require 'nvim-treesitter.configs'.setup {
     highlight = { enable = true },
     ensure_installed = {
+        "yaml",
         "comment",
         "cpp",
         "norg",
