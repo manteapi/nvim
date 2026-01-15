@@ -11,6 +11,14 @@ require("oil").setup({
                 vim.fn.setreg("+", vim.fn.getreg(vim.v.register))
             end,
         },
+        -- Release those keys for tmux
+        ["<C-h>"] = false,
+        ["<C-l>"] = false,
+        ["<C-s>"] = false,
+        -- Set the actions to other keys
+        ["<Leader>r"] = "actions.refresh",
+        ["<Leader>|"] = { "actions.select", opts = { vertical = true } },
+        ["<Leader>-"] = { "actions.select", opts = { horizontal = true } },
     },
 })
 
