@@ -6,6 +6,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
+local function add_plugins(plugins, list)
+    for _, plugin in ipairs(list) do
+        table.insert(plugins, plugin)
+    end
+end
+
 local plugins = {
     -- Utility needed by other plugins
     { "nvim-lua/plenary.nvim",          name = "plenary" },
@@ -16,15 +22,24 @@ local plugins = {
 local treesitter = {
     {
         "nvim-treesitter/nvim-treesitter",
-        name = "treesitter",
         config = function() require("plugins.treesitter.treesitter") end,
+        lazy = false,
         build = ":TSUpdate",
-        dependencies = { { "nvim-treesitter/nvim-treesitter-textobjects" } }
+        branch = 'main'
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        lazy = false,
+        config = function() require("plugins.treesitter.treesitter-textobjects") end,
+        branch = 'main'
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
+        lazy = false,
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
         config = function() require("plugins.treesitter.treesitter-context") end,
-        dependencies = { { "treesitter" } },
+        branch = 'master'
     },
 }
 
@@ -171,14 +186,14 @@ local git = {
     }
 }
 
-table.insert(plugins, editing)
-table.insert(plugins, snippets)
-table.insert(plugins, navigation)
-table.insert(plugins, treesitter)
-table.insert(plugins, git)
-table.insert(plugins, lsp)
-table.insert(plugins, dap)
-table.insert(plugins, themes)
+add_plugins(plugins, editing)
+add_plugins(plugins, snippets)
+add_plugins(plugins, navigation)
+add_plugins(plugins, treesitter)
+add_plugins(plugins, git)
+add_plugins(plugins, lsp)
+add_plugins(plugins, dap)
+add_plugins(plugins, themes)
 
 local opts = {
     install = {

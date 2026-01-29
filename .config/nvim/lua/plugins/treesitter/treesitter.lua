@@ -12,16 +12,6 @@ require 'nvim-treesitter.configs'.setup {
         "javascript",
         "qmljs"
     },
-    textobjects = {
-        select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-            },
-        },
-    }
 }
 
 vim.keymap.set("n", "<Leader>ps", function()
