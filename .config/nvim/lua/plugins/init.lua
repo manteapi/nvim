@@ -25,21 +25,17 @@ local treesitter = {
         config = function() require("plugins.treesitter.treesitter") end,
         lazy = false,
         build = ":TSUpdate",
-        branch = 'main'
-    },
-    {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        lazy = false,
-        config = function() require("plugins.treesitter.treesitter-textobjects") end,
-        branch = 'main'
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
         lazy = false,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         config = function() require("plugins.treesitter.treesitter-context") end,
-        branch = 'master'
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        lazy = false,
     },
 }
 

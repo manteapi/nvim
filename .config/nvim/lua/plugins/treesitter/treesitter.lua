@@ -1,4 +1,4 @@
-require 'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.config'.setup {
     highlight = { enable = true },
     ensure_installed = {
         "yaml",
@@ -12,6 +12,16 @@ require 'nvim-treesitter.configs'.setup {
         "javascript",
         "qmljs"
     },
+    textobjects = {
+        select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+            },
+        },
+    }
 }
 
 vim.keymap.set("n", "<Leader>ps", function()
