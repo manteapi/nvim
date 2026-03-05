@@ -19,6 +19,23 @@ local plugins = {
     { "christoomey/vim-tmux-navigator", name = "tmux-navigator" },
 }
 
+local ai = {
+    {
+        "olimorris/codecompanion.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        opts = {
+            -- NOTE: The log_level is in `opts.opts`
+            opts = {
+                log_level = "DEBUG", -- or "TRACE"
+            },
+        },
+        config = function() require("plugins.ai.codecompanion") end,
+    },
+}
+
 local treesitter = {
     {
         "nvim-treesitter/nvim-treesitter",
@@ -190,6 +207,7 @@ add_plugins(plugins, git)
 add_plugins(plugins, lsp)
 add_plugins(plugins, dap)
 add_plugins(plugins, themes)
+add_plugins(plugins, ai)
 
 local opts = {
     install = {
