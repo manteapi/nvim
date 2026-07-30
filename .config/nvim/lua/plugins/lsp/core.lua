@@ -4,15 +4,15 @@ require("mason").setup({})
 local mason_lspconfig = require("mason-lspconfig")
 mason_lspconfig.setup({
     ensure_installed = {
-        -- "ty",
-        "pylsp",
-        "ruff",
+        "ty",
+        "ruff@0.11.13",
         "clangd",
         "cmake",
         "rust_analyzer",
         "lua_ls",
         "just",
         "tombi",
+        "qmlls"
         -- "harper_ls" -- Configuration is not taken into account correctly. Waiting for a fix.
     },
 })
