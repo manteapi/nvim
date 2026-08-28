@@ -196,6 +196,9 @@ local git = {
     },
     {
         "sindrets/diffview.nvim"
+    },
+    {
+        "mfussenegger/nvim-ansible"
     }
 }
 

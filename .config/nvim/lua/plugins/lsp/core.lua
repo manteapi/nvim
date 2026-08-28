@@ -12,7 +12,8 @@ mason_lspconfig.setup({
         "lua_ls",
         "just",
         "tombi",
-        "qmlls"
+        "qmlls",
+        "ansiblels"
         -- "harper_ls" -- Configuration is not taken into account correctly. Waiting for a fix.
     },
 })
