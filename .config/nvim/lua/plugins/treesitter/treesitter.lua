@@ -15,6 +15,15 @@ require('nvim-treesitter').install {
     "qmljs"
 }
 
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function()
+        local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
+        if lang and vim.treesitter.language.add(lang) then
+            vim.treesitter.start()
+        end
+    end,
+})
+
 
 vim.keymap.set({ "x", "o" }, "am", function()
     require "nvim-treesitter-textobjects.select".select_textobject("@function.outer", "textobjects")
