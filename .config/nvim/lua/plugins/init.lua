@@ -85,9 +85,6 @@ local lsp = {
         config = function() require("plugins.lsp.core") end,
     },
     {
-        "jose-elias-alvarez/null-ls.nvim",
-    },
-    {
         url = "https://gitlab.com/schrieveslaach/sonarlint.nvim.git",
         dependencies = { "lspconfig" },
         config = function() require("plugins.lsp.sonarlint") end,

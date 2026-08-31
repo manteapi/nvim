@@ -1,28 +1,27 @@
-require 'nvim-treesitter.configs'.setup {
-    highlight = { enable = true },
-    ensure_installed = {
-        "yaml",
-        "comment",
-        "cpp",
-        "norg",
-        "lua",
-        "rust",
-        "python",
-        "json",
-        "javascript",
-        "qmljs"
-    },
-    textobjects = {
-        select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-            },
-        },
-    }
+require 'nvim-treesitter'.setup {
+    -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
+    install_dir = vim.fn.stdpath('data') .. '/site',
 }
+
+require('nvim-treesitter').install {
+    "yaml",
+    "comment",
+    "cpp",
+    "lua",
+    "rust",
+    "python",
+    "json",
+    "javascript",
+    "qmljs"
+}
+
+
+vim.keymap.set({ "x", "o" }, "am", function()
+    require "nvim-treesitter-textobjects.select".select_textobject("@function.outer", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "im", function()
+    require "nvim-treesitter-textobjects.select".select_textobject("@function.inner", "textobjects")
+end)
 
 vim.keymap.set("n", "<Leader>ps", function()
     print(require('nvim-treesitter').statusline(
