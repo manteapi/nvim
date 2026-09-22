@@ -18,6 +18,11 @@ mason_lspconfig.setup({
     },
 })
 
+vim.lsp.enable({
+    "nixd",
+    -- non-Mason servers go here
+})
+
 -- Go to previous/next diagnostic warning/error
 local opts = { noremap = true, silent = true }
 
