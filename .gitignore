@@ -1,4 +1,3 @@
 packer_compiled.lua
 .local/share/nvim/site/pack
 .luarc.json
-.config/nvim/lazy-lock.json
