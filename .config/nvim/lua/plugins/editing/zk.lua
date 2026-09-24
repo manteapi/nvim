@@ -27,7 +27,7 @@ end, { silent = true, noremap = true, desc = "List notes" })
 
 local zk = require("zk")
 vim.keymap.set("n", "<leader>zn", function()
-    zk.new({ title = vim.fn.input("Title: ") })
+    zk.new({ dir = "notes", group = "notes", title = vim.fn.input("Title: ") })
 end, { desc = "Create new note" })
 
 vim.keymap.set("n", "<leader>zj", function()
