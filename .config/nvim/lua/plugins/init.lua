@@ -133,7 +133,12 @@ local editing = {
     {
         'stevearc/conform.nvim',
         config = function() require("plugins.editing.conform") end,
+    },
+    {
+        "zk-org/zk-nvim",
+        config = function() require("plugins.editing.zk") end,
     }
+
 }
 
 local snippets = {

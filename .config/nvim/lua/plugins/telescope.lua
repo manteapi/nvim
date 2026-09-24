@@ -82,12 +82,6 @@ vim.keymap.set("n", "<Leader>tc", function()
     })
 end, opts)
 
-vim.keymap.set("n", "<Leader>tn", function()
-    builtin.find_files({
-        cwd = "~/repositories/dotfiles/neo-notes/",
-    })
-end, opts)
-
 vim.keymap.set("n", "<Leader>gb", function()
     builtin.git_branches({
         cwd = explore.git_root_from_buffer()
