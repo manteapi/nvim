@@ -13,7 +13,8 @@ mason_lspconfig.setup({
         "just",
         "tombi",
         "qmlls",
-        "ansiblels"
+        "ansiblels",
+        "tinymist"
         -- "harper_ls" -- Configuration is not taken into account correctly. Waiting for a fix.
     },
 })
