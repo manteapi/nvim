@@ -33,3 +33,5 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 vim.keymap.set("n", "gd", function()
     vim.lsp.buf.definition()
 end, opts)
+
+vim.keymap.set("n", "gf", function() vim.lsp.buf.format() end, { noremap = true, silent = true, desc = "Format code" })
