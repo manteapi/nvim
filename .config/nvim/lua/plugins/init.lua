@@ -137,7 +137,14 @@ local editing = {
     {
         "zk-org/zk-nvim",
         config = function() require("plugins.editing.zk") end,
-    }
+    },
+    {
+        "kevinhwang91/nvim-bqf",
+        config = function() require("plugins.editing.bqf") end,
+        dependencies = {
+            "junegunn/fzf", -- required
+        }
+    },
 
 }
 
